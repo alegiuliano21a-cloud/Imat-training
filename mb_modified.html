@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IMAT Practice — Chemistry & Biology</title>
+<style>
+  :root{
+    --bg:#f5f5f7; --fg:#1d1d1f; --card:#fff; --muted:#666; --accent:#0a84ff;
+    --ok:#0a0; --bad:#d00; --shadow:0 6px 18px rgba(0,0,0,0.08);
+  }
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:16px;}
+  h1{font-size:1.6rem;margin:0 0 12px;}
+  h2{font-size:1.2rem;margin:0 0 10px;}
+  .muted{color:var(--muted);}
+  .small{font-size:.9rem;}
+  .screen{display:none;}
+  .screen.active{display:block;}
+  .card{background:var(--card);border-radius:14px;padding:12px;box-shadow:var(--shadow);}
+  fieldset{background:var(--card);border:none;border-radius:12px;padding:12px;margin:10px 0;box-shadow:var(--shadow);}
+  legend{font-weight:700;}
+  label{display:block;padding:8px;border-radius:8px;cursor:pointer;}
+  label:hover{background:#f0f0f5; color:#000;} /* testo nero su hover */
+  input[type="radio"]{margin-right:8px;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;}
+  button{background:#000;color:#fff;border:none;border-radius:10px;padding:12px 14px;font-size:1rem;cursor:pointer}
+  button.secondary{background:#fff;color:#000;border:1px solid #ccc}
+  .progress{height:10px;background:#e9e9ed;border-radius:10px;overflow:hidden;margin:8px 0;}
+  .progress>i{display:block;height:100%;background:var(--accent);width:0%}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.06);margin-right:8px;color:#000;}
+  .site-message{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:9999;max-width:92%;}
+  .notice{background:#fff;border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.12);display:flex;gap:8px;align-items:center;justify-content:space-between;}
+  .correct{color:var(--ok);} .incorrect{color:var(--bad);}
+  .year{color:#777;font-size:.85rem;margin:.25rem 0 .1rem;}
+  .subjectTitle{font-size:.95rem;color:#fff;margin-bottom:6px;font-weight:700;}
+  @media (max-width:680px){ body{padding:12px} button{padding:10px 12px;font-size:.95rem} }
+  /* Dark */
+  body.dark{--bg:#0b0b0c;--fg:#e6e6e8;--card:#161617;--muted:#a1a1a6;--accent:#0a84ff;--shadow:0 6px 18px rgba(0,0,0,0.25)}
+
+  /* Nuovo stile per la barra di avanzamento del quiz */
+  .quiz-progress-bar {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    border-radius: 14px;
+    padding: 12px 24px 16px 24px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    transition: opacity 0.2s;
+  }
+  .quiz-progress-bar[hidden] { display: none !important; }
+  .quiz-progress-bar .progress {
+    width: 220px;
+    margin: 0 0 2px 0;
+  }
+  .quiz-progress-bar .quiz-timer {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 0;
+    text-align: center;
+  }
+  @media (max-width: 480px) {
+    .quiz-progress-bar { min-width: 0; width: 96vw; padding: 10px 2vw 12px 2vw; }
+    .quiz-progress-bar .progress { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<!-- Site message / toast -->
+<div id="siteMessage" class="site-message" style="display:none;" aria-live="polite">
+  <div class="notice"><div id="siteMessageText"></div><div id="siteMessageBtns"></div></div>
+</div>
+
+<!-- Barra di avanzamento quiz in basso -->
+<div id="quizProgressBar" class="quiz-progress-bar" hidden>
+  <div class="progress"><i id="progBar" style="width:0%"></i></div>
+  <div class="quiz-timer" id="quizTimer">Tempo: 0:00</div>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="screen active">
+  <div class="card">
+    <h1>IMAT Practice — Login</h1>
+    <p class="muted small">Inserisci la passkey per accedere.</p>
+    <input id="passkey" type="password" placeholder="Passkey (2010, 2111, 2405)" style="width:100%;padding:12px;border-radius:10px;border:1px solid #c7c7cc;font-size:1rem;margin:8px 0"/>
+    <button id="loginBtn" style="width:100%;">Entra</button>
+    <p class="muted small" style="margin-top:8px;">2010 = Chiara • 2111 = Ale • 2405 = Tony</p>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="screen">
+  <div class="topbar">
+    <h1 id="welcomeTitle">IMAT Practice</h1>
+    <div class="row">
+      <button class="secondary" id="toggleThemeBtn" title="Tema">🌙</button>
+      <button class="secondary" id="logoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:10px;">
+    <div class="subjectTitle">Chimica</div>
+    <div class="row" style="gap:10px">
+      <button id="startChemBtn" style="flex:1">Start Chemistry Quiz</button>
+      <button id="chemTrainingBtn" class="secondary">Training Mode (Chemistry)</button>
+      <button id="historyChemBtn" class="secondary">History Chimica</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="subjectTitle">Biologia</div>
+    <div class="row" style="gap:10px">
+      <button id="startBioBtn" style="flex:1">Start Biology Quiz</button>
+      <button id="bioTrainingBtn" class="secondary">Training Mode (Biology)</button>
+      <button id="historyBioBtn" class="secondary">History Biologia</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen"></div>
+
+<!-- REVIEW (prima del riepilogo) -->
+<div id="review" class="screen"></div>
+
+<!-- RESULT -->
+<div id="result" class="screen"></div>
+
+<!-- HISTORY -->
+<div id="history" class="screen"></div>
+
+<!-- TRAINING -->
+<div id="training" class="screen"></div>
+
+<script>
+/* =================== DATA =================== */
+/* chemistryQuestions ora viene caricato da file esterno */
+var chemistryQuestions = null;
+var chemistryQuestionsLoaded = false;
+var chemistryQuestionsLoading = false;
+var chemistryQuestionsLoadCallbacks = [];
+
+function loadChemistryQuestions(cb) {
+  if (chemistryQuestionsLoaded) { cb && cb(); return; }
+  chemistryQuestionsLoadCallbacks.push(cb);
+  if (chemistryQuestionsLoading) return;
+  chemistryQuestionsLoading = true;
+  // Cambia il nome del file qui sotto per corrispondere al file JSON corretto
+  fetch('./chemistry-questions.json')
+    .then(function(resp){
+      if (!resp.ok) throw new Error('HTTP error');
+      return resp.json();
+    })
+    .then(function(data){
+      chemistryQuestions = data;
+      chemistryQuestionsLoaded = true;
+      chemistryQuestionsLoading = false;
+      chemistryQuestionsLoadCallbacks.forEach(function(f){ if(f) f(); });
+      chemistryQuestionsLoadCallbacks = [];
+    })
+    .catch(function(e){
+      chemistryQuestionsLoading = false;
+      chemistryQuestionsLoadCallbacks.forEach(function(f){ if(f) f(new Error('Impossibile caricare le domande di chimica.')); });
+      chemistryQuestionsLoadCallbacks = [];
+      msg('Errore nel caricamento delle domande di chimica.<br><span class="small">'+(e && e.message ? e.message : '')+'</span>', [{label:'OK',secondary:true}]);
+    });
+}
+
+
+/* biologyQuestions now loaded from external JSON like chemistry */
+var biologyQuestions = null;
+var biologyQuestionsLoaded = false;
+var biologyQuestionsLoading = false;
+var biologyQuestionsLoadCallbacks = [];
+
+function loadBiologyQuestions(cb) {
+  if (biologyQuestionsLoaded) { cb && cb(); return; }
+  biologyQuestionsLoadCallbacks.push(cb);
+  if (biologyQuestionsLoading) return;
+  biologyQuestionsLoading = true;
+  fetch('./biology-questions.json')
+    .then(function(resp){
+      if (!resp.ok) throw new Error('HTTP error');
+      return resp.json();
+    })
+    .then(function(data){
+      biologyQuestions = data;
+      biologyQuestionsLoaded = true;
+      biologyQuestionsLoading = false;
+      biologyQuestionsLoadCallbacks.forEach(function(f){ if(f) f(); });
+      biologyQuestionsLoadCallbacks = [];
+    })
+    .catch(function(e){
+      biologyQuestionsLoading = false;
+      biologyQuestionsLoadCallbacks.forEach(function(f){ if(f) f(new Error('Impossibile caricare le domande di biologia.')); });
+      biologyQuestionsLoadCallbacks = [];
+      msg('Errore nel caricamento delle domande di biologia.<br><span class="small">'+(e && e.message ? e.message : '')+'</span>', [{label:'OK',secondary:true}]);
+    });
+}
+/* ===== Users + state ===== */
+var users = {"2010":"Chiara","2111":"Ale","2405":"Tony"};
+var currentUser = null;
+
+/* active subject/pool used by quiz/training generic routines */
+var activeSubject = null; // 'Chemistry' or 'Biology'
+var activePool = null;    // pointer to array of questions currently active
+var shuffledQuestions = [];
+var RECENT_CACHE_SIZE = 30;
+var lastAskedPerUser = {}; // { userKey: [ "Chemistry::Qtext", "Biology::Qtext", ... ] }
+
+/* ===== Local storage helpers (unchanged behavior) ===== */
+function lsGet(key, def){ try{ var v = localStorage.getItem(key); return v? JSON.parse(v): def; }catch(e){ return def; } }
+function lsSet(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+/* ========== QUESTION STATS (scoped per subject) ========== */
+/* keys in localStorage imat_qstats will be {subject}::question */
+function _qKey(subject, question){ return (subject||'Unknown') + '::' + question; }
+function loadQStats(){ return lsGet('imat_qstats', {}); }
+function saveQStats(o){ lsSet('imat_qstats', o); }
+function incQAsked(subject, q){ var s=loadQStats(); var k=_qKey(subject,q); s[k]=s[k]||{asked:0,wrong:0}; s[k].asked++; saveQStats(s); }
+function incQWrong(subject, q){ var s=loadQStats(); var k=_qKey(subject,q); s[k]=s[k]||{asked:0,wrong:0}; s[k].wrong++; saveQStats(s); }
+function resetQWrong(subject, q){ var s=loadQStats(); var k=_qKey(subject,q); if(s[k]){ s[k].wrong=0; saveQStats(s);} }
+function getQStatsFor(subject, q){ var s=loadQStats(); var k=_qKey(subject,q); return s[k]||{asked:0,wrong:0}; }
+
+/* =================== UI helpers =================== */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  var el = document.getElementById(id); if(el) el.classList.add('active');
+  if(id==='history') renderHistory();
+  // Mostra la barra solo durante il quiz
+  var bar = document.getElementById('quizProgressBar');
+  if(bar) bar.hidden = (id !== 'quiz');
+}
+function msg(text, buttons){
+  var wrap=document.getElementById('siteMessage');
+  document.getElementById('siteMessageText').innerHTML = text;
+  var b = document.getElementById('siteMessageBtns'); b.innerHTML='';
+  (buttons||[]).forEach(function(btn){
+    var el=document.createElement('button');
+    el.textContent = btn.label; el.className = btn.secondary? 'secondary':'';
+    el.onclick = function(){ wrap.style.display='none'; btn.onClick && btn.onClick(); };
+    b.appendChild(el);
+  });
+  wrap.style.display='block';
+}
+
+/* =================== LOGIN / LOGOUT =================== */
+function login(){
+  var key = (document.getElementById('passkey').value||'').trim();
+  if(users[key]){
+    currentUser = key;
+    document.getElementById('welcomeTitle').textContent = 'IMAT Practice — '+users[key];
+    showScreen('home');
+  }else{
+    msg('Passkey non valida.', [{label:'OK', secondary:true}]);
+  }
+}
+function logout(){ currentUser=null; document.getElementById('passkey').value=''; showScreen('login'); }
+
+/* =================== UTILS =================== */
+function shuffleArray(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+/* pickQuestions now accepts pool and subject and uses lastAskedPerUser scoped by subject */
+function pickQuestions(pool, n){
+  var poolCopy = pool.slice();
+  var recent = lastAskedPerUser[currentUser]||[];
+  var available = poolCopy.filter(function(q){ return recent.indexOf(activeSubject + '::' + q.question) === -1; });
+  if(available.length < n) available = poolCopy.slice();
+  return shuffleArray(available).slice(0,n);
+}
+
+/* =================== GENERIC QUIZ (works for both subjects) =================== */
+var quizStartTime=null, quizTimerInterval=null;
+var quizElapsedSeconds=0;
+function startStopwatch(){
+  quizStartTime = Date.now();
+  var el = document.getElementById('quizTimer');
+  function upd(){
+    var s = Math.floor((Date.now()-quizStartTime)/1000);
+    var mm = Math.floor(s/60), ss = s%60;
+    el.textContent = 'Tempo: '+mm+':'+(ss<10?('0'+ss):ss);
+  }
+  upd(); quizTimerInterval = setInterval(upd, 500);
+}
+function stopStopwatch(){
+  if(quizTimerInterval) clearInterval(quizTimerInterval);
+  quizTimerInterval=null;
+  if(quizStartTime) {
+    quizElapsedSeconds = Math.floor((Date.now()-quizStartTime)/1000);
+  } else {
+    quizElapsedSeconds = 0;
+  }
+}
+
+/* wrapper to set active pool + subject and call generic start */
+function startGenericQuizFor(subject, pool){
+  if(!currentUser){ showScreen('login'); return; }
+  activeSubject = subject;
+  activePool = pool;
+  shuffledQuestions = pickQuestions(activePool, Math.min(15, activePool.length));
+  if(!lastAskedPerUser[currentUser]) lastAskedPerUser[currentUser]=[];
+  lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].concat(shuffledQuestions.map(function(q){ return activeSubject + '::' + q.question; }));
+  if(lastAskedPerUser[currentUser].length > RECENT_CACHE_SIZE) lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].slice(-RECENT_CACHE_SIZE);
+
+  var html = '<div class="topbar"><h2>Quiz — ' + activeSubject + '</h2></div>';
+  // RIMOSSA la progress bar e il timer da qui
+  shuffledQuestions.forEach(function(q,i){
+    var idxs = shuffleArray(q.options.map(function(_,k){return k;}));
+    html += '<fieldset><legend>Q'+(i+1)+': '+q.question+'</legend>';
+    html += '<div class="year">Anno: '+(q.year||'—')+'</div>';
+    idxs.forEach(function(k){
+      html += '<label><input type="radio" name="q'+i+'" value="'+k+'"> '+q.options[k]+'</label>';
+    });
+    html += '</fieldset>';
+  });
+  html += '<button id="submitBtn">Termina Quiz</button>';
+  var quizDiv = document.getElementById('quiz'); quizDiv.innerHTML = html;
+  quizDiv.querySelectorAll('input[type=radio]').forEach(function(inp){ inp.addEventListener('change', updateProgress); });
+  document.getElementById('submitBtn').onclick = submitQuiz;
+  updateProgress();
+  showScreen('quiz');
+  // Mostra la barra in basso
+  document.getElementById('quizProgressBar').hidden = false;
+  stopStopwatch(); startStopwatch();
+}
+
+function updateProgress(){
+  var total = shuffledQuestions.length, answered=0;
+  for(var i=0;i<total;i++){ if(document.querySelector('input[name="q'+i+'"]:checked')) answered++; }
+  var pct = Math.round((answered/total)*100);
+  var bar = document.getElementById('progBar'); if(bar) bar.style.width = pct+'%';
+  // Il timer viene aggiornato da startStopwatch
+}
+
+/* submitQuiz: generic, saves subject in results and uses subject-scoped stats */
+function submitQuiz(){
+  stopStopwatch();
+  // Nascondi la barra in basso
+  document.getElementById('quizProgressBar').hidden = true;
+  var score=0, correctCount=0, wrong=0, total=shuffledQuestions.length;
+  var details=[];
+  for(var i=0;i<total;i++){
+    var q = shuffledQuestions[i];
+    var sel = document.querySelector('input[name="q'+i+'"]:checked');
+    var idx = sel? parseInt(sel.value,10): null;
+    var ok = (idx===q.correct);
+    if(idx !== null) {
+      details.push({q:q.question, chosen:idx, correct:ok, year:q.year});
+      incQAsked(activeSubject, q.question);
+      if(!ok) incQWrong(activeSubject, q.question);
+      if(ok){ score+=1.5; correctCount++; } else { score-=0.4; wrong++; }
+    } else {
+      details.push({q:q.question, chosen:null, correct:null, year:q.year});
+    }
+  }
+  // Save attempt with subject (sia quiz che allenamento)
+  var all = lsGet('imat_results', {});
+  if(!all[currentUser]) all[currentUser]=[];
+  all[currentUser].push({
+    score:score,
+    wrong:wrong,
+    total:total,
+    correct:correctCount,
+    date:new Date().toLocaleString(),
+    details:details,
+    subject: activeSubject,
+    training: false, // quiz normale
+    elapsed: quizElapsedSeconds
+  });
+  lsSet('imat_results', all); // <-- AGGIUNTO salvataggio anche per quiz
+  details.forEach(function(d){ if(d.correct) resetQWrong(activeSubject, d.q); });
+
+  var answered = details.filter(function(d){ d.chosen !== null }).length;
+  var notAnswered = total - answered;
+  var pctC = answered ? ((correctCount/answered)*100).toFixed(1) : '0.0';
+  var pctW = answered ? (((answered-correctCount)/answered)*100).toFixed(1) : '0.0';
+  var suggestion = suggestTopicFromWrong(activeSubject, details);
+  var timeStr = formatElapsed(quizElapsedSeconds);
+  var rev = '<h2>Revisione — ' + activeSubject + '</h2>';
+  rev += '<div class="card"><div class="pill">Corrette: '+correctCount+'/'+answered+' ('+pctC+'%)</div>';
+  rev += '<div class="pill">Sbagliate: '+wrong+' ('+pctW+'%)</div>';
+  rev += '<div class="pill">Non risposte: '+notAnswered+'</div>';
+  rev += '<div class="pill">Tempo: '+timeStr+'</div>';
+  rev += '<div class="muted small" style="margin-top:6px;">Consiglio: <strong>'+suggestion+'</strong></div></div>';
+  rev += '<div class="row" style="margin-top:8px"><button id="toResultBtn">Vai al riepilogo</button><button class="secondary" id="retryBtn">Riprova</button></div>';
+  var revDiv = document.getElementById('review'); revDiv.innerHTML = rev;
+  document.getElementById('toResultBtn').onclick = function(){ renderResult(details, score, quizElapsedSeconds); };
+  document.getElementById('retryBtn').onclick = function(){ startGenericQuizFor(activeSubject, activePool); };
+  showScreen('review');
+}
+
+function formatElapsed(sec){
+  var mm = Math.floor(sec/60), ss = sec%60;
+  return mm+':'+(ss<10?('0'+ss):ss);
+}
+
+function renderResult(details, score, elapsed){
+  var resultDiv = document.getElementById('result');
+  var answered = details.filter(function(d){ return d.chosen !== null; }).length;
+  var correctCount = details.filter(function(d){return d.correct;}).length;
+  var total = details.length;
+  var notAnswered = total - answered;
+  var percent = answered ? ((correctCount/answered)*100).toFixed(1) : '0.0';
+  var timeStr = formatElapsed(typeof elapsed === "number" ? elapsed : quizElapsedSeconds);
+  var html = '<h2>Riepilogo Finale — ' + activeSubject + '</h2>';
+  html += '<div class="card"><strong>Punteggio:</strong> '+score.toFixed(2)+' • '+percent+'% (solo risposte date)<br>';
+  html += '<span class="pill">Corrette: '+correctCount+'</span>';
+  html += '<span class="pill">Sbagliate: '+(answered-correctCount)+'</span>';
+  html += '<span class="pill">Non risposte: '+notAnswered+'</span>';
+  html += '<span class="pill">Tempo: '+timeStr+'</span></div>';
+  details.forEach(function(d,i){
+    var q = shuffledQuestions[i];
+    html += '<fieldset><legend>Domanda '+(i+1)+'</legend>';
+    html += '<div class="year">Anno: '+(d.year||'—')+'</div>';
+    html += '<p><strong>'+q.question+'</strong></p>';
+    html += '<form style="margin-bottom:0.7em;">';
+    q.options.forEach(function(opt, idx) {
+      let checked = (d.chosen === idx) ? 'checked' : '';
+      let disabled = 'disabled';
+      let style = '';
+      if (idx === q.correct) {
+        style = 'font-weight:bold;color:#28a745;';
+      } else if (d.chosen === idx && d.chosen !== q.correct) {
+        style = 'font-weight:bold;color:#d62828;';
+      }
+      html += `<label style="display:flex;align-items:center;gap:7px;${style}">` +
+              `<input type="radio" name="q${i}" value="${idx}" ${checked} ${disabled} style="accent-color:${idx===q.correct ? '#28a745' : (d.chosen===idx ? '#d62828' : '#bbb')};">` +
+              `${opt}</label>`;
+    });
+    html += '</form>';
+    if(d.chosen === null) {
+      html += '<p><span class="no-answer">➖ Nessuna risposta data</span></p>';
+    } else {
+      html += '<p>'+ (d.correct? '<span class="correct">✔ Corretta</span>' : '<span class="incorrect">✘ Sbagliata</span>') +'</p>';
+    }
+    if(q.explanation) html += '<p class="muted small">Spiegazione: '+q.explanation+'</p>';
+    html += '</fieldset>';
+  });
+  html += '<div class="row"><button id="repeatBtn">Ripeti Quiz</button><button class="secondary" id="homeBtn">Home</button></div>';
+  resultDiv.innerHTML = html;
+  document.getElementById('repeatBtn').onclick = function(){ startGenericQuizFor(activeSubject, activePool); };
+  document.getElementById('homeBtn').onclick = function(){ showScreen('home'); };
+  showScreen('result');
+}
+
+/* =================== SUGGERIMENTO ARGOMENTI (scoped per materia) =================== */
+var topicKeywordsChem = [
+  {k:['pH','acid','base','HCl','H2SO4','HNO3','acidic','basic','pOH'], topic:'Acidi e Basi'},
+  {k:['titr','titol','NaOH','molar','concentra','neutraliz'], topic:'Titolazioni e concentrazioni'},
+  {k:['dipole','polar','NF3','CCl4','CO2','intermolecular','hydrogen'], topic:'Struttura molecolare e legami'},
+  {k:['stoichiom','mol','Avogadro','moles','Mr','massa'], topic:'Stechiometria e moli'},
+  {k:['redox','oxid','reduc','MnO2','Cl2'], topic:'Reazioni redox'},
+  {k:['organic','ester','alcohol','ketone','ether','thiol','amide'], topic:'Chimica organica'}
+];
+var topicKeywordsBio = [
+  {k:['mitochondria','ATP','cellular respiration','oxidative','respiration','atp'], topic:'Metabolismo e ATP'},
+  {k:['dna','rna','replication','transcription','translation','anticodon','codon'], topic:'Genetica e sintesi proteica'},
+  {k:['ribosome','ribosomes','ribosomal'], topic:'Struttura cellulare: ribosomi'},
+  {k:['membrane','plasma membrane','carrier proteins','transport'], topic:'Membrane e trasporto'},
+  {k:['allele','dominant','recessive','heterozygous','mutation'], topic:'Ereditarietà e mutazioni'},
+  {k:['cytoskeleton','microtubules','microfilaments','intermediate filaments','centriole'], topic:'Struttura cellulare: citoscheletro'}
+];
+
+function suggestTopicFromWrong(subject, details){
+  var keywords = subject==='Biology' ? topicKeywordsBio : topicKeywordsChem;
+  var counts = {};
+  details.forEach(function(d){
+    if(d.correct) return;
+    var qtext = (d.q||'').toLowerCase();
+    keywords.forEach(function(t){
+      t.k.forEach(function(kw){
+        try{
+          if(qtext.indexOf(kw.toLowerCase())!==-1){ counts[t.topic]=(counts[t.topic]||0)+1; }
+        }catch(e){}
+      });
+    });
+    var best=null, bestC=0; for(var k in counts){ if(counts[k]>bestC){ bestC=counts[k]; best=k; } }
+    return best || 'Ripassa i concetti fondamentali.';
+  });
+}
+
+/* =================== TRAINING (pesato) generico =================== */
+function pickTrainingQuestionFrom(pool, subject){
+  var poolCopy = pool.slice();
+  var weights=[], total=0;
+  for(var i=0;i<poolCopy.length;i++){
+    var s = getQStatsFor(subject, poolCopy[i].question);
+    var w = 1 + (s.wrong||0);
+    weights.push(w); total += w;
+  }
+  var r = Math.random()*total, cum=0;
+  for(var j=0;j<poolCopy.length;j++){ cum+=weights[j]; if(r<=cum) return poolCopy[j]; }
+  return poolCopy[0];
+}
+function startGenericTrainingFor(subject, pool){
+  if(!currentUser){ showScreen('login'); return; }
+  activeSubject = subject; activePool = pool;
+  showTrainingQuestion();
+}
+function showTrainingQuestion(){
+  var q = pickTrainingQuestionFrom(activePool, activeSubject);
+  var el = document.getElementById('training');
+  var s = getQStatsFor(activeSubject, q.question);
+  var html = '<h2>Modalità Allenamento — ' + activeSubject + '</h2>';
+  html += '<fieldset><legend>'+q.question+'</legend>';
+  html += '<div class="year">Anno: '+(q.year||'—')+' • Sbagliata: '+(s.wrong||0)+' volte • Proposta: '+(s.asked||0)+' volte</div>';
+  q.options.forEach(function(opt,i){ html += '<label><input type="radio" name="trainAns" value="'+i+'"> '+opt+'</label>'; });
+  html += '</fieldset>';
+  html += '<div class="row"><button id="checkBtn">Conferma</button><button id="nextBtn" disabled>Avanti</button><button class="secondary" id="homeBtn2">Home</button></div>';
+  html += '<div id="trainFeedback" style="margin-top:8px"></div>';
+  el.innerHTML = html; showScreen('training');
+  document.getElementById('homeBtn2').onclick = function(){ showScreen('home'); };
+  document.getElementById('checkBtn').onclick = function(){
+    var ans = document.querySelector('input[name="trainAns"]:checked');
+    if(!ans){ msg('Seleziona una risposta.',[{label:'OK',secondary:true}]); return; }
+    var idx = parseInt(ans.value,10);
+    var correct = (idx===q.correct);
+    incQAsked(activeSubject, q.question);
+    if(!correct) incQWrong(activeSubject, q.question);
+    var all = lsGet('imat_results', {});
+    if(!all[currentUser]) all[currentUser]=[];
+    var score = correct?1.5:-0.4, wrong = correct?0:1;
+    var details=[{q:q.question,chosen:idx,correct:correct,year:q.year}];
+    all[currentUser].push({score:score,wrong:wrong,date:new Date().toLocaleString(),training:true,total:1,correct:correct?1:0,details:details,subject:activeSubject});
+    lsSet('imat_results', all);
+    if(correct) resetQWrong(activeSubject, q.question);
+
+    var fb = document.getElementById('trainFeedback');
+    if(correct){
+      fb.innerHTML = '<p class="correct">✔ Corretto!</p><p class="muted small">'+(q.explanation||'')+'</p>';
+    }else{
+      fb.innerHTML = '<p class="incorrect">✘ Sbagliato.</p><p>Risposta corretta: '+q.options[q.correct]+'</p><p class="muted small">'+(q.explanation||'')+'</p>';
+    }
+    document.getElementById('checkBtn').disabled = true;
+    document.getElementById('nextBtn').disabled = false;
+    document.getElementById('nextBtn').onclick = function(){ showTrainingQuestion(); };
+  };
+}
+
+/* =================== HISTORY (unico, ma sezioni per subject) =================== */
+function renderHistory(){
+  if(!currentUser){ showScreen('login'); return; }
+  var wrap = document.getElementById('history');
+  var all = lsGet('imat_results', {});
+  var res = all[currentUser]||[];
+  var html = '<h2>History — '+ (users[currentUser]||'') +'</h2>';
+
+  // function to render a subject block
+  function renderSubjectBlock(subject){
+    var arr = res.filter(function(r){ return r.subject === subject; });
+    html += '<div class="card" style="margin-bottom:10px">';
+    html += '<h3>'+subject+'</h3>';
+    if(arr.length === 0){
+      html += '<p class="muted">Nessun tentativo registrato per '+subject+'.</p>';
+      html += '</div>';
+      return;
+    }
+    var aggC=0, aggT=0;
+    arr.forEach(function(r){ aggC += (r.correct||0); aggT += (r.total||0); });
+    var pC = aggT? ((aggC/aggT)*100).toFixed(1):'0.0';
+    var pW = aggT? (((aggT-aggC)/aggT)*100).toFixed(1):'0.0';
+    html += '<div class="pill">Totale domande: '+aggT+'</div><div class="pill">Corrette: '+aggC+' ('+pC+'%)</div><div class="pill">Sbagliate: '+(aggT-aggC)+' ('+pW+'%)</div>';
+    html += '<div style="margin-top:8px">';
+    arr.forEach(function(r){
+      var ip = (r.total? ((r.correct||0)/r.total*100).toFixed(1):'0.0');
+      var tag = r.training? ' (Allenamento)':' (Quiz)';
+      html += '<p>📅 '+r.date+' → Score: '+(typeof r.score==='number'? r.score.toFixed(2): r.score)+' | %: '+ip+' | Errors: '+(r.wrong||0)+tag+'</p>';
+    });
+    html += '</div>';
+
+    // most missed questions for this subject (excluding ones later corrected)
+    var wrongCount={}, correctSet={};
+    arr.forEach(function(a){
+      (a.details||[]).forEach(function(d){ if(d.correct) correctSet[d.q]=true; });
+    });
+    arr.forEach(function(a){
+      (a.details||[]).forEach(function(d){ if(!d.correct && !correctSet[d.q]) wrongCount[d.q]=(wrongCount[d.q]||0)+1; });
+    });
+    var list = [];
+    for(var k in wrongCount) list.push({q:k,count:wrongCount[k]});
+    list.sort(function(a,b){ return b.count-a.count; });
+    html += '<h4>Domande più sbagliate ('+subject+')</h4>';
+    if(list.length===0) html += '<p class="muted">Nessuna domanda ricorrente sbagliata al momento.</p>';
+    else{
+      html += '<ol>'; list.slice(0,8).forEach(function(it){ html += '<li>'+it.q+' — sbagliata '+it.count+' volte</li>'; }); html += '</ol>';
+    }
+
+    // controls for this subject (rimosso Home)
+    html += '<div style="margin-top:8px">';
+    // html += '<button class="secondary" onclick="showScreen(\'home\')">Home</button> ';
+    html += "<button onclick=\"confirmClearSubject('" + subject + "')\">Elimina dati solo di " + subject + "</button>";
+    html += '</div>';
+
+    html += '</div>';
+  }
+
+  // Render Chemistry then Biology blocks
+  renderSubjectBlock('Chemistry');
+  renderSubjectBlock('Biology');
+
+  // Global controls (unico Home qui sotto)
+  html += '<div style="margin-top:10px" class="row"><button class="secondary" onclick="showScreen(\'home\')">Home</button><button id="clearAllBtn">Elimina tutti i risultati</button></div>';
+
+  wrap.innerHTML = html;
+
+  // attach clear all
+  document.getElementById('clearAllBtn').onclick = function(){ showClearConfirmationInHistoryAll(); };
+}
+
+/* wrappers used in the generated HTML above refer to global JS functions; define them now */
+
+/* confirm & clear only subject data for current user */
+function confirmClearSubject(subject){
+  var areaHtml = '<div class="notice" style="background:#fff3f0;"><div>Vuoi davvero eliminare tutti i risultati di <strong>'+subject+'</strong>? Operazione irreversibile (per questo utente).</div><div class="row" style="margin-left:10px"><button id="subConfirmBtn">Conferma</button><button id="subCancelBtn" class="secondary">Annulla</button></div></div>';
+  msg(areaHtml, []);
+  // attach handlers after short timeout to allow insertion
+  setTimeout(function(){
+    var confirm = document.getElementById('subConfirmBtn');
+    var cancel = document.getElementById('subCancelBtn');
+    if(confirm){
+      confirm.onclick = function(){
+        // remove from results only entries matching subject for this user
+        var all = lsGet('imat_results', {});
+        if(all[currentUser]){
+          all[currentUser] = all[currentUser].filter(function(r){ return r.subject !== subject; });
+          lsSet('imat_results', all);
+        }
+        // remove qstats keys for this subject
+        var qs = loadQStats();
+        var changed = false;
+        for(var k in qs){ if(k.indexOf(subject + '::')===0){ delete qs[k]; changed = true; } }
+        if(changed) saveQStats(qs);
+        document.getElementById('siteMessage').style.display='none';
+        showScreen('history');
+      };
+    }
+    if(cancel){
+      cancel.onclick = function(){ document.getElementById('siteMessage').style.display='none'; };
+    }
+  }, 20);
+}
+
+/* clear ALL confirmation */
+function showClearConfirmationInHistoryAll(){
+  msg('Vuoi davvero eliminare tutti i risultati per questo utente? Operazione irreversibile.', [
+    {label:'Conferma', onClick:function(){
+      localStorage.removeItem('imat_results'); localStorage.removeItem('imat_qstats');
+      document.getElementById('siteMessage').style.display='none';
+      showScreen('history');
+    }},
+    {label:'Annulla', secondary:true}
+  ]);
+}
+
+/* =================== WIRE (collochiamo i bottoni) =================== */
+document.getElementById('loginBtn').onclick = login;
+document.getElementById('logoutBtn').onclick = logout;
+
+// Chimica: carica domande se necessario prima di avviare quiz/training/history
+document.getElementById('startChemBtn').onclick = function(){
+  if (chemistryQuestionsLoaded) {
+    startGenericQuizFor('Chemistry', chemistryQuestions);
+  } else {
+    msg('Caricamento domande di chimica...', []);
+    loadChemistryQuestions(function(err){
+      document.getElementById('siteMessage').style.display='none';
+      if (!err) startGenericQuizFor('Chemistry', chemistryQuestions);
+      else msg('Errore nel caricamento delle domande di chimica.', [{label:'OK',secondary:true}]);
+    });
+  }
+};
+document.getElementById('chemTrainingBtn').onclick = function(){
+  if (chemistryQuestionsLoaded) {
+    startGenericTrainingFor('Chemistry', chemistryQuestions);
+  } else {
+    msg('Caricamento domande di chimica...', []);
+    loadChemistryQuestions(function(err){
+      document.getElementById('siteMessage').style.display='none';
+      if (!err) startGenericTrainingFor('Chemistry', chemistryQuestions);
+      else msg('Errore nel caricamento delle domande di chimica.', [{label:'OK',secondary:true}]);
+    });
+  }
+};
+document.getElementById('historyChemBtn').onclick = function(){
+  activeSubject='Chemistry';
+  if (chemistryQuestionsLoaded) {
+    showScreen('history');
+  } else {
+    msg('Caricamento domande di chimica...', []);
+    loadChemistryQuestions(function(err){
+      document.getElementById('siteMessage').style.display='none';
+      showScreen('history');
+    });
+  }
+};
+
+// Biologia: direttamente
+document.getElementById('startBioBtn').onclick = function(){ startGenericQuizFor('Biology', biologyQuestions); };
+document.getElementById('bioTrainingBtn').onclick = function(){ startGenericTrainingFor('Biology', biologyQuestions); };
+document.getElementById('historyBioBtn').onclick = function(){ activeSubject='Biology'; showScreen('history'); };
+document.getElementById('passkey').addEventListener('keyup', function(e){ if((e.key && e.key.toLowerCase()==='enter') || e.keyCode===13) login(); });
+
+// Theme toggle (unchanged)
+(function(){
+  var btn = document.getElementById('toggleThemeBtn');
+  function apply(){
+    var on = localStorage.getItem('darkmode')==='1';
+    document.body.classList.toggle('dark', on);
+    btn.textContent = on? '☀️' : '🌙';
+  }
+  btn.addEventListener('click', function(){
+    var on = localStorage.getItem('darkmode')==='1';
+    localStorage.setItem('darkmode', on? '0':'1'); apply();
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
