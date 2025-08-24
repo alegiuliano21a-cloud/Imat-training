@@ -19,8 +19,7 @@
     --btn-padding:12px 14px;
     --max-width:920px;
 
-    /* testo da usare su sfondi chiari (es. pill, fieldset, elementi volutamente bianchi)
-       default: scuro (sul tema chiaro sarà coerente). */
+    /* testo da usare su sfondi chiari (es. pill, fieldset, elementi volutamente bianchi) */
     --text-on-white: var(--fg);
 
     /* muted on dark sections */
@@ -147,6 +146,69 @@
   /* Keep card text light in dark mode (no logical change) */
   body.dark .card { color: var(--fg); background: var(--card); }
 
+  /* ---------------------------------------------------------
+     REGOLE AGGIUNTIVE PER GARANTIRE CONTRASTO:
+     Forziamo testo NERO su tutti i riquadri intenzionalmente bianchi
+     (fieldset, pill, input, notice/site-message, loader, progress)
+     in dark mode. Inoltre assicuriamo che il loro sfondo rimanga bianco.
+     --------------------------------------------------------- */
+
+  /* Forza testo nero su elementi "white-box" in dark mode */
+  body.dark fieldset,
+  body.dark fieldset *,
+  body.dark .pill,
+  body.dark .pill *,
+  body.dark input[type="text"],
+  body.dark input[type="password"],
+  body.dark .notice,
+  body.dark .notice *,
+  body.dark .site-message,
+  body.dark .site-message *,
+  body.dark .loader,
+  body.dark .loader *,
+  body.dark .progress,
+  body.dark .progress * {
+    color: var(--text-on-white) !important;
+  }
+
+  /* Forza sfondo bianco dove necessario (manteniamo i box intenzionalmente chiari) */
+  body.dark fieldset,
+  body.dark .pill,
+  body.dark input[type="text"],
+  body.dark input[type="password"],
+  body.dark .notice,
+  body.dark .loader,
+  body.dark .site-message {
+    background: #fff !important;
+  }
+
+  /* Se nel toast ci sono pulsanti "secondary" (bianco) assicuriamo il testo nero */
+  body.dark .notice button.secondary,
+  body.dark .site-message button.secondary,
+  body.dark .notice button,
+  body.dark .site-message button {
+    color: var(--text-on-white) !important;
+    border-color: #e6e6e9 !important;
+  }
+
+  /* Assicuriamo leggibilità delle legende e label all'interno dei box bianchi */
+  body.dark fieldset legend,
+  body.dark label.option,
+  body.dark label.option * {
+    color: var(--text-on-white) !important;
+  }
+
+  /* Aggiustamento: alcuni elementi che usano variabili chiare devono rimanere chiari */
+  body.dark .spinner { border-top-color: var(--accent) !important; }
+
+  /* Piccolo fix: se qualche card intenzionalmente bianca è annidata in .card, manteniamo testo nero */
+  body.dark .card .pill,
+  body.dark .card fieldset,
+  body.dark .card fieldset * {
+    color: var(--text-on-white) !important;
+    background: #fff !important;
+  }
+
 </style>
 </head>
 <body>
@@ -216,7 +278,6 @@
       <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:8px">
         <div>
           <span class="subjectTitle" style="background:linear-gradient(90deg,#2bbf7e,#19a86c)">Biologia</span>
-          <!-- messaggio identico a Chimica, come richiesto -->
           <div class="muted small" style="margin-top:6px">Domande estratte da IMAT / esercizi</div>
         </div>
         <div class="row">
