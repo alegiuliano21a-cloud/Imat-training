@@ -123,107 +123,126 @@
     .quiz-progress-bar{ min-width:92vw; left:50%; transform:translateX(-50%); bottom:12px; padding:10px; }
   }
 
-  /* DARK MODE only styling: tema identico all'altro ma invertito */
-  body.dark{
-    --bg:#0b0b0d;
-    --fg:#e6e7e9;
-    --card:#111214;
-    --muted:#d1d6db;
-    --accent:#0a84ff;
-    --accent-600:#0a65d6;
+  /* --------------------------
+     CLEAN DARK MODE
+     - Overrides only via CSS variables + small, intentional exceptions
+     -------------------------- */
+  body.dark {
+    /* palette: derived by inverting/adjusting the light theme */
+    --bg: #0b0b0d;
+    --fg: #e6e7e9;
+    --card: #0f1113;
+    --muted: #bfc6cc;
+    --accent: #0a84ff;
+    --accent-600: #0860d0;
+    --ok: #34b36a;
+    --bad: #e0524b;
+    --shadow: 0 10px 30px rgba(0,0,0,0.55);
+    --radius: 12px;
+    --btn-padding: 12px 14px;
+    --max-width: 920px;
 
-    /* quando siamo in dark mode, il testo sui box bianchi deve essere NERO */
-    --text-on-white: #000000;
-
-    /* invertiamo palette pulsanti: vogliamo che i pulsanti appaiano "inversi" rispetto al tema chiaro */
-    --btn-bg: #fff;                 /* pulsante principale: sfondo chiaro in dark mode */
-    --btn-color: var(--text-on-white); /* testo scuro sul pulsante chiaro */
-    --btn-secondary-bg: var(--card);   /* secondary avrà sfondo scuro (card scuro) */
-    --btn-secondary-color: var(--fg);  /* testo chiaro su secondary scuro */
+    /* button palette for dark mode: main buttons become light, secondary keep dark card background */
+    --btn-bg: #ffffff;             /* primary button: light background in dark mode */
+    --btn-color: #0b0b0d;          /* dark text on light primary button */
+    --btn-secondary-bg: var(--card);
+    --btn-secondary-color: var(--fg);
     --btn-ghost-border: #2b2b2b;
 
-    --muted-on-dark: #e6e7e9;
+    /* how to render text that sits on intentionally white inner boxes */
+    --text-on-white: #000000;
+    --muted-on-dark: #cfd6db;
   }
 
-  /* assicurazioni per elementi nel dark: rendiamo i testi delle sezioni scure leggibili */
-  body.dark .muted, body.dark .small, body.dark .year {
-    color: var(--muted-on-dark) !important;
+  /* Body & core elements for dark */
+  body.dark {
+    background: var(--bg);
+    color: var(--fg);
   }
 
-  /* Forza il testo dentro fieldset (box chiari) a usare la variabile (quindi NERO in dark mode) */
-  body.dark fieldset, body.dark fieldset * {
-    color: var(--text-on-white) !important;
+  /* Cards stay dark in dark mode */
+  body.dark .card {
+    background: var(--card);
+    color: var(--fg);
+    box-shadow: var(--shadow);
   }
 
-  /* Forza pill e piccoli white-box text in dark mode */
-  body.dark .pill { color: var(--text-on-white) !important; background:#fff; }
-
-  /* inputs rimangono chiari con testo nero in dark mode per garantire contrasto nelle small boxes */
-  body.dark input[type="password"], body.dark input[type="text"] { color: var(--text-on-white); background:#fff; border:1px solid #e6e6e9; }
-
-  /* Keep card text coerente in dark mode */
-  body.dark .card { color: var(--fg); background: var(--card); }
-
-  /* ---------------------------------------------------------
-     Regole aggiuntive per assicurare che i "white boxes" siano neri testo su bianco
-     (fieldset, pill, notice, loader, site-message, inputs, progress, ecc.)
-     --------------------------------------------------------- */
-
+  /* Keep intentionally-white small boxes white even in dark mode for contrast */
   body.dark fieldset,
-  body.dark fieldset *,
+  body.dark .pill,
+  body.dark input[type="text"],
+  body.dark input[type="password"],
+  body.dark .notice,
+  body.dark .loader,
+  body.dark .site-message,
+  body.dark .progress {
+    background: #ffffff;
+    color: var(--text-on-white);
+    border-color: #e6e6e9;
+  }
+
+  /* Ensure text inside those white boxes is dark (readable) */
+  body.dark fieldset,
+  body.dark fieldset * ,
   body.dark .pill,
   body.dark .pill *,
   body.dark input[type="text"],
   body.dark input[type="password"],
   body.dark .notice,
-  body.dark .notice *,
+  body.dark .notice * ,
+  body.dark .loader,
+  body.dark .loader * ,
   body.dark .site-message,
-  body.dark .site-message *,
-  body.dark .loader,
-  body.dark .loader *,
-  body.dark .progress,
-  body.dark .progress * {
+  body.dark .site-message * {
     color: var(--text-on-white) !important;
   }
 
-  /* Manteniamo gli sfondi bianchi dove originariamente volevi il box bianco */
-  body.dark fieldset,
-  body.dark .pill,
+  /* Buttons: primary = light with dark text, secondary = dark */
+  body.dark button {
+    background: var(--btn-bg);
+    color: var(--btn-color);
+    border: 0;
+  }
+  body.dark button.secondary {
+    background: var(--btn-secondary-bg);
+    color: var(--btn-secondary-color);
+    border: 1px solid var(--btn-ghost-border);
+  }
+
+  /* Inputs inside the white boxes: keep white background and dark text for contrast */
   body.dark input[type="text"],
-  body.dark input[type="password"],
-  body.dark .notice,
-  body.dark .loader,
-  body.dark .site-message {
-    background: #fff !important;
+  body.dark input[type="password"] {
+    background: #fff;
+    color: var(--text-on-white);
+    border: 1px solid #e6e6e9;
   }
 
-  /* Pulsanti dentro notice / site-message -> assicurati testo leggibile (nero su bianco o viceversa) */
-  body.dark .notice button.secondary,
-  body.dark .site-message button.secondary,
-  body.dark .notice button,
-  body.dark .site-message button {
-    color: var(--text-on-white) !important;
-    border-color: #e6e6e9 !important;
+  /* Small utility: make muted text readable on dark backgrounds */
+  body.dark .muted,
+  body.dark .small,
+  body.dark .year {
+    color: var(--muted-on-dark);
   }
 
-  /* Label/legend/option all'interno di white-box devono essere scuri */
-  body.dark fieldset legend,
-  body.dark label.option,
-  body.dark label.option * {
-    color: var(--text-on-white) !important;
-  }
+  /* spinner accent remains visible */
+  body.dark .spinner { border-top-color: var(--accent); }
 
-  /* spinner accent rimane coerente */
-  body.dark .spinner { border-top-color: var(--accent) !important; }
-
-  /* fix: card inner white elements */
-  body.dark .card .pill,
+  /* keep cards' internal white-box elements consistent */
   body.dark .card fieldset,
+  body.dark .card .pill,
   body.dark .card fieldset * {
-    color: var(--text-on-white) !important;
-    background: #fff !important;
+    background: #fff;
+    color: var(--text-on-white);
   }
 
+  /* Focus outlines stay visible on dark */
+  body.dark button:focus,
+  body.dark input:focus,
+  body.dark select:focus,
+  body.dark textarea:focus {
+    outline: 3px solid rgba(10,132,255,0.18);
+    outline-offset: 2px;
+  }
 </style>
 </head>
 <body>
@@ -324,10 +343,9 @@
 <script>
 /* =========================
    APPLICATION LOGIC (JS)
-   Mantengo la logica originale ma:
-   - salvataggio risultati: `total` = numero di risposte date (non includono le non date)
-   - aggiunto `numQuestions` per mantenere il numero totale di domande poste in quel quiz
-   - le domande non date non incrementano statistiche (non vengono contate come sbagliate)
+   Riscrittura completa: stessa logica funzionale con alcune pulizie e commenti.
+   - Salvataggio risultati: `total` = numero di risposte date (non includono le non date)
+   - `numQuestions` = numero totale di domande poste in quel quiz
    ========================= */
 
 /* --- constants / state --- */
@@ -409,7 +427,7 @@ function stopStopwatch(){
   else quizElapsedSeconds = 0;
 }
 
-/* topic suggestion (unchanged) */
+/* topic suggestion */
 const topicKeywordsChem = [
   {k:['ph','acid','base','hcl','h2so4','hno3'],'topic':'Acidi e Basi'},
   {k:['titr','naoh','molar','concentra','neutraliz'],'topic':'Titolazioni e concentrazioni'},
@@ -441,7 +459,7 @@ function suggestTopicFromWrong(subject, details){
   return best || 'Ripassa i concetti fondamentali.';
 }
 
-/* JSON loading (unchanged behavior) */
+/* JSON loading */
 function loadChemistryQuestions(cb){
   if(chemistryQuestionsLoaded){ cb && cb(null); return; }
   if(cb) chemistryCallbacks.push(cb);
@@ -483,7 +501,7 @@ function loadBiologyQuestions(cb){
   }).finally(()=> hideOverlay());
 }
 
-/* AUTH (unchanged) */
+/* AUTH */
 function login(){
   const key = (document.getElementById('passkey').value || '').trim();
   if(USERS[key]){
@@ -497,7 +515,7 @@ function login(){
 }
 function logout(){ currentUser = null; document.getElementById('passkey').value=''; showScreen('login'); }
 
-/* --- Quiz / Training / History / ecc. (aggiornati dove necessario) --- */
+/* --- Quiz / Training / History / ecc. --- */
 
 function startGenericQuizFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
@@ -642,7 +660,7 @@ function renderResult(details, score, elapsed){
   showScreen('result');
 }
 
-/* Training logic (unchanged) */
+/* Training logic */
 function pickTrainingQuestionFrom(pool, subject){
   const poolCopy = pool.slice();
   const weights = [], totalW = poolCopy.reduce((acc,q) => {
@@ -697,7 +715,7 @@ function showTrainingQuestion(){
   };
 }
 
-/* History (aggiornata: usa 'total' = risposte date per stats) */
+/* History (usa 'total' = risposte date per stats) */
 function renderHistory(){
   if(!currentUser){ showScreen('login'); return; }
   const wrap = document.getElementById('history');
@@ -765,7 +783,7 @@ function showClearConfirmationInHistoryAll(){
   ]);
 }
 
-/* Wiring buttons (unchanged) */
+/* Wiring buttons */
 document.getElementById('loginBtn').onclick = login;
 document.getElementById('logoutBtn').onclick = logout;
 document.getElementById('passkey').addEventListener('keyup', e => { if((e.key && e.key.toLowerCase()==='enter') || e.keyCode===13) login(); });
@@ -778,7 +796,7 @@ document.getElementById('passkey').addEventListener('keyup', e => { if((e.key &&
   apply();
 })();
 
-/* Chemistry buttons (unchanged) */
+/* Chemistry buttons */
 document.getElementById('startChemBtn').onclick = function(){
   if(chemistryQuestionsLoaded) startGenericQuizFor('Chemistry', chemistryQuestions);
   else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericQuizFor('Chemistry', chemistryQuestions); else toast('Errore nel caricamento delle domande di chimica.', [{label:'OK', secondary:true}]); }); }
@@ -789,7 +807,7 @@ document.getElementById('chemTrainingBtn').onclick = function(){
 };
 document.getElementById('historyChemBtn').onclick = function(){ if(chemistryQuestionsLoaded) showScreen('history'); else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } };
 
-/* Biology buttons (unchanged) */
+/* Biology buttons */
 document.getElementById('startBioBtn').onclick = function(){
   if(biologyQuestionsLoaded) startGenericQuizFor('Biology', biologyQuestions);
   else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericQuizFor('Biology', biologyQuestions); else toast('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]); }); }
