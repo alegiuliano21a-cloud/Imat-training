@@ -20,7 +20,7 @@
   fieldset{background:var(--card);border:none;border-radius:12px;padding:12px;margin:10px 0;box-shadow:var(--shadow);}
   legend{font-weight:700;}
   label{display:block;padding:8px;border-radius:8px;cursor:pointer;}
-  label:hover{background:#f0f0f5; color:#000;} /* testo nero su hover */
+  label:hover{background:#f0f0f5; color:#000;}
   input[type="radio"]{margin-right:8px;}
   .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
   .row{display:flex;gap:8px;flex-wrap:wrap;}
@@ -35,10 +35,7 @@
   .year{color:#777;font-size:.85rem;margin:.25rem 0 .1rem;}
   .subjectTitle{font-size:.95rem;color:#fff;margin-bottom:6px;font-weight:700;}
   @media (max-width:680px){ body{padding:12px} button{padding:10px 12px;font-size:.95rem} }
-  /* Dark */
   body.dark{--bg:#0b0b0c;--fg:#e6e6e8;--card:#161617;--muted:#a1a1a6;--accent:#0a84ff;--shadow:0 6px 18px rgba(0,0,0,0.25)}
-
-  /* Nuovo stile per la barra di avanzamento del quiz */
   .quiz-progress-bar {
     position: fixed;
     left: 50%;
@@ -57,16 +54,8 @@
     transition: opacity 0.2s;
   }
   .quiz-progress-bar[hidden] { display: none !important; }
-  .quiz-progress-bar .progress {
-    width: 220px;
-    margin: 0 0 2px 0;
-  }
-  .quiz-progress-bar .quiz-timer {
-    font-size: 1.05rem;
-    color: var(--muted);
-    margin: 0;
-    text-align: center;
-  }
+  .quiz-progress-bar .progress { width: 220px; margin: 0 0 2px 0; }
+  .quiz-progress-bar .quiz-timer { font-size: 1.05rem; color: var(--muted); margin: 0; text-align: center; }
   @media (max-width: 480px) {
     .quiz-progress-bar { min-width: 0; width: 96vw; padding: 10px 2vw 12px 2vw; }
     .quiz-progress-bar .progress { width: 100%; }
@@ -153,7 +142,6 @@ function loadChemistryQuestions(cb) {
   chemistryQuestionsLoadCallbacks.push(cb);
   if (chemistryQuestionsLoading) return;
   chemistryQuestionsLoading = true;
-  // Cambia il nome del file qui sotto per corrispondere al file JSON corretto
   fetch('./chemistry-questions.json')
     .then(function(resp){
       if (!resp.ok) throw new Error('HTTP error');
@@ -173,7 +161,6 @@ function loadChemistryQuestions(cb) {
       msg('Errore nel caricamento delle domande di chimica.<br><span class="small">'+(e && e.message ? e.message : '')+'</span>', [{label:'OK',secondary:true}]);
     });
 }
-
 
 /* biologyQuestions now loaded from external JSON like chemistry */
 var biologyQuestions = null;
@@ -205,7 +192,9 @@ function loadBiologyQuestions(cb) {
       msg('Errore nel caricamento delle domande di biologia.<br><span class="small">'+(e && e.message ? e.message : '')+'</span>', [{label:'OK',secondary:true}]);
     });
 }
+
 /* ===== Users + state ===== */
+/* CORRETTO: oggetto utenti — assicurarsi che non ci siano "=" al posto di ":" */
 var users = {"2010":"Chiara","2111":"Ale","2405":"Tony","0000":"Guests"};
 var currentUser = null;
 
@@ -221,7 +210,6 @@ function lsGet(key, def){ try{ var v = localStorage.getItem(key); return v? JSON
 function lsSet(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
 
 /* ========== QUESTION STATS (scoped per subject) ========== */
-/* keys in localStorage imat_qstats will be {subject}::question */
 function _qKey(subject, question){ return (subject||'Unknown') + '::' + question; }
 function loadQStats(){ return lsGet('imat_qstats', {}); }
 function saveQStats(o){ lsSet('imat_qstats', o); }
@@ -235,12 +223,12 @@ function showScreen(id){
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   var el = document.getElementById(id); if(el) el.classList.add('active');
   if(id==='history') renderHistory();
-  // Mostra la barra solo durante il quiz
   var bar = document.getElementById('quizProgressBar');
   if(bar) bar.hidden = (id !== 'quiz');
 }
 function msg(text, buttons){
   var wrap=document.getElementById('siteMessage');
+  if(!wrap) return;
   document.getElementById('siteMessageText').innerHTML = text;
   var b = document.getElementById('siteMessageBtns'); b.innerHTML='';
   (buttons||[]).forEach(function(btn){
@@ -253,17 +241,29 @@ function msg(text, buttons){
 }
 
 /* =================== LOGIN / LOGOUT =================== */
+/* Funzione di login robusta */
 function login(){
-  var key = (document.getElementById('passkey').value||'').trim();
-  if(users[key]){
+  var passInput = document.getElementById('passkey');
+  var key = (passInput && (passInput.value||'').trim()) || '';
+  // accetta solo stringhe non vuote
+  if(!key){
+    msg('Inserisci la passkey.', [{label:'OK', secondary:true}]);
+    return;
+  }
+  // controllo utente
+  if(users.hasOwnProperty(key)){
     currentUser = key;
-    document.getElementById('welcomeTitle').textContent = 'IMAT Practice — '+users[key];
+    var name = users[key] || key;
+    var welcome = document.getElementById('welcomeTitle');
+    if(welcome) welcome.textContent = 'IMAT Practice — '+name;
     showScreen('home');
-  }else{
+  } else {
     msg('Passkey non valida.', [{label:'OK', secondary:true}]);
   }
 }
-function logout(){ currentUser=null; document.getElementById('passkey').value=''; showScreen('login'); }
+
+/* Logout robusto */
+function logout(){ currentUser=null; var p = document.getElementById('passkey'); if(p) p.value=''; showScreen('login'); }
 
 /* =================== UTILS =================== */
 function shuffleArray(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
@@ -286,7 +286,7 @@ function startStopwatch(){
   function upd(){
     var s = Math.floor((Date.now()-quizStartTime)/1000);
     var mm = Math.floor(s/60), ss = s%60;
-    el.textContent = 'Tempo: '+mm+':'+(ss<10?('0'+ss):ss);
+    if(el) el.textContent = 'Tempo: '+mm+':'+(ss<10?('0'+ss):ss);
   }
   upd(); quizTimerInterval = setInterval(upd, 500);
 }
@@ -335,7 +335,6 @@ function startGenericQuizFor(subject, pool){
   if(lastAskedPerUser[currentUser].length > RECENT_CACHE_SIZE) lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].slice(-RECENT_CACHE_SIZE);
 
   var html = '<div class="topbar"><h2>Quiz — ' + activeSubject + '</h2></div>';
-  // RIMOSSA la progress bar e il timer da qui
   shuffledQuestions.forEach(function(q,i){
     var idxs = shuffleArray(q.options.map(function(_,k){return k;}));
     html += '<fieldset><legend>Q'+(i+1)+': '+q.question+'</legend>';
@@ -348,10 +347,9 @@ function startGenericQuizFor(subject, pool){
   html += '<button id="submitBtn">Termina Quiz</button>';
   var quizDiv = document.getElementById('quiz'); quizDiv.innerHTML = html;
   quizDiv.querySelectorAll('input[type=radio]').forEach(function(inp){ inp.addEventListener('change', updateProgress); });
-  document.getElementById('submitBtn').onclick = submitQuiz;
+  var submit = document.getElementById('submitBtn'); if(submit) submit.onclick = submitQuiz;
   updateProgress();
   showScreen('quiz');
-  // Mostra la barra in basso
   document.getElementById('quizProgressBar').hidden = false;
   stopStopwatch(); startStopwatch();
 }
@@ -361,13 +359,11 @@ function updateProgress(){
   for(var i=0;i<total;i++){ if(document.querySelector('input[name="q'+i+'"]:checked')) answered++; }
   var pct = Math.round((answered/total)*100);
   var bar = document.getElementById('progBar'); if(bar) bar.style.width = pct+'%';
-  // Il timer viene aggiornato da startStopwatch
 }
 
 /* submitQuiz: generic, saves subject in results and uses subject-scoped stats */
 function submitQuiz(){
   stopStopwatch();
-  // Nascondi la barra in basso
   document.getElementById('quizProgressBar').hidden = true;
   var score=0, correctCount=0, wrong=0, total=shuffledQuestions.length;
   var details=[];
@@ -385,7 +381,6 @@ function submitQuiz(){
       details.push({q:q.question, chosen:null, correct:null, year:q.year});
     }
   }
-  // Save attempt with subject (sia quiz che allenamento)
   var all = lsGet('imat_results', {});
   if(!all[currentUser]) all[currentUser]=[];
   all[currentUser].push({
@@ -396,13 +391,13 @@ function submitQuiz(){
     date:new Date().toLocaleString(),
     details:details,
     subject: activeSubject,
-    training: false, // quiz normale
+    training: false,
     elapsed: quizElapsedSeconds
   });
-  lsSet('imat_results', all); // <-- AGGIUNTO salvataggio anche per quiz
+  lsSet('imat_results', all);
   details.forEach(function(d){ if(d.correct) resetQWrong(activeSubject, d.q); });
 
-  var answered = details.filter(function(d){ d.chosen !== null }).length;
+  var answered = details.filter(function(d){ return d.chosen !== null }).length;
   var notAnswered = total - answered;
   var pctC = answered ? ((correctCount/answered)*100).toFixed(1) : '0.0';
   var pctW = answered ? (((answered-correctCount)/answered)*100).toFixed(1) : '0.0';
@@ -506,9 +501,9 @@ function suggestTopicFromWrong(subject, details){
         }catch(e){}
       });
     });
-    var best=null, bestC=0; for(var k in counts){ if(counts[k]>bestC){ bestC=counts[k]; best=k; } }
-    return best || 'Ripassa i concetti fondamentali.';
   });
+  var best=null, bestC=0; for(var k in counts){ if(counts[k]>bestC){ bestC=counts[k]; best=k; } }
+  return best || 'Ripassa i concetti fondamentali.';
 }
 
 /* =================== TRAINING (pesato) generico =================== */
@@ -526,6 +521,28 @@ function pickTrainingQuestionFrom(pool, subject){
 }
 function startGenericTrainingFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
+
+  if(!pool){
+    if(subject === 'Biology'){
+      msg('Caricamento domande di biologia...', []);
+      loadBiologyQuestions(function(err){
+        document.getElementById('siteMessage').style.display='none';
+        if(!err) startGenericTrainingFor('Biology', biologyQuestions);
+        else msg('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]);
+      });
+      return;
+    }
+    if(subject === 'Chemistry'){
+      msg('Caricamento domande di chimica...', []);
+      loadChemistryQuestions(function(err){
+        document.getElementById('siteMessage').style.display='none';
+        if(!err) startGenericTrainingFor('Chemistry', chemistryQuestions);
+        else msg('Errore nel caricamento delle domande di chimica.', [{label:'OK', secondary:true}]);
+      });
+      return;
+    }
+  }
+
   activeSubject = subject; activePool = pool;
   showTrainingQuestion();
 }
@@ -577,7 +594,6 @@ function renderHistory(){
   var res = all[currentUser]||[];
   var html = '<h2>History — '+ (users[currentUser]||'') +'</h2>';
 
-  // function to render a subject block
   function renderSubjectBlock(subject){
     var arr = res.filter(function(r){ return r.subject === subject; });
     html += '<div class="card" style="margin-bottom:10px">';
@@ -600,7 +616,6 @@ function renderHistory(){
     });
     html += '</div>';
 
-    // most missed questions for this subject (excluding ones later corrected)
     var wrongCount={}, correctSet={};
     arr.forEach(function(a){
       (a.details||[]).forEach(function(d){ if(d.correct) correctSet[d.q]=true; });
@@ -617,47 +632,39 @@ function renderHistory(){
       html += '<ol>'; list.slice(0,8).forEach(function(it){ html += '<li>'+it.q+' — sbagliata '+it.count+' volte</li>'; }); html += '</ol>';
     }
 
-    // controls for this subject (rimosso Home)
     html += '<div style="margin-top:8px">';
-    // html += '<button class="secondary" onclick="showScreen(\'home\')">Home</button> ';
-    html += "<button onclick=\"confirmClearSubject('" + subject + "')\">Elimina dati solo di " + subject + "</button>";
+    html += '<button onclick="confirmClearSubject(\'' + subject + '\')">Elimina dati solo di ' + subject + '</button>';
     html += '</div>';
 
     html += '</div>';
   }
 
-  // Render Chemistry then Biology blocks
   renderSubjectBlock('Chemistry');
   renderSubjectBlock('Biology');
 
-  // Global controls (unico Home qui sotto)
   html += '<div style="margin-top:10px" class="row"><button class="secondary" onclick="showScreen(\'home\')">Home</button><button id="clearAllBtn">Elimina tutti i risultati</button></div>';
 
   wrap.innerHTML = html;
 
-  // attach clear all
-  document.getElementById('clearAllBtn').onclick = function(){ showClearConfirmationInHistoryAll(); };
+  var clearBtn = document.getElementById('clearAllBtn');
+  if(clearBtn) clearBtn.onclick = function(){ showClearConfirmationInHistoryAll(); };
 }
 
 /* wrappers used in the generated HTML above refer to global JS functions; define them now */
 
-/* confirm & clear only subject data for current user */
 function confirmClearSubject(subject){
   var areaHtml = '<div class="notice" style="background:#fff3f0;"><div>Vuoi davvero eliminare tutti i risultati di <strong>'+subject+'</strong>? Operazione irreversibile (per questo utente).</div><div class="row" style="margin-left:10px"><button id="subConfirmBtn">Conferma</button><button id="subCancelBtn" class="secondary">Annulla</button></div></div>';
   msg(areaHtml, []);
-  // attach handlers after short timeout to allow insertion
   setTimeout(function(){
     var confirm = document.getElementById('subConfirmBtn');
     var cancel = document.getElementById('subCancelBtn');
     if(confirm){
       confirm.onclick = function(){
-        // remove from results only entries matching subject for this user
         var all = lsGet('imat_results', {});
         if(all[currentUser]){
           all[currentUser] = all[currentUser].filter(function(r){ return r.subject !== subject; });
           lsSet('imat_results', all);
         }
-        // remove qstats keys for this subject
         var qs = loadQStats();
         var changed = false;
         for(var k in qs){ if(k.indexOf(subject + '::')===0){ delete qs[k]; changed = true; } }
@@ -672,7 +679,6 @@ function confirmClearSubject(subject){
   }, 20);
 }
 
-/* clear ALL confirmation */
 function showClearConfirmationInHistoryAll(){
   msg('Vuoi davvero eliminare tutti i risultati per questo utente? Operazione irreversibile.', [
     {label:'Conferma', onClick:function(){
@@ -685,11 +691,16 @@ function showClearConfirmationInHistoryAll(){
 }
 
 /* =================== WIRE (collochiamo i bottoni) =================== */
-document.getElementById('loginBtn').onclick = login;
-document.getElementById('logoutBtn').onclick = logout;
+/* Aggancio eventi in modo robusto controllando l'esistenza degli elementi */
+var loginBtn = document.getElementById('loginBtn');
+if(loginBtn) loginBtn.addEventListener('click', login);
 
-// Chimica: carica domande se necessario prima di avviare quiz/training/history
-document.getElementById('startChemBtn').onclick = function(){
+var logoutBtn = document.getElementById('logoutBtn');
+if(logoutBtn) logoutBtn.addEventListener('click', logout);
+
+/* Chimica: carica domande se necessario prima di avviare quiz/training/history */
+var startChemBtn = document.getElementById('startChemBtn');
+if (startChemBtn) startChemBtn.onclick = function(){
   if (chemistryQuestionsLoaded) {
     startGenericQuizFor('Chemistry', chemistryQuestions);
   } else {
@@ -701,7 +712,8 @@ document.getElementById('startChemBtn').onclick = function(){
     });
   }
 };
-document.getElementById('chemTrainingBtn').onclick = function(){
+var chemTrainingBtn = document.getElementById('chemTrainingBtn');
+if (chemTrainingBtn) chemTrainingBtn.onclick = function(){
   if (chemistryQuestionsLoaded) {
     startGenericTrainingFor('Chemistry', chemistryQuestions);
   } else {
@@ -713,7 +725,8 @@ document.getElementById('chemTrainingBtn').onclick = function(){
     });
   }
 };
-document.getElementById('historyChemBtn').onclick = function(){
+var historyChemBtn = document.getElementById('historyChemBtn');
+if (historyChemBtn) historyChemBtn.onclick = function(){
   activeSubject='Chemistry';
   if (chemistryQuestionsLoaded) {
     showScreen('history');
@@ -726,31 +739,43 @@ document.getElementById('historyChemBtn').onclick = function(){
   }
 };
 
-// Biologia: direttamente
-
-// Biologia - gestione pulsanti con caricamento lazy
-document.getElementById('startBioBtn').onclick = function(){
+/* Biologia - gestione pulsanti con caricamento lazy */
+var startBioBtn = document.getElementById('startBioBtn');
+if(startBioBtn) startBioBtn.onclick = function(){
   startGenericQuizFor('Biology', biologyQuestions);
 };
-document.getElementById('bioTrainingBtn').onclick = function(){
+var bioTrainingBtn = document.getElementById('bioTrainingBtn');
+if(bioTrainingBtn) bioTrainingBtn.onclick = function(){
   startGenericTrainingFor('Biology', biologyQuestions);
 };
-document.getElementById('historyBioBtn').onclick = function(){
+var historyBioBtn = document.getElementById('historyBioBtn');
+if(historyBioBtn) historyBioBtn.onclick = function(){
   activeSubject = 'Biology';
   showScreen('history');
 };
 
-document.getElementById('passkey').addEventListener('keyup', function(e){ if((e.key && e.key.toLowerCase()==='enter') || e.keyCode===13) login(); });
+/* Enter key sul campo passkey: gestito in modo sicuro (controllo su e.key) */
+var passkeyInput = document.getElementById('passkey');
+if(passkeyInput){
+  passkeyInput.addEventListener('keydown', function(e){
+    var keyName = (typeof e.key !== 'undefined' && e.key !== null) ? String(e.key).toLowerCase() : '';
+    if (keyName === 'enter' || e.keyCode === 13) {
+      // Previeni comportamento di default se dentro form
+      if(e.preventDefault) e.preventDefault();
+      login();
+    }
+  });
+}
 
-// Theme toggle (unchanged)
+/* Theme toggle (unchanged ma robusto) */
 (function(){
   var btn = document.getElementById('toggleThemeBtn');
   function apply(){
     var on = localStorage.getItem('darkmode')==='1';
     document.body.classList.toggle('dark', on);
-    btn.textContent = on? '☀️' : '🌙';
+    if(btn) btn.textContent = on? '☀️' : '🌙';
   }
-  btn.addEventListener('click', function(){
+  if(btn) btn.addEventListener('click', function(){
     var on = localStorage.getItem('darkmode')==='1';
     localStorage.setItem('darkmode', on? '0':'1'); apply();
   });
