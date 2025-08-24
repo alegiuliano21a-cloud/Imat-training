@@ -16,15 +16,18 @@
     --bad:#d43f3a;
     --shadow:0 8px 30px rgba(16,17,19,0.06);
     --radius:12px;
-    --gap:12px;
     --btn-padding:12px 14px;
     --max-width:920px;
 
-    /* pill text color default (on white backgrounds) */
-    --pill-text: var(--fg);
+    /* testo da usare su sfondi chiari (es. pill, fieldset, elementi volutamente bianchi)
+       default: scuro (sul tema chiaro sarà coerente). */
+    --text-on-white: var(--fg);
+
+    /* muted on dark sections */
+    --muted-on-dark: #e6e7e9;
   }
 
-  /* Base */
+  /* Base layout */
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
@@ -37,12 +40,12 @@
   h2{font-size:1.05rem;margin:0}
   .muted{color:var(--muted)}
   .small{font-size:.9rem;color:var(--muted)}
-  .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:14px}
+  .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:14px; color:inherit;}
   .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
   .subjectTitle{font-weight:700;color:#fff;padding:8px;border-radius:8px;display:inline-block}
 
-  /* Buttons (consistenti) */
+  /* Buttons */
   button{
     background:var(--fg); color:#fff; border:0; border-radius:10px; padding:var(--btn-padding); font-size:1rem;
     cursor:pointer; transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
@@ -52,15 +55,13 @@
   button.ghost{ background:transparent; color:var(--fg); border:1px dashed #e6e6e9; }
   button[disabled]{ opacity:.55; cursor:not-allowed; transform:none; }
 
-  /* focus visible */
+  /* focus */
   button:focus, input:focus, select:focus, textarea:focus { outline:3px solid rgba(10,132,255,0.14); outline-offset:2px; }
 
   /* Inputs */
-  input[type="password"], input[type="text"]{
-    width:100%; padding:12px;border-radius:10px;border:1px solid #e6e6e9;font-size:1rem;
-  }
+  input[type="password"], input[type="text"]{ width:100%; padding:12px;border-radius:10px;border:1px solid #e6e6e9;font-size:1rem; color:inherit; background:#fff; }
 
-  /* Quiz progress bar (fixed bottom) */
+  /* Progress bar */
   .quiz-progress-bar {
     position: fixed; left:50%; transform:translateX(-50%); bottom:18px; z-index:1200;
     background:var(--card); box-shadow:var(--shadow); border-radius:14px; padding:12px 18px; min-width:260px;
@@ -69,81 +70,89 @@
   .quiz-progress-bar[hidden]{ display:none !important; }
   .progress{ width:100%; height:10px; background:#f0f2f5; border-radius:999px; overflow:hidden; }
   .progress>i{ display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--accent-600)); transition:width .28s ease; }
-
   .quiz-timer{ font-size:.95rem; color:var(--muted); }
 
-  /* Fieldsets / labels */
-  fieldset{ border:1px solid #f0f2f5; padding:12px; border-radius:10px; margin:10px 0; background:linear-gradient(180deg,#fff,#fbfdff); }
-  legend{ font-weight:700; }
-  label.option{ display:flex; gap:12px; align-items:flex-start; padding:9px; border-radius:8px; cursor:pointer; transition:background .12s ease, transform .08s ease; }
+  /* Fieldsets / labels (fieldsets remain light boxes) */
+  fieldset{
+    border:1px solid #f0f2f5; padding:12px; border-radius:10px; margin:10px 0;
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    /* testo nei fieldset: forza il colore da usare sui box chiari (per leggibilità in dark mode) */
+    color: var(--text-on-white);
+  }
+  fieldset legend{ font-weight:700; color: var(--text-on-white); }
+  label.option{ display:flex; gap:12px; align-items:flex-start; padding:9px; border-radius:8px; cursor:pointer; transition:background .12s ease, transform .08s ease; color:var(--text-on-white); }
   label.option:hover{ background:#f7f9fc; transform:translateY(-1px) }
   label.option input[type="radio"]{ margin-top:3px; }
 
   .year{ color:var(--muted); font-size:.85rem; margin-top:6px; margin-bottom:8px; }
 
-  /* site message / toast */
+  /* toast / site message */
   .site-message{ position:fixed; left:50%; transform:translateX(-50%); top:22px; z-index:1300; min-width:280px; max-width:92%; }
   .notice{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border-radius:12px; background:var(--card); box-shadow:var(--shadow); }
   .notice .msg{ flex:1 }
   .notice .actions{ display:flex; gap:8px; margin-left:8px; }
 
-  /* Loader overlay */
-  .overlay{
-    position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:1400;
-    background:rgba(6,10,15,0.28); backdrop-filter:blur(2px);
-  }
-  .loader{
-    width:88px; height:88px; border-radius:16px; background:var(--card); box-shadow:var(--shadow);
-    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; padding:12px;
-  }
-  .spinner{
-    width:36px; height:36px; border-radius:50%; border:4px solid #e9eef8; border-top-color:var(--accent); animation:spin 1s linear infinite;
-  }
+  /* overlay loader */
+  .overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:1400; background:rgba(6,10,15,0.28); backdrop-filter:blur(2px); }
+  .loader{ width:88px; height:88px; border-radius:16px; background:var(--card); box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; padding:12px; }
+  .spinner{ width:36px; height:36px; border-radius:50%; border:4px solid #e9eef8; border-top-color:var(--accent); animation:spin 1s linear infinite; }
   @keyframes spin{ to{ transform:rotate(360deg); } }
 
-  /* responsive tweaks */
+  /* pills and other intentionally-white small boxes */
+  .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; color:var(--text-on-white); box-shadow:0 6px 18px rgba(16,17,19,0.04); margin-right:8px; }
+
+  .correct{ color:var(--ok) } .incorrect{ color:var(--bad) } .no-answer{ color:var(--muted) } .muted.small{ font-size:.86rem }
+
+  /* responsive */
   @media (max-width:720px){
     body{ padding:14px } .card{ padding:12px } button{ padding:10px 12px }
     .quiz-progress-bar{ min-width:92vw; left:50%; transform:translateX(-50%); bottom:12px; padding:10px; }
   }
 
-  /* dark mode variables */
+  /* DARK MODE only styling (keeps logic/layout intact) */
   body.dark{
     --bg:#0b0b0d;
     --fg:#e6e7e9;
     --card:#111214;
-    /* IMPORTANT: muted becomes white in dark mode as requested */
-    --muted:#ffffff;
+    --muted:#d1d6db;
     --accent:#0a84ff;
     --accent-600:#0a65d6;
-    --pill-text:#000000; /* pills and other white-bg elements: text must be black in dark mode */
+
+    /* In dark mode: testo da usare su elementi bianchi (pills, fieldset, ...):
+       deve essere scuro, altrimenti non si legge sui box che volutamente restano bianchi. */
+    --text-on-white: #000000;
+
+    /* muted inside dark card/sections */
+    --muted-on-dark: #e6e7e9;
   }
 
-  /* pill styling (white background boxes) - ensure text color uses variable so we can override it in dark mode */
-  .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; color:var(--pill-text); box-shadow:0 6px 18px rgba(16,17,19,0.04); margin-right:8px; }
+  /* Quando la pagina è in dark mode:
+     - testi 'muted' e 'small' nelle sezioni scure devono essere chiari/biancastri
+     - il contenuto dei fieldset e degli elementi intenzionalmente bianchi usa --text-on-white (quindi scuro) */
+  body.dark .muted, body.dark .small, body.dark .year {
+    color: var(--muted-on-dark) !important;
+  }
 
-  .correct{ color:var(--ok) } .incorrect{ color:var(--bad) }
-  .no-answer{ color:var(--muted) }
-  .muted.small{ font-size:.86rem }
+  /* Forza il testo dentro fieldset (box chiari) a usare la variabile (quindi scuro in dark mode) */
+  body.dark fieldset, body.dark fieldset * {
+    color: var(--text-on-white) !important;
+  }
 
-  /* larger hit target for label.option */
-  label.option{ padding:12px 10px; }
+  /* Forza pill e piccoli white-box text in dark mode */
+  body.dark .pill { color: var(--text-on-white) !important; background:#fff; }
 
-  /* Ensure small text inside elements with explicit light backgrounds is readable:
-     if an element uses white background in any mode, its text color will use --pill-text (which becomes black in dark mode).
-     We keep changes strictly stylistic. */
-  .white-bg-text { color: var(--pill-text); }
+  /* Assicura che gli input mantengano testo leggibile su sfondi chiari */
+  body.dark input[type="password"], body.dark input[type="text"] { color: var(--text-on-white); background:#fff; border:1px solid #e6e6e9; }
 
-  /* For black sections: force muted and small text to white (as requested) */
-  body.dark .muted, body.dark .small, body.dark .year { color: #ffffff !important; }
+  /* Keep card text light in dark mode (no logical change) */
+  body.dark .card { color: var(--fg); background: var(--card); }
 
-  /* Keep existing explicit styles intact otherwise */
 </style>
 </head>
 <body>
 <div class="app" role="application" aria-label="IMAT Practice">
 
-  <!-- toast / site message -->
+  <!-- site message / toast -->
   <div id="siteMessage" class="site-message" style="display:none;" aria-live="polite">
     <div class="notice">
       <div id="siteMessageText" class="msg"></div>
@@ -151,7 +160,7 @@
     </div>
   </div>
 
-  <!-- loader overlay -->
+  <!-- overlay -->
   <div id="overlay" class="overlay" style="display:none;">
     <div class="loader" role="status" aria-live="polite">
       <div class="spinner" aria-hidden="true"></div>
@@ -191,7 +200,10 @@
 
     <div class="card">
       <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div><span class="subjectTitle" style="background:linear-gradient(90deg,var(--accent),var(--accent-600))">Chimica</span><div class="muted small" style="margin-top:6px">Domande estratte da IMAT / esercizi</div></div>
+        <div>
+          <span class="subjectTitle" style="background:linear-gradient(90deg,var(--accent),var(--accent-600))">Chimica</span>
+          <div class="muted small" style="margin-top:6px">Domande estratte da IMAT / esercizi</div>
+        </div>
         <div class="row">
           <button id="startChemBtn">Start Chemistry Quiz</button>
           <button id="chemTrainingBtn" class="secondary">Training Mode</button>
@@ -202,7 +214,11 @@
 
     <div class="card">
       <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div><span class="subjectTitle" style="background:linear-gradient(90deg,#2bbf7e,#19a86c)">Biologia</span><div class="muted small" style="margin-top:6px">Domande estratte da IMAT / esercizi</div></div>
+        <div>
+          <span class="subjectTitle" style="background:linear-gradient(90deg,#2bbf7e,#19a86c)">Biologia</span>
+          <!-- messaggio identico a Chimica, come richiesto -->
+          <div class="muted small" style="margin-top:6px">Domande estratte da IMAT / esercizi</div>
+        </div>
         <div class="row">
           <button id="startBioBtn">Start Biology Quiz</button>
           <button id="bioTrainingBtn" class="secondary">Training Mode</button>
@@ -232,7 +248,8 @@
 <script>
 /* =========================
    APPLICATION LOGIC (JS)
-   (nessuna logica cambiata, solo integrata con le modifiche CSS richieste)
+   NOTE: non ho modificato la logica esistente — solo reintegrato il JS "come prima".
+   Tutte le funzioni (caricamento JSON, quiz, training, history, qstats, salvataggi) rimangono uguali.
    ========================= */
 
 /* --- constants / state --- */
@@ -249,11 +266,11 @@ let lastAskedPerUser = {}; // { userKey: [...] }
 /* stopwatch/progress */
 let quizStartTime = null, quizTimerInterval = null, quizElapsedSeconds = 0;
 
-/* helpers for localStorage */
+/* helpers localStorage */
 function lsGet(key, def){ try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; }catch(e){ return def; } }
 function lsSet(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
 
-/* qstats */
+/* qstats helpers */
 function _qKey(subject, question){ return `${subject || 'Unknown'}::${question}`; }
 function loadQStats(){ return lsGet('imat_qstats', {}); }
 function saveQStats(o){ lsSet('imat_qstats', o); }
@@ -262,14 +279,13 @@ function incQWrong(subject, q){ const s=loadQStats(); const k=_qKey(subject,q); 
 function resetQWrong(subject, q){ const s=loadQStats(); const k=_qKey(subject,q); if(s[k]){ s[k].wrong=0; saveQStats(s);} }
 function getQStatsFor(subject, q){ const s=loadQStats(); const k=_qKey(subject,q); return s[k]||{asked:0,wrong:0}; }
 
-/* --- UI helpers --- */
+/* UI helpers */
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
   const el = document.getElementById(id);
   if(el) el.style.display = 'block';
   if(id === 'history') renderHistory();
 }
-
 function toast(html, buttons = []){
   const wrap = document.getElementById('siteMessage');
   document.getElementById('siteMessageText').innerHTML = html;
@@ -283,15 +299,11 @@ function toast(html, buttons = []){
   });
   wrap.style.display = 'block';
 }
-
-/* overlay (loader) */
 function showOverlay(text = 'Caricamento...'){ const ov = document.getElementById('overlay'); document.getElementById('overlayText').textContent = text; ov.style.display = 'flex'; document.body.setAttribute('aria-busy','true'); }
 function hideOverlay(){ document.getElementById('overlay').style.display = 'none'; document.body.removeAttribute('aria-busy'); }
 
-/* shuffle */
+/* utilities */
 function shuffleArray(arr){ const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-
-/* pickQuestions (avoid recent) */
 function pickQuestions(pool, n){
   const poolCopy = pool.slice();
   const recent = lastAskedPerUser[currentUser] || [];
@@ -319,7 +331,7 @@ function stopStopwatch(){
   else quizElapsedSeconds = 0;
 }
 
-/* topic suggestions */
+/* topic suggestion (unchanged) */
 const topicKeywordsChem = [
   {k:['ph','acid','base','hcl','h2so4','hno3'],'topic':'Acidi e Basi'},
   {k:['titr','naoh','molar','concentra','neutraliz'],'topic':'Titolazioni e concentrazioni'},
@@ -336,7 +348,6 @@ const topicKeywordsBio = [
   {k:['allele','dominant','recessive','mutation'],'topic':'Ereditarietà e mutazioni'},
   {k:['cytoskeleton','microtubules','centriole'],'topic':'Citroscheletro'}
 ];
-
 function suggestTopicFromWrong(subject, details){
   const keywords = subject === 'Biology' ? topicKeywordsBio : topicKeywordsChem;
   const counts = {};
@@ -352,9 +363,7 @@ function suggestTopicFromWrong(subject, details){
   return best || 'Ripassa i concetti fondamentali.';
 }
 
-/* -------------------------
-   JSON loading (chem + bio)
-   ------------------------- */
+/* JSON loading (unchanged behavior) */
 function loadChemistryQuestions(cb){
   if(chemistryQuestionsLoaded){ cb && cb(null); return; }
   if(cb) chemistryCallbacks.push(cb);
@@ -375,7 +384,6 @@ function loadChemistryQuestions(cb){
     toast('Errore nel caricamento delle domande di chimica.<br><span class="small">'+(err && err.message? err.message : '')+'</span>', [{label:'OK', secondary:true}]);
   }).finally(()=> hideOverlay());
 }
-
 function loadBiologyQuestions(cb){
   if(biologyQuestionsLoaded){ cb && cb(null); return; }
   if(cb) biologyCallbacks.push(cb);
@@ -397,9 +405,7 @@ function loadBiologyQuestions(cb){
   }).finally(()=> hideOverlay());
 }
 
-/* -------------------------
-   AUTH
-   ------------------------- */
+/* AUTH (unchanged) */
 function login(){
   const key = (document.getElementById('passkey').value || '').trim();
   if(USERS[key]){
@@ -413,12 +419,18 @@ function login(){
 }
 function logout(){ currentUser = null; document.getElementById('passkey').value=''; showScreen('login'); }
 
-/* -------------------------
-   GENERIC QUIZ (works for both subjects)
-   ------------------------- */
+/* GENERIC QUIZ + TRAINING + HISTORY + everything else:
+   Copiati dalla versione precedente e conservati esattamente (nessuna modifica alle regole/punteggi/salvataggi).
+   Implementazione completa come nel file precedente.
+*/
+
+/* --- startGenericQuizFor, updateProgress, submitQuiz, renderResult, training, history, ecc. --- */
+/* Per brevità non duplico commenti: il codice seguente è il medesimo della versione funzionante precedente. */
+
 function startGenericQuizFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
-  activeSubject = subject; activePool = pool;
+  activeSubject = subject;
+  activePool = pool;
   const n = Math.min(15, activePool.length);
   shuffledQuestions = pickQuestions(activePool, n);
 
@@ -426,7 +438,6 @@ function startGenericQuizFor(subject, pool){
   lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].concat(shuffledQuestions.map(q => activeSubject + '::' + q.question));
   if(lastAskedPerUser[currentUser].length > RECENT_CACHE_SIZE) lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].slice(-RECENT_CACHE_SIZE);
 
-  // build UI
   let html = `<div class="card"><div class="row" style="justify-content:space-between;align-items:center"><h2>Quiz — ${activeSubject}</h2><div class="muted small">Domande: ${shuffledQuestions.length}</div></div>`;
   shuffledQuestions.forEach((q,i) => {
     const idxs = shuffleArray(q.options.map((_,k) => k));
@@ -456,7 +467,6 @@ function updateProgress(){
   const bar = document.getElementById('progBar'); if(bar) bar.style.width = pct + '%';
 }
 
-/* submit quiz */
 function submitQuiz(){
   stopStopwatch();
   document.getElementById('quizProgressBar').hidden = true;
@@ -480,7 +490,6 @@ function submitQuiz(){
     }
   }
 
-  // save attempt
   const all = lsGet('imat_results', {});
   if(!all[currentUser]) all[currentUser] = [];
   all[currentUser].push({
@@ -508,10 +517,8 @@ function submitQuiz(){
   showScreen('review');
 }
 
-/* format time */
 function formatElapsed(sec){ const mm = Math.floor(sec/60), ss = sec%60; return mm + ':' + (ss<10?('0'+ss):ss); }
 
-/* render final result */
 function renderResult(details, score, elapsed){
   const resultDiv = document.getElementById('result');
   const answered = details.filter(d => d.chosen !== null).length;
@@ -551,9 +558,7 @@ function renderResult(details, score, elapsed){
   showScreen('result');
 }
 
-/* -------------------------
-   TRAINING (weighted)
-   ------------------------- */
+/* Training logic (unchanged) */
 function pickTrainingQuestionFrom(pool, subject){
   const poolCopy = pool.slice();
   const weights = [], totalW = poolCopy.reduce((acc,q) => {
@@ -563,13 +568,11 @@ function pickTrainingQuestionFrom(pool, subject){
   for(let i=0;i<poolCopy.length;i++){ cum += weights[i]; if(r <= cum) return poolCopy[i]; }
   return poolCopy[0];
 }
-
 function startGenericTrainingFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
   activeSubject = subject; activePool = pool;
   showTrainingQuestion();
 }
-
 function showTrainingQuestion(){
   const q = pickTrainingQuestionFrom(activePool, activeSubject);
   const el = document.getElementById('training');
@@ -610,9 +613,7 @@ function showTrainingQuestion(){
   };
 }
 
-/* -------------------------
-   HISTORY
-   ------------------------- */
+/* History (unchanged) */
 function renderHistory(){
   if(!currentUser){ showScreen('login'); return; }
   const wrap = document.getElementById('history');
@@ -636,7 +637,6 @@ function renderHistory(){
     });
     html += `</div>`;
 
-    // most missed
     const wrongCount = {}, correctSet = {};
     arr.forEach(a => (a.details||[]).forEach(d => { if(d.correct) correctSet[d.q] = true; }));
     arr.forEach(a => (a.details||[]).forEach(d => { if(!d.correct && !correctSet[d.q]) wrongCount[d.q] = (wrongCount[d.q]||0) + 1; }));
@@ -659,7 +659,6 @@ function renderHistory(){
   if(clearAllBtn) clearAllBtn.onclick = () => showClearConfirmationInHistoryAll();
 }
 
-/* confirm clear */
 function confirmClearSubject(subject){
   toast(`<div>Vuoi davvero eliminare tutti i risultati di <strong>${subject}</strong>? Operazione irreversibile.</div>`, [
     { label:'Conferma', onClick: () => {
@@ -674,7 +673,6 @@ function confirmClearSubject(subject){
     { label:'Annulla', secondary:true }
   ]);
 }
-
 function showClearConfirmationInHistoryAll(){
   toast('Vuoi davvero eliminare tutti i risultati per questo utente? Operazione irreversibile.', [
     { label:'Conferma', onClick: () => { localStorage.removeItem('imat_results'); localStorage.removeItem('imat_qstats'); showScreen('history'); } },
@@ -682,9 +680,7 @@ function showClearConfirmationInHistoryAll(){
   ]);
 }
 
-/* -------------------------
-   Wiring (buttons)
-   ------------------------- */
+/* Wiring buttons (unchanged) */
 document.getElementById('loginBtn').onclick = login;
 document.getElementById('logoutBtn').onclick = logout;
 document.getElementById('passkey').addEventListener('keyup', e => { if((e.key && e.key.toLowerCase()==='enter') || e.keyCode===13) login(); });
@@ -697,17 +693,10 @@ document.getElementById('passkey').addEventListener('keyup', e => { if((e.key &&
   apply();
 })();
 
-/* Chemistry buttons (load if necessary) */
+/* Chemistry buttons (unchanged) */
 document.getElementById('startChemBtn').onclick = function(){
   if(chemistryQuestionsLoaded) startGenericQuizFor('Chemistry', chemistryQuestions);
-  else {
-    toast('Caricamento domande di chimica...', []);
-    loadChemistryQuestions(function(err){
-      document.getElementById('siteMessage').style.display='none';
-      if(!err) startGenericQuizFor('Chemistry', chemistryQuestions);
-      else toast('Errore nel caricamento delle domande di chimica.', [{label:'OK', secondary:true}]);
-    });
-  }
+  else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericQuizFor('Chemistry', chemistryQuestions); else toast('Errore nel caricamento delle domande di chimica.', [{label:'OK', secondary:true}]); }); }
 };
 document.getElementById('chemTrainingBtn').onclick = function(){
   if(chemistryQuestionsLoaded) startGenericTrainingFor('Chemistry', chemistryQuestions);
@@ -715,37 +704,19 @@ document.getElementById('chemTrainingBtn').onclick = function(){
 };
 document.getElementById('historyChemBtn').onclick = function(){ if(chemistryQuestionsLoaded) showScreen('history'); else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } };
 
-/* Biology buttons (fixed: ora carica il JSON if necessary) */
+/* Biology buttons (unchanged) */
 document.getElementById('startBioBtn').onclick = function(){
   if(biologyQuestionsLoaded) startGenericQuizFor('Biology', biologyQuestions);
-  else {
-    toast('Caricamento domande di biologia...', []);
-    loadBiologyQuestions(function(err){
-      document.getElementById('siteMessage').style.display='none';
-      if(!err) startGenericQuizFor('Biology', biologyQuestions);
-      else toast('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]);
-    });
-  }
+  else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericQuizFor('Biology', biologyQuestions); else toast('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]); }); }
 };
-
 document.getElementById('bioTrainingBtn').onclick = function(){
   if(biologyQuestionsLoaded) startGenericTrainingFor('Biology', biologyQuestions);
-  else {
-    toast('Caricamento domande di biologia...', []);
-    loadBiologyQuestions(function(err){
-      document.getElementById('siteMessage').style.display='none';
-      if(!err) startGenericTrainingFor('Biology', biologyQuestions);
-      else toast('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]);
-    });
-  }
+  else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericTrainingFor('Biology', biologyQuestions); else toast('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]); }); }
 };
-
 document.getElementById('historyBioBtn').onclick = function(){ if(biologyQuestionsLoaded) showScreen('history'); else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } };
 
-/* ensure overlay hidden initially */
 hideOverlay();
-
-/* End of script */
+/* End */
 </script>
 </body>
 </html>
