@@ -19,8 +19,15 @@
     --btn-padding:12px 14px;
     --max-width:920px;
 
-    /* testo da usare su sfondi chiari (es. pill, fieldset, elementi volutamente bianchi) */
+    /* testo su elementi bianchi (usato anche in dark mode come nero) */
     --text-on-white: var(--fg);
+
+    /* button palette (usata da tutte le regole button) */
+    --btn-bg: var(--fg);
+    --btn-color: #fff;
+    --btn-secondary-bg: #fff;
+    --btn-secondary-color: var(--fg);
+    --btn-ghost-border: #e6e6e9;
 
     /* muted on dark sections */
     --muted-on-dark: #e6e7e9;
@@ -44,14 +51,23 @@
   .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
   .subjectTitle{font-weight:700;color:#fff;padding:8px;border-radius:8px;display:inline-block}
 
-  /* Buttons */
+  /* Buttons use variables so we can invert the palette in dark mode */
   button{
-    background:var(--fg); color:#fff; border:0; border-radius:10px; padding:var(--btn-padding); font-size:1rem;
+    background:var(--btn-bg); color:var(--btn-color); border:0; border-radius:10px; padding:var(--btn-padding); font-size:1rem;
     cursor:pointer; transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
   }
   button:active{ transform:translateY(1px) }
-  button.secondary{ background:#fff; color:var(--fg); border:1px solid #e6e6e9; box-shadow:none; }
-  button.ghost{ background:transparent; color:var(--fg); border:1px dashed #e6e6e9; }
+  button.secondary{
+    background:var(--btn-secondary-bg);
+    color:var(--btn-secondary-color);
+    border:1px solid var(--btn-ghost-border);
+    box-shadow:none;
+  }
+  button.ghost{
+    background:transparent;
+    color:var(--fg);
+    border:1px dashed var(--btn-ghost-border);
+  }
   button[disabled]{ opacity:.55; cursor:not-allowed; transform:none; }
 
   /* focus */
@@ -75,7 +91,6 @@
   fieldset{
     border:1px solid #f0f2f5; padding:12px; border-radius:10px; margin:10px 0;
     background:linear-gradient(180deg,#fff,#fbfdff);
-    /* testo nei fieldset: forza il colore da usare sui box chiari (per leggibilità in dark mode) */
     color: var(--text-on-white);
   }
   fieldset legend{ font-weight:700; color: var(--text-on-white); }
@@ -108,7 +123,7 @@
     .quiz-progress-bar{ min-width:92vw; left:50%; transform:translateX(-50%); bottom:12px; padding:10px; }
   }
 
-  /* DARK MODE only styling (keeps logic/layout intact) */
+  /* DARK MODE only styling: tema identico all'altro ma invertito */
   body.dark{
     --bg:#0b0b0d;
     --fg:#e6e7e9;
@@ -117,22 +132,25 @@
     --accent:#0a84ff;
     --accent-600:#0a65d6;
 
-    /* In dark mode: testo da usare su elementi bianchi (pills, fieldset, ...):
-       deve essere scuro, altrimenti non si legge sui box che volutamente restano bianchi. */
+    /* quando siamo in dark mode, il testo sui box bianchi deve essere NERO */
     --text-on-white: #000000;
 
-    /* muted inside dark card/sections */
+    /* invertiamo palette pulsanti: vogliamo che i pulsanti appaiano "inversi" rispetto al tema chiaro */
+    --btn-bg: #fff;                 /* pulsante principale: sfondo chiaro in dark mode */
+    --btn-color: var(--text-on-white); /* testo scuro sul pulsante chiaro */
+    --btn-secondary-bg: var(--card);   /* secondary avrà sfondo scuro (card scuro) */
+    --btn-secondary-color: var(--fg);  /* testo chiaro su secondary scuro */
+    --btn-ghost-border: #2b2b2b;
+
     --muted-on-dark: #e6e7e9;
   }
 
-  /* Quando la pagina è in dark mode:
-     - testi 'muted' e 'small' nelle sezioni scure devono essere chiari/biancastri
-     - il contenuto dei fieldset e degli elementi intenzionalmente bianchi usa --text-on-white (quindi scuro) */
+  /* assicurazioni per elementi nel dark: rendiamo i testi delle sezioni scure leggibili */
   body.dark .muted, body.dark .small, body.dark .year {
     color: var(--muted-on-dark) !important;
   }
 
-  /* Forza il testo dentro fieldset (box chiari) a usare la variabile (quindi scuro in dark mode) */
+  /* Forza il testo dentro fieldset (box chiari) a usare la variabile (quindi NERO in dark mode) */
   body.dark fieldset, body.dark fieldset * {
     color: var(--text-on-white) !important;
   }
@@ -140,20 +158,17 @@
   /* Forza pill e piccoli white-box text in dark mode */
   body.dark .pill { color: var(--text-on-white) !important; background:#fff; }
 
-  /* Assicura che gli input mantengano testo leggibile su sfondi chiari */
+  /* inputs rimangono chiari con testo nero in dark mode per garantire contrasto nelle small boxes */
   body.dark input[type="password"], body.dark input[type="text"] { color: var(--text-on-white); background:#fff; border:1px solid #e6e6e9; }
 
-  /* Keep card text light in dark mode (no logical change) */
+  /* Keep card text coerente in dark mode */
   body.dark .card { color: var(--fg); background: var(--card); }
 
   /* ---------------------------------------------------------
-     REGOLE AGGIUNTIVE PER GARANTIRE CONTRASTO:
-     Forziamo testo NERO su tutti i riquadri intenzionalmente bianchi
-     (fieldset, pill, input, notice/site-message, loader, progress)
-     in dark mode. Inoltre assicuriamo che il loro sfondo rimanga bianco.
+     Regole aggiuntive per assicurare che i "white boxes" siano neri testo su bianco
+     (fieldset, pill, notice, loader, site-message, inputs, progress, ecc.)
      --------------------------------------------------------- */
 
-  /* Forza testo nero su elementi "white-box" in dark mode */
   body.dark fieldset,
   body.dark fieldset *,
   body.dark .pill,
@@ -171,7 +186,7 @@
     color: var(--text-on-white) !important;
   }
 
-  /* Forza sfondo bianco dove necessario (manteniamo i box intenzionalmente chiari) */
+  /* Manteniamo gli sfondi bianchi dove originariamente volevi il box bianco */
   body.dark fieldset,
   body.dark .pill,
   body.dark input[type="text"],
@@ -182,7 +197,7 @@
     background: #fff !important;
   }
 
-  /* Se nel toast ci sono pulsanti "secondary" (bianco) assicuriamo il testo nero */
+  /* Pulsanti dentro notice / site-message -> assicurati testo leggibile (nero su bianco o viceversa) */
   body.dark .notice button.secondary,
   body.dark .site-message button.secondary,
   body.dark .notice button,
@@ -191,17 +206,17 @@
     border-color: #e6e6e9 !important;
   }
 
-  /* Assicuriamo leggibilità delle legende e label all'interno dei box bianchi */
+  /* Label/legend/option all'interno di white-box devono essere scuri */
   body.dark fieldset legend,
   body.dark label.option,
   body.dark label.option * {
     color: var(--text-on-white) !important;
   }
 
-  /* Aggiustamento: alcuni elementi che usano variabili chiare devono rimanere chiari */
+  /* spinner accent rimane coerente */
   body.dark .spinner { border-top-color: var(--accent) !important; }
 
-  /* Piccolo fix: se qualche card intenzionalmente bianca è annidata in .card, manteniamo testo nero */
+  /* fix: card inner white elements */
   body.dark .card .pill,
   body.dark .card fieldset,
   body.dark .card fieldset * {
@@ -309,8 +324,10 @@
 <script>
 /* =========================
    APPLICATION LOGIC (JS)
-   NOTE: non ho modificato la logica esistente — solo reintegrato il JS "come prima".
-   Tutte le funzioni (caricamento JSON, quiz, training, history, qstats, salvataggi) rimangono uguali.
+   Mantengo la logica originale ma:
+   - salvataggio risultati: `total` = numero di risposte date (non includono le non date)
+   - aggiunto `numQuestions` per mantenere il numero totale di domande poste in quel quiz
+   - le domande non date non incrementano statistiche (non vengono contate come sbagliate)
    ========================= */
 
 /* --- constants / state --- */
@@ -480,13 +497,7 @@ function login(){
 }
 function logout(){ currentUser = null; document.getElementById('passkey').value=''; showScreen('login'); }
 
-/* GENERIC QUIZ + TRAINING + HISTORY + everything else:
-   Copiati dalla versione precedente e conservati esattamente (nessuna modifica alle regole/punteggi/salvataggi).
-   Implementazione completa come nel file precedente.
-*/
-
-/* --- startGenericQuizFor, updateProgress, submitQuiz, renderResult, training, history, ecc. --- */
-/* Per brevità non duplico commenti: il codice seguente è il medesimo della versione funzionante precedente. */
+/* --- Quiz / Training / History / ecc. (aggiornati dove necessario) --- */
 
 function startGenericQuizFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
@@ -533,36 +544,48 @@ function submitQuiz(){
   document.getElementById('quizProgressBar').hidden = true;
 
   let score=0, correctCount=0, wrong=0;
-  const total = shuffledQuestions.length;
+  const totalQuestions = shuffledQuestions.length;
   const details = [];
 
-  for(let i=0;i<total;i++){
+  for(let i=0;i<totalQuestions;i++){
     const q = shuffledQuestions[i];
     const sel = document.querySelector('input[name="q'+i+'"]:checked');
     const idx = sel ? parseInt(sel.value,10) : null;
     const ok = (idx === q.correct);
     if(idx !== null){
       details.push({ q: q.question, chosen: idx, correct: ok, year: q.year });
-      incQAsked(activeSubject, q.question);
+      incQAsked(activeSubject, q.question); // solo per le domande effettivamente risposte
       if(!ok) incQWrong(activeSubject, q.question);
       if(ok){ score += 1.5; correctCount++; } else { score -= 0.4; wrong++; }
     } else {
+      // domanda non data => la registriamo come "non data" senza toccare qstats
       details.push({ q: q.question, chosen: null, correct: null, year: q.year });
     }
   }
 
+  const answered = details.filter(d => d.chosen !== null).length;
+  const notAnswered = totalQuestions - answered;
+
+  // Salviamo il risultato: importantissimo -> total = numero di risposte date (non includiamo le non date)
   const all = lsGet('imat_results', {});
   if(!all[currentUser]) all[currentUser] = [];
   all[currentUser].push({
-    score: score, wrong: wrong, total: total, correct: correctCount,
-    date: new Date().toLocaleString(), details: details, subject: activeSubject, training: false, elapsed: quizElapsedSeconds
+    score: score,
+    wrong: wrong,
+    total: answered,            // numero di risposte fornite: così la history non conta le non date come errori
+    numQuestions: totalQuestions, // numero di domande poste in quel quiz (per riferimento)
+    correct: correctCount,
+    date: new Date().toLocaleString(),
+    details: details,
+    subject: activeSubject,
+    training: false,
+    elapsed: quizElapsedSeconds
   });
   lsSet('imat_results', all);
 
+  // reset wrong per domande corrette
   details.forEach(d => { if(d.correct) resetQWrong(activeSubject, d.q); });
 
-  const answered = details.filter(d => d.chosen !== null).length;
-  const notAnswered = total - answered;
   const pctC = answered ? ((correctCount/answered)*100).toFixed(1) : '0.0';
   const pctW = answered ? (((answered-correctCount)/answered)*100).toFixed(1) : '0.0';
   const suggestion = suggestTopicFromWrong(activeSubject, details);
@@ -674,7 +697,7 @@ function showTrainingQuestion(){
   };
 }
 
-/* History (unchanged) */
+/* History (aggiornata: usa 'total' = risposte date per stats) */
 function renderHistory(){
   if(!currentUser){ showScreen('login'); return; }
   const wrap = document.getElementById('history');
@@ -689,12 +712,13 @@ function renderHistory(){
     let aggC=0, aggT=0; arr.forEach(r => { aggC += (r.correct || 0); aggT += (r.total || 0); });
     const pC = aggT ? ((aggC/aggT)*100).toFixed(1) : '0.0';
     const pW = aggT ? (((aggT-aggC)/aggT)*100).toFixed(1) : '0.0';
-    html += `<div style="margin-top:8px"><span class="pill">Totale domande: ${aggT}</span><span class="pill">Corrette: ${aggC} (${pC}%)</span><span class="pill">Sbagliate: ${aggT-aggC} (${pW}%)</span></div>`;
+    html += `<div style="margin-top:8px"><span class="pill">Totale risposte: ${aggT}</span><span class="pill">Corrette: ${aggC} (${pC}%)</span><span class="pill">Sbagliate: ${aggT-aggC} (${pW}%)</span></div>`;
     html += `<div style="margin-top:10px">`;
     arr.forEach(r => {
       const ip = r.total ? (((r.correct||0)/r.total)*100).toFixed(1) : '0.0';
       const tag = r.training ? ' (Allenamento)' : ' (Quiz)';
-      html += `<p>📅 ${r.date} → Score: ${typeof r.score === 'number' ? r.score.toFixed(2) : r.score} | %: ${ip} | Errors: ${r.wrong || 0}${tag}</p>`;
+      // Mostriamo anche quante domande erano state poste in quel quiz per chiarezza (numQuestions)
+      html += `<p>📅 ${r.date} → Score: ${typeof r.score === 'number' ? r.score.toFixed(2) : r.score} | %: ${ip} | Risposte non date: ${ (r.numQuestions || r.total) - (r.total || 0) }${tag}</p>`;
     });
     html += `</div>`;
 
