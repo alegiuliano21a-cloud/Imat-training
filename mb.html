@@ -19,6 +19,9 @@
     --gap:12px;
     --btn-padding:12px 14px;
     --max-width:920px;
+
+    /* pill text color default (on white backgrounds) */
+    --pill-text: var(--fg);
   }
 
   /* Base */
@@ -104,20 +107,37 @@
     .quiz-progress-bar{ min-width:92vw; left:50%; transform:translateX(-50%); bottom:12px; padding:10px; }
   }
 
-  /* dark mode */
+  /* dark mode variables */
   body.dark{
-    --bg:#0b0b0d; --fg:#e6e7e9; --card:#111214; --muted:#99a0a6; --accent:#0a84ff; --accent-600:#0a65d6;
-    box-shadow: none;
+    --bg:#0b0b0d;
+    --fg:#e6e7e9;
+    --card:#111214;
+    /* IMPORTANT: muted becomes white in dark mode as requested */
+    --muted:#ffffff;
+    --accent:#0a84ff;
+    --accent-600:#0a65d6;
+    --pill-text:#000000; /* pills and other white-bg elements: text must be black in dark mode */
   }
 
-  /* small helpers */
-  .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(16,17,19,0.04); color:var(--fg); margin-right:8px; }
+  /* pill styling (white background boxes) - ensure text color uses variable so we can override it in dark mode */
+  .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; color:var(--pill-text); box-shadow:0 6px 18px rgba(16,17,19,0.04); margin-right:8px; }
+
   .correct{ color:var(--ok) } .incorrect{ color:var(--bad) }
   .no-answer{ color:var(--muted) }
   .muted.small{ font-size:.86rem }
 
   /* larger hit target for label.option */
   label.option{ padding:12px 10px; }
+
+  /* Ensure small text inside elements with explicit light backgrounds is readable:
+     if an element uses white background in any mode, its text color will use --pill-text (which becomes black in dark mode).
+     We keep changes strictly stylistic. */
+  .white-bg-text { color: var(--pill-text); }
+
+  /* For black sections: force muted and small text to white (as requested) */
+  body.dark .muted, body.dark .small, body.dark .year { color: #ffffff !important; }
+
+  /* Keep existing explicit styles intact otherwise */
 </style>
 </head>
 <body>
@@ -182,7 +202,7 @@
 
     <div class="card">
       <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div><span class="subjectTitle" style="background:linear-gradient(90deg,#2bbf7e,#19a86c)">Biologia</span><div class="muted small" style="margin-top:6px">Ripassa i concetti chiave</div></div>
+        <div><span class="subjectTitle" style="background:linear-gradient(90deg,#2bbf7e,#19a86c)">Biologia</span><div class="muted small" style="margin-top:6px">Domande estratte da IMAT / esercizi</div></div>
         <div class="row">
           <button id="startBioBtn">Start Biology Quiz</button>
           <button id="bioTrainingBtn" class="secondary">Training Mode</button>
@@ -212,6 +232,7 @@
 <script>
 /* =========================
    APPLICATION LOGIC (JS)
+   (nessuna logica cambiata, solo integrata con le modifiche CSS richieste)
    ========================= */
 
 /* --- constants / state --- */
@@ -246,7 +267,6 @@ function showScreen(id){
   document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
   const el = document.getElementById(id);
   if(el) el.style.display = 'block';
-  // progress visibility handled elsewhere
   if(id === 'history') renderHistory();
 }
 
@@ -299,7 +319,7 @@ function stopStopwatch(){
   else quizElapsedSeconds = 0;
 }
 
-/* topic suggestions (simple keyword matching) */
+/* topic suggestions */
 const topicKeywordsChem = [
   {k:['ph','acid','base','hcl','h2so4','hno3'],'topic':'Acidi e Basi'},
   {k:['titr','naoh','molar','concentra','neutraliz'],'topic':'Titolazioni e concentrazioni'},
@@ -646,7 +666,6 @@ function confirmClearSubject(subject){
       const all = lsGet('imat_results', {});
       if(all[currentUser]) all[currentUser] = all[currentUser].filter(r => r.subject !== subject);
       lsSet('imat_results', all);
-      // remove qstats keys
       const qs = loadQStats(); let changed=false;
       Object.keys(qs).forEach(k => { if(k.indexOf(subject + '::') === 0){ delete qs[k]; changed=true; } });
       if(changed) saveQStats(qs);
@@ -696,7 +715,7 @@ document.getElementById('chemTrainingBtn').onclick = function(){
 };
 document.getElementById('historyChemBtn').onclick = function(){ if(chemistryQuestionsLoaded) showScreen('history'); else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } };
 
-/* Biology buttons (fixed: ora carica il JSON se necessario) */
+/* Biology buttons (fixed: ora carica il JSON if necessary) */
 document.getElementById('startBioBtn').onclick = function(){
   if(biologyQuestionsLoaded) startGenericQuizFor('Biology', biologyQuestions);
   else {
