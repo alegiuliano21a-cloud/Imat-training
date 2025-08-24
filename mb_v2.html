@@ -90,9 +90,9 @@
   <div class="card">
     <h1>IMAT Practice — Login</h1>
     <p class="muted small">Inserisci la passkey per accedere.</p>
-    <input id="passkey" type="password" placeholder="Passkey (2010, 2111, 2405)" style="width:100%;padding:12px;border-radius:10px;border:1px solid #c7c7cc;font-size:1rem;margin:8px 0"/>
+    <input id="passkey" type="password" placeholder="Passkey (0000)" style="width:100%;padding:12px;border-radius:10px;border:1px solid #c7c7cc;font-size:1rem;margin:8px 0"/>
     <button id="loginBtn" style="width:100%;">Entra</button>
-    <p class="muted small" style="margin-top:8px;">2010 = Chiara • 2111 = Ale • 2405 = Tony</p>
+    <p class="muted small" style="margin-top:8px;">0000=Guests</p>
   </div>
 </div>
 
@@ -206,7 +206,7 @@ function loadBiologyQuestions(cb) {
     });
 }
 /* ===== Users + state ===== */
-var users = {"2010":"Chiara","2111":"Ale","2405":"Tony"};
+var users = {"2010":"Chiara","2111":"Ale","2405":"Tony","0000"="Guests"};
 var currentUser = null;
 
 /* active subject/pool used by quiz/training generic routines */
