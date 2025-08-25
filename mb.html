@@ -18,22 +18,14 @@
     --radius:12px;
     --btn-padding:12px 14px;
     --max-width:920px;
-
-    /* testo su elementi bianchi (usato anche in dark mode come nero) */
     --text-on-white: var(--fg);
-
-    /* button palette (usata da tutte le regole button) */
     --btn-bg: var(--fg);
     --btn-color: #fff;
     --btn-secondary-bg: #fff;
     --btn-secondary-color: var(--fg);
     --btn-ghost-border: #e6e6e9;
-
-    /* muted on dark sections */
     --muted-on-dark: #e6e7e9;
   }
-
-  /* Base layout */
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
@@ -50,8 +42,6 @@
   .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
   .subjectTitle{font-weight:700;color:#fff;padding:8px;border-radius:8px;display:inline-block}
-
-  /* Buttons use variables so we can invert the palette in dark mode */
   button{
     background:var(--btn-bg); color:var(--btn-color); border:0; border-radius:10px; padding:var(--btn-padding); font-size:1rem;
     cursor:pointer; transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
@@ -69,14 +59,8 @@
     border:1px dashed var(--btn-ghost-border);
   }
   button[disabled]{ opacity:.55; cursor:not-allowed; transform:none; }
-
-  /* focus */
   button:focus, input:focus, select:focus, textarea:focus { outline:3px solid rgba(10,132,255,0.14); outline-offset:2px; }
-
-  /* Inputs */
   input[type="password"], input[type="text"]{ width:100%; padding:12px;border-radius:10px;border:1px solid #e6e6e9;font-size:1rem; color:inherit; background:#fff; }
-
-  /* Progress bar */
   .quiz-progress-bar {
     position: fixed; left:50%; transform:translateX(-50%); bottom:18px; z-index:1200;
     background:var(--card); box-shadow:var(--shadow); border-radius:14px; padding:12px 18px; min-width:260px;
@@ -86,8 +70,6 @@
   .progress{ width:100%; height:10px; background:#f0f2f5; border-radius:999px; overflow:hidden; }
   .progress>i{ display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--accent-600)); transition:width .28s ease; }
   .quiz-timer{ font-size:.95rem; color:var(--muted); }
-
-  /* Fieldsets / labels (fieldsets remain light boxes) */
   fieldset{
     border:1px solid #f0f2f5; padding:12px; border-radius:10px; margin:10px 0;
     background:linear-gradient(180deg,#fff,#fbfdff);
@@ -97,38 +79,22 @@
   label.option{ display:flex; gap:12px; align-items:flex-start; padding:9px; border-radius:8px; cursor:pointer; transition:background .12s ease, transform .08s ease; color:var(--text-on-white); }
   label.option:hover{ background:#f7f9fc; transform:translateY(-1px) }
   label.option input[type="radio"]{ margin-top:3px; }
-
   .year{ color:var(--muted); font-size:.85rem; margin-top:6px; margin-bottom:8px; }
-
-  /* toast / site message */
   .site-message{ position:fixed; left:50%; transform:translateX(-50%); top:22px; z-index:1300; min-width:280px; max-width:92%; }
   .notice{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border-radius:12px; background:var(--card); box-shadow:var(--shadow); }
   .notice .msg{ flex:1 }
   .notice .actions{ display:flex; gap:8px; margin-left:8px; }
-
-  /* overlay loader */
   .overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:1400; background:rgba(6,10,15,0.28); backdrop-filter:blur(2px); }
   .loader{ width:88px; height:88px; border-radius:16px; background:var(--card); box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; padding:12px; }
   .spinner{ width:36px; height:36px; border-radius:50%; border:4px solid #e9eef8; border-top-color:var(--accent); animation:spin 1s linear infinite; }
   @keyframes spin{ to{ transform:rotate(360deg); } }
-
-  /* pills and other intentionally-white small boxes */
   .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; color:var(--text-on-white); box-shadow:0 6px 18px rgba(16,17,19,0.04); margin-right:8px; }
-
   .correct{ color:var(--ok) } .incorrect{ color:var(--bad) } .no-answer{ color:var(--muted) } .muted.small{ font-size:.86rem }
-
-  /* responsive */
   @media (max-width:720px){
     body{ padding:14px } .card{ padding:12px } button{ padding:10px 12px }
     .quiz-progress-bar{ min-width:92vw; left:50%; transform:translateX(-50%); bottom:12px; padding:10px; }
   }
-
-  /* --------------------------
-     CLEAN DARK MODE
-     - Overrides only via CSS variables + small, intentional exceptions
-     -------------------------- */
   body.dark {
-    /* palette: derived by inverting/adjusting the light theme */
     --bg: #0b0b0d;
     --fg: #e6e7e9;
     --card: #0f1113;
@@ -141,33 +107,16 @@
     --radius: 12px;
     --btn-padding: 12px 14px;
     --max-width: 920px;
-
-    /* button palette for dark mode: main buttons become light, secondary keep dark card background */
-    --btn-bg: #ffffff;             /* primary button: light background in dark mode */
-    --btn-color: #0b0b0d;          /* dark text on light primary button */
+    --btn-bg: #ffffff;
+    --btn-color: #0b0b0d;
     --btn-secondary-bg: var(--card);
     --btn-secondary-color: var(--fg);
     --btn-ghost-border: #2b2b2b;
-
-    /* how to render text that sits on intentionally white inner boxes */
     --text-on-white: #000000;
     --muted-on-dark: #cfd6db;
   }
-
-  /* Body & core elements for dark */
-  body.dark {
-    background: var(--bg);
-    color: var(--fg);
-  }
-
-  /* Cards stay dark in dark mode */
-  body.dark .card {
-    background: var(--card);
-    color: var(--fg);
-    box-shadow: var(--shadow);
-  }
-
-  /* Keep intentionally-white small boxes white even in dark mode for contrast */
+  body.dark { background: var(--bg); color: var(--fg); }
+  body.dark .card { background: var(--card); color: var(--fg); box-shadow: var(--shadow); }
   body.dark fieldset,
   body.dark .pill,
   body.dark input[type="text"],
@@ -180,8 +129,6 @@
     color: var(--text-on-white);
     border-color: #e6e6e9;
   }
-
-  /* Ensure text inside those white boxes is dark (readable) */
   body.dark fieldset,
   body.dark fieldset * ,
   body.dark .pill,
@@ -196,50 +143,13 @@
   body.dark .site-message * {
     color: var(--text-on-white) !important;
   }
-
-  /* Buttons: primary = light with dark text, secondary = dark */
-  body.dark button {
-    background: var(--btn-bg);
-    color: var(--btn-color);
-    border: 0;
-  }
-  body.dark button.secondary {
-    background: var(--btn-secondary-bg);
-    color: var(--btn-secondary-color);
-    border: 1px solid var(--btn-ghost-border);
-  }
-
-  /* Inputs inside the white boxes: keep white background and dark text for contrast */
-  body.dark input[type="text"],
-  body.dark input[type="password"] {
-    background: #fff;
-    color: var(--text-on-white);
-    border: 1px solid #e6e6e9;
-  }
-
-  /* Small utility: make muted text readable on dark backgrounds */
-  body.dark .muted,
-  body.dark .small,
-  body.dark .year {
-    color: var(--muted-on-dark);
-  }
-
-  /* spinner accent remains visible */
+  body.dark button { background: var(--btn-bg); color: var(--btn-color); border: 0; }
+  body.dark button.secondary { background: var(--btn-secondary-bg); color: var(--btn-secondary-color); border: 1px solid var(--btn-ghost-border); }
+  body.dark input[type="text"], body.dark input[type="password"] { background: #fff; color: var(--text-on-white); border: 1px solid #e6e6e9; }
+  body.dark .muted, body.dark .small, body.dark .year { color: var(--muted-on-dark); }
   body.dark .spinner { border-top-color: var(--accent); }
-
-  /* keep cards' internal white-box elements consistent */
-  body.dark .card fieldset,
-  body.dark .card .pill,
-  body.dark .card fieldset * {
-    background: #fff;
-    color: var(--text-on-white);
-  }
-
-  /* Focus outlines stay visible on dark */
-  body.dark button:focus,
-  body.dark input:focus,
-  body.dark select:focus,
-  body.dark textarea:focus {
+  body.dark .card fieldset, body.dark .card .pill, body.dark .card fieldset * { background: #fff; color: var(--text-on-white); }
+  body.dark button:focus, body.dark input:focus, body.dark select:focus, body.dark textarea:focus {
     outline: 3px solid rgba(10,132,255,0.18);
     outline-offset: 2px;
   }
@@ -342,22 +252,23 @@
 
 <script>
 /* =========================
-   APPLICATION LOGIC (JS)
-   Riscrittura completa: stessa logica funzionale con alcune pulizie e commenti.
-   - Salvataggio risultati: `total` = numero di risposte date (non includono le non date)
-   - `numQuestions` = numero totale di domande poste in quel quiz
+   LOGICA RISCRITTA CON:
+   - NO doppi nello stesso quiz
+   - Ciclo "usa tutte le domande prima di ripetere" per ogni utente/materia
+   - Statistica di completamento nella History
+   Mantengo tutte le altre logiche esistenti (score, qstats, training ecc.)
    ========================= */
 
 /* --- constants / state --- */
 const USERS = {"2010":"Chiara","2111":"Ale","2405":"Tony","0000":"Guests"};
 let currentUser = null;
-let chemistryQuestions = null, chemistryQuestionsLoaded=false, chemistryLoading=false;
-let biologyQuestions = null, biologyQuestionsLoaded=false, biologyLoading=false;
-let chemistryCallbacks = [], biologyCallbacks = [];
+
+let chemistryQuestions = null, chemistryQuestionsLoaded=false, chemistryLoading=false, chemistryCallbacks=[];
+let biologyQuestions = null, biologyQuestionsLoaded=false, biologyLoading=false, biologyCallbacks=[];
 
 let activeSubject = null, activePool = null, shuffledQuestions = [];
-const RECENT_CACHE_SIZE = 30;
-let lastAskedPerUser = {}; // { userKey: [...] }
+const RECENT_CACHE_SIZE = 30; // mantiene ancora una storia breve locale aggiuntiva
+let lastAskedPerUser = {}; // session-only cache: { userKey: [subject::questionText,...] }
 
 /* stopwatch/progress */
 let quizStartTime = null, quizTimerInterval = null, quizElapsedSeconds = 0;
@@ -366,7 +277,35 @@ let quizStartTime = null, quizTimerInterval = null, quizElapsedSeconds = 0;
 function lsGet(key, def){ try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; }catch(e){ return def; } }
 function lsSet(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
 
-/* qstats helpers */
+/* --- Persistenza delle domande "usate" per utente/materia ---
+   Struttura in localStorage 'imat_used_questions':
+   { "<user>": { "Chemistry": ["Domanda 1", "Domanda 2", ...], "Biology": [...] } }
+*/
+function loadUsedQuestionsStore(){ return lsGet('imat_used_questions', {}); }
+function saveUsedQuestionsStore(obj){ lsSet('imat_used_questions', obj); }
+function getUsedSetFor(user, subject){
+  const store = loadUsedQuestionsStore();
+  if(!store[user]) return new Set();
+  const arr = store[user][subject] || [];
+  return new Set(arr);
+}
+function addUsedQuestions(user, subject, questionsArray){
+  const store = loadUsedQuestionsStore();
+  if(!store[user]) store[user] = {};
+  if(!store[user][subject]) store[user][subject] = [];
+  const set = new Set(store[user][subject]);
+  questionsArray.forEach(qtxt => set.add(qtxt));
+  store[user][subject] = Array.from(set);
+  saveUsedQuestionsStore(store);
+}
+function resetUsedQuestionsFor(user, subject){
+  const store = loadUsedQuestionsStore();
+  if(!store[user]) store[user] = {};
+  store[user][subject] = [];
+  saveUsedQuestionsStore(store);
+}
+
+/* qstats helpers (mantieni la logica originale) */
 function _qKey(subject, question){ return `${subject || 'Unknown'}::${question}`; }
 function loadQStats(){ return lsGet('imat_qstats', {}); }
 function saveQStats(o){ lsSet('imat_qstats', o); }
@@ -400,12 +339,48 @@ function hideOverlay(){ document.getElementById('overlay').style.display = 'none
 
 /* utilities */
 function shuffleArray(arr){ const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* --- Scelta delle domande per quiz:
+   Requisiti:
+   1) Nessuna domanda doppia nello stesso quiz.
+   2) Per utente+materia non riproporre domande già usate fino a che non sono state usate tutte.
+   Implementazione:
+   - Identifichiamo una "chiave" della domanda: preferiamo `q.question` (testo) come identificatore stabile.
+   - Prendiamo le domande disponibili = pool.filter not in usedSet.
+   - Se disponibili < n: prendiamo le disponibili rimaste, poi resettiamo il used-set (per quella materia e utente) e prendiamo il resto delle domande necessarie dalla totalità, evitando duplicati nello stesso quiz.
+*/
 function pickQuestions(pool, n){
-  const poolCopy = pool.slice();
-  const recent = lastAskedPerUser[currentUser] || [];
-  let available = poolCopy.filter(q => recent.indexOf(activeSubject + '::' + q.question) === -1);
-  if(available.length < n) available = poolCopy.slice();
-  return shuffleArray(available).slice(0,n);
+  // pool: array di oggetti domanda, n: numero richiesto
+  // rimuoviamo eventuali duplicati testuali in pool (garantiamo un pool "per testo")
+  const uniqueMap = new Map();
+  pool.forEach(q => { uniqueMap.set((q.question || '').trim(), q); });
+  const uniquePool = Array.from(uniqueMap.values());
+
+  const usedSet = getUsedSetFor(currentUser, activeSubject);
+  // filter by not used
+  let available = uniquePool.filter(q => !usedSet.has(q.question));
+  // if available insufficient, we will take all available, then reset used-set and take remaining from full pool excluding ones already chosen for this quiz
+  const chosen = [];
+  const toPick = Math.min(n, uniquePool.length);
+  // Step 1: take from available up to toPick
+  while(chosen.length < toPick && available.length > 0){
+    const idx = Math.floor(Math.random() * available.length);
+    chosen.push(available.splice(idx,1)[0]);
+  }
+  if(chosen.length === toPick){
+    return chosen;
+  }
+  // Step 2: if we haven't reached toPick, it means available exhausted -> reset used-set (user has now completed all)
+  resetUsedQuestionsFor(currentUser, activeSubject);
+  // Recompute unique pool (same as above) and exclude any already selected in 'chosen' (to avoid duplicates within the quiz)
+  const remainingCandidates = uniquePool.filter(q => !chosen.some(c => c.question === q.question));
+  // Shuffle and select remaining
+  const shuffled = shuffleArray(remainingCandidates);
+  for(let i=0; i<shuffled.length && chosen.length < toPick; i++){
+    chosen.push(shuffled[i]);
+  }
+  // If pool smaller than requested, chosen may be < toPick; that's fine.
+  return chosen;
 }
 
 /* stopwatch */
@@ -427,7 +402,7 @@ function stopStopwatch(){
   else quizElapsedSeconds = 0;
 }
 
-/* topic suggestion */
+/* topic suggestion (mantengo) */
 const topicKeywordsChem = [
   {k:['ph','acid','base','hcl','h2so4','hno3'],'topic':'Acidi e Basi'},
   {k:['titr','naoh','molar','concentra','neutraliz'],'topic':'Titolazioni e concentrazioni'},
@@ -459,9 +434,9 @@ function suggestTopicFromWrong(subject, details){
   return best || 'Ripassa i concetti fondamentali.';
 }
 
-/* JSON loading */
+/* JSON loading (mantengo la logica di caricamento con callback queue) */
 function loadChemistryQuestions(cb){
-  if(chemistryQuestionsLoaded){ cb && cb(null); return; }
+  if(chemistryQuestionsLoaded){ if(cb) cb(null); return; }
   if(cb) chemistryCallbacks.push(cb);
   if(chemistryLoading) return;
   chemistryLoading = true;
@@ -481,7 +456,7 @@ function loadChemistryQuestions(cb){
   }).finally(()=> hideOverlay());
 }
 function loadBiologyQuestions(cb){
-  if(biologyQuestionsLoaded){ cb && cb(null); return; }
+  if(biologyQuestionsLoaded){ if(cb) cb(null); return; }
   if(cb) biologyCallbacks.push(cb);
   if(biologyLoading) return;
   biologyLoading = true;
@@ -521,13 +496,20 @@ function startGenericQuizFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
   activeSubject = subject;
   activePool = pool;
+
+  // pick questions using la nuova logica che evita duplicati e gestisce il ciclo "tutte prima di ripetere"
   const n = Math.min(15, activePool.length);
   shuffledQuestions = pickQuestions(activePool, n);
 
+  // registra come "usate" le domande scelte (salva i testi)
+  addUsedQuestions(currentUser, activeSubject, shuffledQuestions.map(q => q.question));
+
+  // aggiorna also lastAskedPerUser session cache (per evitare ripetizioni immediate)
   if(!lastAskedPerUser[currentUser]) lastAskedPerUser[currentUser] = [];
   lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].concat(shuffledQuestions.map(q => activeSubject + '::' + q.question));
   if(lastAskedPerUser[currentUser].length > RECENT_CACHE_SIZE) lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].slice(-RECENT_CACHE_SIZE);
 
+  // build UI (mantengo la struttura originale)
   let html = `<div class="card"><div class="row" style="justify-content:space-between;align-items:center"><h2>Quiz — ${activeSubject}</h2><div class="muted small">Domande: ${shuffledQuestions.length}</div></div>`;
   shuffledQuestions.forEach((q,i) => {
     const idxs = shuffleArray(q.options.map((_,k) => k));
@@ -576,7 +558,6 @@ function submitQuiz(){
       if(!ok) incQWrong(activeSubject, q.question);
       if(ok){ score += 1.5; correctCount++; } else { score -= 0.4; wrong++; }
     } else {
-      // domanda non data => la registriamo come "non data" senza toccare qstats
       details.push({ q: q.question, chosen: null, correct: null, year: q.year });
     }
   }
@@ -584,14 +565,14 @@ function submitQuiz(){
   const answered = details.filter(d => d.chosen !== null).length;
   const notAnswered = totalQuestions - answered;
 
-  // Salviamo il risultato: importantissimo -> total = numero di risposte date (non includiamo le non date)
+  // Salvataggio risultato (mantengo stessa struttura, nota: total = numero di risposte date)
   const all = lsGet('imat_results', {});
   if(!all[currentUser]) all[currentUser] = [];
   all[currentUser].push({
     score: score,
     wrong: wrong,
-    total: answered,            // numero di risposte fornite: così la history non conta le non date come errori
-    numQuestions: totalQuestions, // numero di domande poste in quel quiz (per riferimento)
+    total: answered,
+    numQuestions: totalQuestions,
     correct: correctCount,
     date: new Date().toLocaleString(),
     details: details,
@@ -660,7 +641,7 @@ function renderResult(details, score, elapsed){
   showScreen('result');
 }
 
-/* Training logic */
+/* Training logic (rimane invariata la logica originale; non applico ciclo "usa tutte" al training) */
 function pickTrainingQuestionFrom(pool, subject){
   const poolCopy = pool.slice();
   const weights = [], totalW = poolCopy.reduce((acc,q) => {
@@ -715,51 +696,85 @@ function showTrainingQuestion(){
   };
 }
 
-/* History (usa 'total' = risposte date per stats) */
+/* History (AGGIUNTA: statistica completamento delle domande per materia) */
 function renderHistory(){
   if(!currentUser){ showScreen('login'); return; }
   const wrap = document.getElementById('history');
-  const all = lsGet('imat_results', {});
-  const res = all[currentUser] || [];
-  let html = `<div class="card"><h2>History — ${USERS[currentUser] || ''}</h2>`;
 
-  function renderSubjectBlock(subject){
-    const arr = res.filter(r => r.subject === subject);
-    html += `<div style="margin-top:12px"><h3>${subject}</h3>`;
-    if(arr.length === 0){ html += `<p class="muted">Nessun tentativo registrato per ${subject}.</p></div>`; return; }
-    let aggC=0, aggT=0; arr.forEach(r => { aggC += (r.correct || 0); aggT += (r.total || 0); });
-    const pC = aggT ? ((aggC/aggT)*100).toFixed(1) : '0.0';
-    const pW = aggT ? (((aggT-aggC)/aggT)*100).toFixed(1) : '0.0';
-    html += `<div style="margin-top:8px"><span class="pill">Totale risposte: ${aggT}</span><span class="pill">Corrette: ${aggC} (${pC}%)</span><span class="pill">Sbagliate: ${aggT-aggC} (${pW}%)</span></div>`;
-    html += `<div style="margin-top:10px">`;
-    arr.forEach(r => {
-      const ip = r.total ? (((r.correct||0)/r.total)*100).toFixed(1) : '0.0';
-      const tag = r.training ? ' (Allenamento)' : ' (Quiz)';
-      // Mostriamo anche quante domande erano state poste in quel quiz per chiarezza (numQuestions)
-      html += `<p>📅 ${r.date} → Score: ${typeof r.score === 'number' ? r.score.toFixed(2) : r.score} | %: ${ip} | Risposte non date: ${ (r.numQuestions || r.total) - (r.total || 0) }${tag}</p>`;
-    });
-    html += `</div>`;
+  // Assicuriamoci di avere i pool caricati per poter mostrare la statistica di completamento.
+  function proceedRender(){
+    const all = lsGet('imat_results', {});
+    const res = all[currentUser] || [];
+    let html = `<div class="card"><h2>History — ${USERS[currentUser] || ''}</h2>`;
 
-    const wrongCount = {}, correctSet = {};
-    arr.forEach(a => (a.details||[]).forEach(d => { if(d.correct) correctSet[d.q] = true; }));
-    arr.forEach(a => (a.details||[]).forEach(d => { if(!d.correct && !correctSet[d.q]) wrongCount[d.q] = (wrongCount[d.q]||0) + 1; }));
-    const list = Object.keys(wrongCount).map(k => ({q:k,count:wrongCount[k]})).sort((a,b)=>b.count-a.count);
-    html += `<h4 style="margin-top:10px">Domande più sbagliate (${subject})</h4>`;
-    if(list.length === 0) html += `<p class="muted">Nessuna domanda ricorrente sbagliata al momento.</p>`;
-    else { html += '<ol>'; list.slice(0,8).forEach(it => html += `<li>${it.q} — sbagliata ${it.count} volte</li>`); html += '</ol>'; }
+    function renderSubjectBlock(subject, pool, poolLoaded){
+      html += `<div style="margin-top:12px"><h3>${subject}</h3>`;
+      const arr = res.filter(r => r.subject === subject);
+      if(arr.length === 0) html += `<p class="muted">Nessun tentativo registrato per ${subject}.</p></div>`;
+      else {
+        let aggC=0, aggT=0; arr.forEach(r => { aggC += (r.correct || 0); aggT += (r.total || 0); });
+        const pC = aggT ? ((aggC/aggT)*100).toFixed(1) : '0.0';
+        const pW = aggT ? (((aggT-aggC)/aggT)*100).toFixed(1) : '0.0';
+        html += `<div style="margin-top:8px"><span class="pill">Totale risposte: ${aggT}</span><span class="pill">Corrette: ${aggC} (${pC}%)</span><span class="pill">Sbagliate: ${aggT-aggC} (${pW}%)</span></div>`;
+        html += `<div style="margin-top:10px">`;
+        arr.forEach(r => {
+          const ip = r.total ? (((r.correct||0)/r.total)*100).toFixed(1) : '0.0';
+          const tag = r.training ? ' (Allenamento)' : ' (Quiz)';
+          html += `<p>📅 ${r.date} → Score: ${typeof r.score === 'number' ? r.score.toFixed(2) : r.score} | %: ${ip} | Risposte non date: ${ (r.numQuestions || r.total) - (r.total || 0) }${tag}</p>`;
+        });
+        html += `</div>`;
+      }
 
-    html += `<div style="margin-top:10px"><button onclick="confirmClearSubject('${subject}')">Elimina dati solo di ${subject}</button></div>`;
-    html += `</div>`;
+      // Statistica completamento delle domande (usa store 'imat_used_questions' per l'utente)
+      const usedStore = loadUsedQuestionsStore();
+      const usedArr = (usedStore[currentUser] && usedStore[currentUser][subject]) ? usedStore[currentUser][subject] : [];
+      const usedCount = usedArr.length;
+      let poolSizeText = '—';
+      if(poolLoaded && Array.isArray(pool)) poolSizeText = pool.length;
+      html += `<div style="margin-top:10px"><strong>Completamento pool:</strong> ${usedCount} / ${poolSizeText}`;
+      if(poolLoaded && pool.length > 0){
+        const pct = ((usedCount / pool.length) * 100).toFixed(1);
+        html += ` (${pct}%)`;
+      } else {
+        html += ` <span class="muted small"> (carica le domande per vedere la percentuale)</span>`;
+      }
+      html += `</div>`;
+
+      // Mostra domande più sbagliate (mantengo la costruzione)
+      const wrongCount = {}, correctSet = {};
+      arr.forEach(a => (a.details||[]).forEach(d => { if(d.correct) correctSet[d.q] = true; }));
+      arr.forEach(a => (a.details||[]).forEach(d => { if(!d.correct && !correctSet[d.q]) wrongCount[d.q] = (wrongCount[d.q]||0) + 1; }));
+      const list = Object.keys(wrongCount).map(k => ({q:k,count:wrongCount[k]})).sort((a,b)=>b.count-a.count);
+      html += `<h4 style="margin-top:10px">Domande più sbagliate (${subject})</h4>`;
+      if(list.length === 0) html += `<p class="muted">Nessuna domanda ricorrente sbagliata al momento.</p>`;
+      else { html += '<ol>'; list.slice(0,8).forEach(it => html += `<li>${it.q} — sbagliata ${it.count} volte</li>`); html += '</ol>'; }
+
+      html += `<div style="margin-top:10px"><button onclick="confirmClearSubject('${subject}')">Elimina dati solo di ${subject}</button></div>`;
+      html += `</div>`;
+    }
+
+    renderSubjectBlock('Chemistry', chemistryQuestions, chemistryQuestionsLoaded);
+    renderSubjectBlock('Biology', biologyQuestions, biologyQuestionsLoaded);
+
+    html += `<div style="margin-top:12px" class="row"><button class="secondary" onclick="showScreen('home')">Home</button><button id="clearAllBtn">Elimina tutti i risultati</button></div></div>`;
+    wrap.innerHTML = html;
+
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    if(clearAllBtn) clearAllBtn.onclick = () => showClearConfirmationInHistoryAll();
   }
 
-  renderSubjectBlock('Chemistry');
-  renderSubjectBlock('Biology');
-
-  html += `<div style="margin-top:12px" class="row"><button class="secondary" onclick="showScreen('home')">Home</button><button id="clearAllBtn">Elimina tutti i risultati</button></div></div>`;
-  wrap.innerHTML = html;
-
-  const clearAllBtn = document.getElementById('clearAllBtn');
-  if(clearAllBtn) clearAllBtn.onclick = () => showClearConfirmationInHistoryAll();
+  // se i pool non sono caricati, carichiamoli prima di mostrare le percentuali
+  const needsChem = !chemistryQuestionsLoaded;
+  const needsBio = !biologyQuestionsLoaded;
+  if(needsChem || needsBio){
+    showOverlay('Caricamento domande per statistiche...');
+    const tasks = [];
+    if(needsChem) tasks.push(new Promise((res)=> loadChemistryQuestions(err => res(err))));
+    if(needsBio) tasks.push(new Promise((res)=> loadBiologyQuestions(err => res(err))));
+    Promise.all(tasks).then(() => { hideOverlay(); proceedRender(); }).catch(()=>{ hideOverlay(); proceedRender(); });
+  } else {
+    proceedRender();
+  }
 }
 
 function confirmClearSubject(subject){
@@ -771,6 +786,8 @@ function confirmClearSubject(subject){
       const qs = loadQStats(); let changed=false;
       Object.keys(qs).forEach(k => { if(k.indexOf(subject + '::') === 0){ delete qs[k]; changed=true; } });
       if(changed) saveQStats(qs);
+      // reset used questions for that subject as well
+      resetUsedQuestionsFor(currentUser, subject);
       showScreen('history');
     }},
     { label:'Annulla', secondary:true }
@@ -778,7 +795,7 @@ function confirmClearSubject(subject){
 }
 function showClearConfirmationInHistoryAll(){
   toast('Vuoi davvero eliminare tutti i risultati per questo utente? Operazione irreversibile.', [
-    { label:'Conferma', onClick: () => { localStorage.removeItem('imat_results'); localStorage.removeItem('imat_qstats'); showScreen('history'); } },
+    { label:'Conferma', onClick: () => { localStorage.removeItem('imat_results'); localStorage.removeItem('imat_qstats'); localStorage.removeItem('imat_used_questions'); showScreen('history'); } },
     { label:'Annulla', secondary:true }
   ]);
 }
@@ -805,7 +822,10 @@ document.getElementById('chemTrainingBtn').onclick = function(){
   if(chemistryQuestionsLoaded) startGenericTrainingFor('Chemistry', chemistryQuestions);
   else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericTrainingFor('Chemistry', chemistryQuestions); else toast('Errore nel caricamento delle domande di chimica.', [{label:'OK', secondary:true}]); }); }
 };
-document.getElementById('historyChemBtn').onclick = function(){ if(chemistryQuestionsLoaded) showScreen('history'); else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } };
+document.getElementById('historyChemBtn').onclick = function(){ 
+  if(chemistryQuestionsLoaded) showScreen('history'); 
+  else { toast('Caricamento domande di chimica...', []); loadChemistryQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } 
+};
 
 /* Biology buttons */
 document.getElementById('startBioBtn').onclick = function(){
@@ -816,7 +836,10 @@ document.getElementById('bioTrainingBtn').onclick = function(){
   if(biologyQuestionsLoaded) startGenericTrainingFor('Biology', biologyQuestions);
   else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(function(err){ document.getElementById('siteMessage').style.display='none'; if(!err) startGenericTrainingFor('Biology', biologyQuestions); else toast('Errore nel caricamento delle domande di biologia.', [{label:'OK', secondary:true}]); }); }
 };
-document.getElementById('historyBioBtn').onclick = function(){ if(biologyQuestionsLoaded) showScreen('history'); else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } };
+document.getElementById('historyBioBtn').onclick = function(){ 
+  if(biologyQuestionsLoaded) showScreen('history'); 
+  else { toast('Caricamento domande di biologia...', []); loadBiologyQuestions(() => { document.getElementById('siteMessage').style.display='none'; showScreen('history'); }); } 
+};
 
 hideOverlay();
 /* End */
