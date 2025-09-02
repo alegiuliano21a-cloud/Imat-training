@@ -1,0 +1,3015 @@
+[
+  {
+    "year": 2024,
+    "question": "Which process occurs within mitochondria?",
+    "options": [
+      "Cellular respiration",
+      "Glycolysis",
+      "Photosynthesis",
+      "The methylation of sugars",
+      "The formation of microbodies"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria are the site of cellular respiration, producing ATP through oxidative phosphorylation.",
+    "source": "CompitoInglese2024.pdf - Q10"
+  },
+  {
+    "year": 2024,
+    "question": "What is a hydrogen bond?",
+    "options": [
+      "A bond between a hydrogen atom and another strongly electronegative atom (such as oxygen or nitrogen) which is present in another molecule.",
+      "A covalent bond between hydrogen and oxygen.",
+      "A strong bond which allows bonding between non-polar molecules.",
+      "The bond which occurs between hydrogen and oxygen within a water molecule.",
+      "The bond between hydrogen and ionised atoms (such as phosphorus)."
+    ],
+    "correct": 0,
+    "explanation": "A hydrogen bond is an electrostatic attraction between a hydrogen atom covalently bonded to an electronegative atom (O, N) and another electronegative atom in a different molecule or different part of the same molecule.",
+    "source": "CompitoInglese2024.pdf - Q11"
+  },
+  {
+    "year": 2024,
+    "question": "In eukaryotic cells, Krebs cycle reactions occur:",
+    "options": [
+      "In the mitochondrial matrix",
+      "On the internal membrane of the mitochondria",
+      "In the cytoplasm",
+      "In the large ribosomal subunit",
+      "Close to the plasma membrane"
+    ],
+    "correct": 0,
+    "explanation": "The citric acid (Krebs) cycle takes place in the mitochondrial matrix of eukaryotic cells.",
+    "source": "CompitoInglese2024.pdf - Q12"
+  },
+  {
+    "year": 2024,
+    "question": "What kind of monosaccharide is glucose?",
+    "options": [
+      "hexose",
+      "pentose",
+      "triose",
+      "tetrose",
+      "nonose"
+    ],
+    "correct": 0,
+    "explanation": "Glucose contains six carbon atoms and is therefore classified as a hexose.",
+    "source": "CompitoInglese2024.pdf - Q13"
+  },
+  {
+    "year": 2024,
+    "question": "Which pentose sugar is present in RNA nucleotides?",
+    "options": [
+      "Ribose",
+      "Glucose",
+      "Fructose",
+      "Glycerol",
+      "Lactose"
+    ],
+    "correct": 0,
+    "explanation": "RNA nucleotides contain ribose, a five-carbon (pentose) sugar.",
+    "source": "CompitoInglese2024.pdf - Q14"
+  },
+  {
+    "year": 2024,
+    "question": "What are carrier proteins?",
+    "options": [
+      "They are the proteins that transfer molecules and ions across the plasma membrane",
+      "They are proteins that phosphorylate enzymes in the plasma membrane.",
+      "They are proteins that break down phospholipids in the plasma membrane.",
+      "They are proteins that transport mRNA in the nucleus.",
+      "They are proteins that transport tRNA in the nucleolus."
+    ],
+    "correct": 0,
+    "explanation": "Carrier proteins facilitate the selective transport of specific molecules or ions across cellular membranes.",
+    "source": "CompitoInglese2024.pdf - Q15"
+  },
+  {
+    "year": 2024,
+    "question": "What is the cell’s energy currency?",
+    "options": [
+      "ATP",
+      "FADH2",
+      "NADH",
+      "Creatine",
+      "NADPH"
+    ],
+    "correct": 0,
+    "explanation": "Adenosine triphosphate (ATP) is the primary energy currency used by cells for metabolic processes.",
+    "source": "CompitoInglese2024.pdf - Q16"
+  },
+  {
+    "year": 2024,
+    "question": "Which kind of reaction is ATP hydrolysis?",
+    "options": [
+      "exergonic",
+      "endergonic",
+      "condensation",
+      "Oxidation-reduction",
+      "Lipolysis"
+    ],
+    "correct": 0,
+    "explanation": "Hydrolysis of ATP to ADP and inorganic phosphate releases free energy, so it is an exergonic reaction.",
+    "source": "CompitoInglese2024.pdf - Q17"
+  },
+  {
+    "year": 2024,
+    "question": "The presence of intercellular compartmentalisation is a characteristic of which organisms?",
+    "options": [
+      "Of eukaryotes",
+      "Of viruses",
+      "Of bacteria",
+      "Of prokaryotes",
+      "Only of algae"
+    ],
+    "correct": 0,
+    "explanation": "Eukaryotic organisms have membrane-bound organelles and internal compartmentalisation; prokaryotes (bacteria) generally do not.",
+    "source": "CompitoInglese2024.pdf - Q18"
+  },
+  {
+    "year": 2024,
+    "question": "Which intracellular structure is composed of microtubules?",
+    "options": [
+      "The centriole",
+      "The nucleus",
+      "The Golgi apparatus",
+      "The nucleolus",
+      "The endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "Centrioles are cylindrical structures composed of microtubule triplets and are involved in cell division.",
+    "source": "CompitoInglese2024.pdf - Q19"
+  },
+  {
+    "year": 2024,
+    "question": "Mitochondria have:",
+    "options": [
+      "An outer membrane and a very selective inner membrane",
+      "Only a very selective outer membrane",
+      "An outer membrane, an intermediate membrane, and a very selective inner membrane",
+      "An outer membrane consisting of a phospholipid monolayer",
+      "A very selective membrane in which no proteins are present"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria are characterised by a double membrane: an outer membrane and a highly specialised, protein-rich inner membrane.",
+    "source": "CompitoInglese2024.pdf - Q20"
+  },
+  {
+    "year": 2024,
+    "question": "What is an anticodon?",
+    "options": [
+      "The sequence of three nucleotides found on the tRNA corresponding to a codon on the mRNA.",
+      "A sequence three nucleotides transcribed from the mRNA and translated by rRNA",
+      "A part of the DNA that codes for a specific amino acid",
+      "A terminal triplet of rRNA that binds a specific amino acid",
+      "The sequence of three mRNA nucleotides corresponding to a DNA codon"
+    ],
+    "correct": 0,
+    "explanation": "An anticodon is a triplet on tRNA that pairs complementarily with the mRNA codon during translation.",
+    "source": "CompitoInglese2024.pdf - Q21"
+  },
+  {
+    "year": 2024,
+    "question": "What are ribosomes made of?",
+    "options": [
+      "RNA and proteins",
+      "DNA and proteins",
+      "DNA and lipids",
+      "RNA and DNA",
+      "RNA, DNA, and proteins"
+    ],
+    "correct": 0,
+    "explanation": "Ribosomes are ribonucleoprotein complexes composed of ribosomal RNA (rRNA) and ribosomal proteins.",
+    "source": "CompitoInglese2024.pdf - Q22"
+  },
+  {
+    "year": 2024,
+    "question": "The cell membrane consists of:",
+    "options": [
+      "a double phospholipid layer with hydrophobic tails facing inward and the presence of integral and peripheral proteins",
+      "Cholesterol and phospholipid molecules enclosing a protein layer",
+      "A double layer of triglycerides and cholesterol",
+      "A glycoprotein layer containing phospholipids and cholesterol",
+      "A layer of fatty acids and globular proteins containing phospholipids and cholesterol"
+    ],
+    "correct": 0,
+    "explanation": "The plasma membrane is described by the fluid mosaic model: a phospholipid bilayer with hydrophobic tails inward and embedded integral and peripheral proteins.",
+    "source": "CompitoInglese2024.pdf - Q23"
+  },
+  {
+    "year": 2024,
+    "question": "In protein synthesis, what is translation?",
+    "options": [
+      "It is the process by which mRNA is read and converted into a specific sequence of amino acids.",
+      "It is the process of transcribing the mRNA sequence into a corresponding DNA molecule.",
+      "It is the process of specific recognition of rRNA by amino acids.",
+      "It is the process in which DNA is read and the corresponding mRNA produced.",
+      "It is the process of pairing between DNA codons and tRNA anticodons."
+    ],
+    "correct": 0,
+    "explanation": "Translation is the ribosome-mediated process of reading mRNA codons to assemble the corresponding polypeptide chain.",
+    "source": "CompitoInglese2024.pdf - Q24"
+  },
+  {
+    "year": 2024,
+    "question": "What are the principal components of the cytoskeleton?",
+    "options": [
+      "Microtubules, microfilaments, and intermediate filaments",
+      "Microtubules, myosin, and filamin",
+      "Microtubules, dynein, and myosin",
+      "Actin, myosin and dynein",
+      "Collagen fibres and reticular fibres"
+    ],
+    "correct": 0,
+    "explanation": "The cytoskeleton is mainly composed of microtubules, actin microfilaments, and intermediate filaments.",
+    "source": "CompitoInglese2024.pdf - Q25"
+  },
+  {
+    "year": 2024,
+    "question": "The term “alllele” defines:",
+    "options": [
+      "one of several alternative forms of a gene",
+      "A coding DNA base for a specific amino acid",
+      "A hereditary trait only found in haploid cells",
+      "The phenotypic manifestation of a given gene",
+      "A set of coding DNA triplets for a specific amino acid"
+    ],
+    "correct": 0,
+    "explanation": "An allele is one of multiple variant forms of the same gene found at a specific locus.",
+    "source": "CompitoInglese2024.pdf - Q26"
+  },
+  {
+    "year": 2024,
+    "question": "In a heterozygous condition, an allele can certainly express itself when:",
+    "options": [
+      "dominant",
+      "recessive",
+      "mutated",
+      "multiple",
+      "associated"
+    ],
+    "correct": 0,
+    "explanation": "In heterozygotes, a dominant allele will be expressed in the phenotype over a recessive allele.",
+    "source": "CompitoInglese2024.pdf - Q27"
+  },
+  {
+    "year": 2024,
+    "question": "What are mutations?",
+    "options": [
+      "Alterations in the genetic information of a cell",
+      "Alteration in the energy metabolism of a cell",
+      "Alterations in enzyme functionality during zygote formation",
+      "Alterations in the active transport system of biological membranes",
+      "Alterations in the mechanism of cell division."
+    ],
+    "correct": 0,
+    "explanation": "Mutations are changes in the nucleotide sequence of DNA that alter genetic information.",
+    "source": "CompitoInglese2024.pdf - Q28"
+  },
+  {
+    "year": 2024,
+    "question": "Translation is a process which:",
+    "options": [
+      "leads to the synthesis of polypeptide chains from mRNA",
+      "occurs in the nucleus of eukaryotic cells",
+      "leads to the synthesis of RNA from DNA",
+      "is very similar to transcription",
+      "Is exclusively eukaryotic"
+    ],
+    "correct": 0,
+    "explanation": "Translation synthesises polypeptide chains using the mRNA template; it occurs in the cytoplasm on ribosomes.",
+    "source": "CompitoInglese2024.pdf - Q29"
+  },
+  {
+    "year": 2024,
+    "question": "If the sequence CCGTTATTGA is found on a strand of DNA helix, what sequence will be found on the complementary strand?",
+    "options": [
+      "GGCAATAACT",
+      "AGTTATTGCC",
+      "GGACATCCCT",
+      "CGCACCTCCT",
+      "GGCAATTAAT"
+    ],
+    "correct": 0,
+    "explanation": "Complementary base pairing: C-G and A-T. Complement of CCGTTATTGA is GGCAATAACT.",
+    "source": "CompitoInglese2024.pdf - Q30"
+  },
+  {
+    "year": 2024,
+    "question": "Replication is the process through which:",
+    "options": [
+      "DNA is used as a template to synthesise new DNA molecules",
+      "DNA is used as a template to synthesise new RNA molecules",
+      "Daughter cells are formed from a mother cell",
+      "RNA is used as a template to synthesise proteins",
+      "RNA is used as a template to synthesise new RNA molecules"
+    ],
+    "correct": 0,
+    "explanation": "DNA replication is the semiconservative process by which DNA is copied to produce two identical DNA molecules.",
+    "source": "CompitoInglese2024.pdf - Q31"
+  },
+  {
+    "year": 2024,
+    "question": "The prokaryotic operon is:",
+    "options": [
+      "A functional unit composed of a group of adjacent genes, co-ordinately controlled, and of DNA sequences with regulatory functions.",
+      "A group of adjacent genes independent from each other",
+      "a protein complex that catalyses the process of protein synthesis",
+      "An RNA complex that is involved in the replication of DNA",
+      "A DNA sequence element without any type of regulatory function"
+    ],
+    "correct": 0,
+    "explanation": "An operon is a set of contiguous genes under common regulatory control along with regulatory DNA sequences, typical of prokaryotes.",
+    "source": "CompitoInglese2024.pdf - Q32"
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule acts as the final electron acceptor in the mitochondrial electron transport chain?",
+    "options": [
+      "Oxygen",
+      "Carbon dioxide",
+      "NAD+",
+      "ATP",
+      "Glucose"
+    ],
+    "correct": 0,
+    "explanation": "In aerobic respiration, oxygen is the final electron acceptor at the end of the electron transport chain, combining with electrons and protons to form water."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure is continuous with the nuclear envelope?",
+    "options": [
+      "Rough endoplasmic reticulum",
+      "Golgi apparatus",
+      "Plasma membrane",
+      "Nucleolus",
+      "Mitochondrial outer membrane"
+    ],
+    "correct": 0,
+    "explanation": "The rough endoplasmic reticulum is directly connected to the outer membrane of the nuclear envelope."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process directly produces the most ATP molecules during cellular respiration?",
+    "options": [
+      "Oxidative phosphorylation",
+      "Glycolysis",
+      "Krebs cycle",
+      "Fermentation",
+      "Substrate-level phosphorylation"
+    ],
+    "correct": 0,
+    "explanation": "Most ATP is generated in the electron transport chain via oxidative phosphorylation."
+  },
+  {
+    "source": "IA generated",
+    "question": "In which organelle does the Calvin cycle occur?",
+    "options": [
+      "Chloroplast stroma",
+      "Mitochondrial matrix",
+      "Cytoplasm",
+      "Thylakoid membrane",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "The Calvin cycle, the light-independent stage of photosynthesis, takes place in the stroma of chloroplasts."
+  },
+  {
+    "source": "IA generated",
+    "question": "What is the role of tRNA in protein synthesis?",
+    "options": [
+      "It brings specific amino acids to the ribosome according to codon-anticodon pairing.",
+      "It transcribes DNA into RNA.",
+      "It catalyses peptide bond formation.",
+      "It forms the ribosome’s catalytic core.",
+      "It acts as a template for protein synthesis."
+    ],
+    "correct": 0,
+    "explanation": "tRNA molecules deliver the appropriate amino acids to the ribosome, recognising codons through their anticodons."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular junction allows the passage of ions and small molecules between adjacent animal cells?",
+    "options": [
+      "Gap junctions",
+      "Tight junctions",
+      "Desmosomes",
+      "Plasmodesmata",
+      "Adherens junctions"
+    ],
+    "correct": 0,
+    "explanation": "Gap junctions connect animal cells through protein channels, permitting small molecule and ion exchange."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme unwinds DNA during replication?",
+    "options": [
+      "Helicase",
+      "Ligase",
+      "Polymerase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "correct": 0,
+    "explanation": "Helicase separates the DNA strands by breaking hydrogen bonds, allowing replication to begin."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of mutation results in a premature stop codon?",
+    "options": [
+      "Nonsense mutation",
+      "Missense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "Neutral mutation"
+    ],
+    "correct": 0,
+    "explanation": "A nonsense mutation converts a codon for an amino acid into a stop codon, terminating translation early."
+  },
+  {
+    "source": "IA generated",
+    "question": "During which cell cycle phase does DNA replication occur?",
+    "options": [
+      "S phase",
+      "G1 phase",
+      "G2 phase",
+      "Prophase",
+      "Metaphase"
+    ],
+    "correct": 0,
+    "explanation": "DNA replication occurs during the S (synthesis) phase of interphase."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle contains hydrolytic enzymes for intracellular digestion?",
+    "options": [
+      "Lysosome",
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Mitochondria",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "Lysosomes contain hydrolytic enzymes responsible for degrading macromolecules."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which nitrogenous base is found only in RNA?",
+    "options": [
+      "Uracil",
+      "Thymine",
+      "Cytosine",
+      "Guanine",
+      "Adenine"
+    ],
+    "correct": 0,
+    "explanation": "Uracil replaces thymine in RNA and pairs with adenine."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cytoskeletal component is primarily responsible for cell shape and movement?",
+    "options": [
+      "Actin filaments",
+      "Intermediate filaments",
+      "Microtubules",
+      "Collagen fibers",
+      "Keratin sheets"
+    ],
+    "correct": 0,
+    "explanation": "Actin filaments support cell shape and enable motility processes like amoeboid movement."
+  },
+  {
+    "source": "IA generated",
+    "question": "What is the primary function of the smooth endoplasmic reticulum?",
+    "options": [
+      "Lipid synthesis and detoxification",
+      "Protein synthesis",
+      "ATP production",
+      "Ribosome assembly",
+      "DNA replication"
+    ],
+    "correct": 0,
+    "explanation": "The smooth ER synthesises lipids and is involved in detoxification of harmful substances."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process increases genetic variation during meiosis?",
+    "options": [
+      "Crossing over",
+      "Binary fission",
+      "Cytokinesis",
+      "DNA replication",
+      "Mitosis"
+    ],
+    "correct": 0,
+    "explanation": "Crossing over during prophase I of meiosis creates recombinant chromosomes, increasing genetic diversity."
+  },
+  {
+    "source": "IA generated",
+    "question": "What is the main role of ribosomal RNA (rRNA)?",
+    "options": [
+      "It forms the catalytic core of ribosomes and facilitates peptide bond formation.",
+      "It delivers amino acids to ribosomes.",
+      "It carries genetic code from DNA.",
+      "It regulates gene expression.",
+      "It serves as a storage molecule for nucleotides."
+    ],
+    "correct": 0,
+    "explanation": "rRNA forms the structural and catalytic framework of ribosomes, enabling peptide bond formation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which of the following occurs during prophase of mitosis?",
+    "options": [
+      "Chromosomes condense and spindle fibers begin to form",
+      "Sister chromatids separate",
+      "Nuclear envelope reforms",
+      "DNA replication",
+      "Cell divides into two daughter cells"
+    ],
+    "correct": 0,
+    "explanation": "During prophase, chromosomes condense, and the mitotic spindle begins to assemble."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which of the following is a feature of prokaryotic cells?",
+    "options": [
+      "They lack membrane-bound organelles",
+      "They contain mitochondria",
+      "They have a nuclear envelope",
+      "They possess chloroplasts",
+      "They contain linear DNA molecules"
+    ],
+    "correct": 0,
+    "explanation": "Prokaryotes lack membrane-bound organelles and have circular DNA instead of linear chromosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process converts glucose to pyruvate?",
+    "options": [
+      "Glycolysis",
+      "Krebs cycle",
+      "Fermentation",
+      "Oxidative phosphorylation",
+      "Gluconeogenesis"
+    ],
+    "correct": 0,
+    "explanation": "Glycolysis breaks down glucose into two molecules of pyruvate in the cytoplasm."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is the main site of protein modification and packaging?",
+    "options": [
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Mitochondria",
+      "Nucleolus",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "The Golgi apparatus modifies, sorts, and packages proteins for secretion or cellular use."
+  },
+  {
+    "source": "IA generated",
+    "question": "What happens during anaphase of mitosis?",
+    "options": [
+      "Sister chromatids are pulled to opposite poles",
+      "Chromosomes condense",
+      "Nuclear envelope breaks down",
+      "Cytoplasm divides",
+      "DNA replication occurs"
+    ],
+    "correct": 0,
+    "explanation": "During anaphase, spindle fibers separate sister chromatids, moving them to opposite poles of the cell."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which bond holds the two strands of the DNA double helix together?",
+    "options": [
+      "Hydrogen bonds",
+      "Ionic bonds",
+      "Peptide bonds",
+      "Covalent bonds",
+      "Disulfide bonds"
+    ],
+    "correct": 0,
+    "explanation": "The complementary nitrogenous bases on opposite strands are held together by hydrogen bonds."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for producing ATP in eukaryotic cells?",
+    "options": [
+      "Mitochondria",
+      "Golgi apparatus",
+      "Nucleus",
+      "Endoplasmic reticulum",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria produce ATP through oxidative phosphorylation during cellular respiration."
+  },
+  {
+    "source": "IA generated",
+    "question": "What is the main function of peroxisomes?",
+    "options": [
+      "Breakdown of hydrogen peroxide",
+      "ATP production",
+      "Protein synthesis",
+      "DNA replication",
+      "Glycolysis"
+    ],
+    "correct": 0,
+    "explanation": "Peroxisomes contain enzymes such as catalase that degrade hydrogen peroxide and participate in lipid metabolism."
+  },
+  {
+    "source": "IA generated",
+    "question": "What is the start codon in mRNA translation?",
+    "options": [
+      "AUG",
+      "UAA",
+      "UGA",
+      "UAG",
+      "GUA"
+    ],
+    "correct": 0,
+    "explanation": "The codon AUG codes for methionine and is universally recognised as the start codon in translation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process occurs in the thylakoid membranes of chloroplasts?",
+    "options": [
+      "Light-dependent reactions of photosynthesis",
+      "Calvin cycle",
+      "Krebs cycle",
+      "Glycolysis",
+      "Fermentation"
+    ],
+    "correct": 0,
+    "explanation": "The light-dependent reactions, including photolysis of water and ATP/NADPH formation, occur in thylakoid membranes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure is found in plant cells but not in animal cells?",
+    "options": [
+      "Cell wall",
+      "Mitochondria",
+      "Ribosomes",
+      "Plasma membrane",
+      "Cytoskeleton"
+    ],
+    "correct": 0,
+    "explanation": "Plant cells possess a cellulose cell wall, absent in animal cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for sorting and packaging proteins into vesicles?",
+    "options": [
+      "Golgi apparatus",
+      "Ribosome",
+      "Endoplasmic reticulum",
+      "Mitochondria",
+      "Nucleus"
+    ],
+    "correct": 0,
+    "explanation": "The Golgi apparatus modifies and packages proteins into vesicles for secretion or intracellular use."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme synthesises RNA using DNA as a template?",
+    "options": [
+      "RNA polymerase",
+      "DNA polymerase",
+      "Helicase",
+      "Ligase",
+      "Primase"
+    ],
+    "correct": 0,
+    "explanation": "RNA polymerase transcribes RNA molecules from a DNA template."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule carries genetic information from the nucleus to the ribosomes?",
+    "options": [
+      "mRNA",
+      "tRNA",
+      "rRNA",
+      "DNA",
+      "snRNA"
+    ],
+    "correct": 0,
+    "explanation": "Messenger RNA (mRNA) transports genetic information from DNA to ribosomes for translation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which event occurs during metaphase of mitosis?",
+    "options": [
+      "Chromosomes align at the cell equator",
+      "Chromosomes condense",
+      "Sister chromatids separate",
+      "Nuclear envelope reforms",
+      "Cytoplasm divides"
+    ],
+    "correct": 0,
+    "explanation": "During metaphase, chromosomes align at the equatorial plate of the cell."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which macromolecule are enzymes composed of?",
+    "options": [
+      "Proteins",
+      "Lipids",
+      "Carbohydrates",
+      "Nucleic acids",
+      "Steroids"
+    ],
+    "correct": 0,
+    "explanation": "Most enzymes are proteins that catalyse biochemical reactions."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecules form the backbone of a DNA strand?",
+    "options": [
+      "Sugar and phosphate groups",
+      "Nitrogenous bases",
+      "Amino acids",
+      "Fatty acids",
+      "ATP molecules"
+    ],
+    "correct": 0,
+    "explanation": "The DNA backbone consists of alternating deoxyribose sugars and phosphate groups."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which of the following occurs during cytokinesis in animal cells?",
+    "options": [
+      "Formation of a cleavage furrow",
+      "Formation of a cell plate",
+      "DNA replication",
+      "Chromosomes condense",
+      "Nuclear envelope breaks down"
+    ],
+    "correct": 0,
+    "explanation": "Animal cells divide their cytoplasm by forming a cleavage furrow."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure in plant cells is responsible for storing water and maintaining turgor pressure?",
+    "options": [
+      "Central vacuole",
+      "Chloroplast",
+      "Golgi apparatus",
+      "Mitochondria",
+      "Nucleus"
+    ],
+    "correct": 0,
+    "explanation": "The central vacuole stores water and maintains pressure inside plant cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process describes the uptake of liquid particles into a cell?",
+    "options": [
+      "Pinocytosis",
+      "Phagocytosis",
+      "Exocytosis",
+      "Endocytosis",
+      "Diffusion"
+    ],
+    "correct": 0,
+    "explanation": "Pinocytosis is a type of endocytosis that engulfs extracellular fluid."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of RNA carries amino acids to the ribosome?",
+    "options": [
+      "tRNA",
+      "mRNA",
+      "rRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "Transfer RNA (tRNA) carries amino acids to the ribosome for protein synthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle contains its own DNA and ribosomes and can replicate independently?",
+    "options": [
+      "Mitochondria",
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Nucleus",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria contain their own DNA and ribosomes, supporting the endosymbiotic theory."
+  },
+  {
+    "source": "IA generated",
+    "question": "What happens to homologous chromosomes during anaphase I of meiosis?",
+    "options": [
+      "They are pulled to opposite poles",
+      "Sister chromatids separate",
+      "DNA replication occurs",
+      "Chromosomes condense",
+      "Nuclear envelope reforms"
+    ],
+    "correct": 0,
+    "explanation": "During anaphase I, homologous chromosomes are separated and move to opposite poles."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for detoxifying harmful substances in the liver?",
+    "options": [
+      "Smooth endoplasmic reticulum",
+      "Golgi apparatus",
+      "Mitochondria",
+      "Peroxisome",
+      "Rough endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "The smooth ER in liver cells plays a major role in detoxification."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule provides the energy required for active transport?",
+    "options": [
+      "ATP",
+      "NADH",
+      "Glucose",
+      "FADH2",
+      "GTP"
+    ],
+    "correct": 0,
+    "explanation": "ATP hydrolysis provides energy for active transport across membranes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is mainly responsible for photosynthesis in plant cells?",
+    "options": [
+      "Chloroplast",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Nucleus",
+      "Endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "Chloroplasts contain chlorophyll and are the site of photosynthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of transport does not require energy?",
+    "options": [
+      "Passive transport",
+      "Active transport",
+      "Endocytosis",
+      "Exocytosis",
+      "Sodium-potassium pump"
+    ],
+    "correct": 0,
+    "explanation": "Passive transport, including diffusion and osmosis, occurs without energy input."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme joins Okazaki fragments during DNA replication?",
+    "options": [
+      "DNA ligase",
+      "DNA helicase",
+      "DNA polymerase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "correct": 0,
+    "explanation": "DNA ligase seals nicks and joins Okazaki fragments on the lagging strand."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular structure is responsible for protein synthesis?",
+    "options": [
+      "Ribosome",
+      "Golgi apparatus",
+      "Mitochondria",
+      "Endoplasmic reticulum",
+      "Nucleus"
+    ],
+    "correct": 0,
+    "explanation": "Ribosomes translate mRNA into polypeptides."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of meiosis introduces independent assortment of chromosomes?",
+    "options": [
+      "Metaphase I",
+      "Prophase I",
+      "Anaphase II",
+      "Telophase I",
+      "Metaphase II"
+    ],
+    "correct": 0,
+    "explanation": "During metaphase I, homologous chromosome pairs align randomly, introducing variation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which nitrogenous base pairs with cytosine in DNA?",
+    "options": [
+      "Guanine",
+      "Adenine",
+      "Thymine",
+      "Uracil",
+      "Cytosine"
+    ],
+    "correct": 0,
+    "explanation": "In DNA, cytosine pairs with guanine via three hydrogen bonds."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process converts solar energy into chemical energy?",
+    "options": [
+      "Photosynthesis",
+      "Respiration",
+      "Fermentation",
+      "Glycolysis",
+      "Chemiosmosis"
+    ],
+    "correct": 0,
+    "explanation": "Photosynthesis converts light energy into chemical energy stored in glucose."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which protein is responsible for forming the mitotic spindle?",
+    "options": [
+      "Tubulin",
+      "Actin",
+      "Keratin",
+      "Collagen",
+      "Elastin"
+    ],
+    "correct": 0,
+    "explanation": "Microtubules, built from tubulin, form the mitotic spindle during cell division."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which feature distinguishes RNA from DNA?",
+    "options": [
+      "RNA contains uracil instead of thymine",
+      "RNA is always double-stranded",
+      "RNA contains deoxyribose",
+      "RNA has the base thymine",
+      "RNA is found only in the nucleus"
+    ],
+    "correct": 0,
+    "explanation": "RNA contains ribose and uracil, while DNA contains deoxyribose and thymine."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure regulates the passage of materials into and out of the cell?",
+    "options": [
+      "Plasma membrane",
+      "Nucleus",
+      "Cytoskeleton",
+      "Mitochondria",
+      "Ribosome"
+    ],
+    "correct": 0,
+    "explanation": "The plasma membrane controls the selective transport of substances."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is involved in protein folding and quality control?",
+    "options": [
+      "Rough endoplasmic reticulum",
+      "Golgi apparatus",
+      "Mitochondria",
+      "Lysosome",
+      "Smooth endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "The rough ER, studded with ribosomes, is the site of protein synthesis and folding."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process allows the movement of water across a semi-permeable membrane?",
+    "options": [
+      "Osmosis",
+      "Diffusion",
+      "Active transport",
+      "Endocytosis",
+      "Exocytosis"
+    ],
+    "correct": 0,
+    "explanation": "Osmosis is the passive diffusion of water across a semi-permeable membrane."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure attaches sister chromatids together?",
+    "options": [
+      "Centromere",
+      "Spindle fiber",
+      "Centriole",
+      "Nucleolus",
+      "Telomere"
+    ],
+    "correct": 0,
+    "explanation": "Sister chromatids are held together at the centromere until separation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process produces gametes in animals?",
+    "options": [
+      "Meiosis",
+      "Mitosis",
+      "Fertilisation",
+      "Binary fission",
+      "Budding"
+    ],
+    "correct": 0,
+    "explanation": "Meiosis produces haploid gametes in animals."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme adds complementary bases during DNA replication?",
+    "options": [
+      "DNA polymerase",
+      "DNA ligase",
+      "RNA polymerase",
+      "Primase",
+      "Helicase"
+    ],
+    "correct": 0,
+    "explanation": "DNA polymerase extends new DNA strands by adding nucleotides complementary to the template strand."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which macromolecule primarily composes the plasma membrane?",
+    "options": [
+      "Phospholipids",
+      "Proteins",
+      "Polysaccharides",
+      "Steroids",
+      "Nucleic acids"
+    ],
+    "correct": 0,
+    "explanation": "The plasma membrane is a phospholipid bilayer with embedded proteins."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cell type lacks a nucleus?",
+    "options": [
+      "Prokaryotic cell",
+      "Eukaryotic cell",
+      "Animal cell",
+      "Plant cell",
+      "Fungal cell"
+    ],
+    "correct": 0,
+    "explanation": "Prokaryotic cells lack a nucleus; their DNA is in the cytoplasm."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which step of cellular respiration produces carbon dioxide?",
+    "options": [
+      "Krebs cycle",
+      "Glycolysis",
+      "Oxidative phosphorylation",
+      "Fermentation",
+      "Electron transport chain"
+    ],
+    "correct": 0,
+    "explanation": "Carbon dioxide is released during decarboxylation reactions in the Krebs cycle."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of bond links amino acids in a protein?",
+    "options": [
+      "Peptide bond",
+      "Hydrogen bond",
+      "Ionic bond",
+      "Phosphodiester bond",
+      "Disulfide bond"
+    ],
+    "correct": 0,
+    "explanation": "Peptide bonds connect amino acids in a polypeptide chain."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure forms the spindle fibers during mitosis?",
+    "options": [
+      "Centrosome",
+      "Nucleolus",
+      "Nuclear envelope",
+      "Mitochondria",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "The centrosomes organise microtubules that form the mitotic spindle."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in plant cells is responsible for storing pigments that give flowers and fruits their color?",
+    "options": [
+      "Chromoplast",
+      "Chloroplast",
+      "Amyloplast",
+      "Mitochondria",
+      "Nucleus"
+    ],
+    "correct": 0,
+    "explanation": "Chromoplasts store pigments such as carotenoids, giving color to flowers and fruits."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure prevents plant cells from bursting when placed in a hypotonic solution?",
+    "options": [
+      "Cell wall",
+      "Plasma membrane",
+      "Central vacuole",
+      "Cytoskeleton",
+      "Plasmodesmata"
+    ],
+    "correct": 0,
+    "explanation": "The rigid cell wall provides resistance to osmotic pressure, preventing bursting."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular structure is the site of ribosomal RNA synthesis?",
+    "options": [
+      "Nucleolus",
+      "Nucleus",
+      "Cytoplasm",
+      "Rough ER",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "The nucleolus is the site where rRNA is transcribed and ribosome subunits are assembled."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle contains enzymes that break down fatty acids and detoxify alcohol?",
+    "options": [
+      "Peroxisome",
+      "Lysosome",
+      "Mitochondria",
+      "Smooth ER",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "Peroxisomes contain oxidative enzymes, including catalase, for lipid metabolism and detoxification."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of RNA is the template for protein synthesis?",
+    "options": [
+      "mRNA",
+      "tRNA",
+      "rRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "Messenger RNA (mRNA) carries the genetic code from DNA to ribosomes for translation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of mitosis involves the reformation of the nuclear envelope?",
+    "options": [
+      "Telophase",
+      "Metaphase",
+      "Anaphase",
+      "Prophase",
+      "Cytokinesis"
+    ],
+    "correct": 0,
+    "explanation": "In telophase, chromosomes decondense and the nuclear envelope reforms around each set of chromosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle produces most of the lipids in eukaryotic cells?",
+    "options": [
+      "Smooth endoplasmic reticulum",
+      "Rough endoplasmic reticulum",
+      "Mitochondria",
+      "Nucleus",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "The smooth ER is the site of lipid and steroid synthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which of the following is an example of a monosaccharide?",
+    "options": [
+      "Glucose",
+      "Sucrose",
+      "Lactose",
+      "Starch",
+      "Cellulose"
+    ],
+    "correct": 0,
+    "explanation": "Glucose is a simple sugar (monosaccharide), while sucrose and lactose are disaccharides."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of transport requires carrier proteins but no ATP?",
+    "options": [
+      "Facilitated diffusion",
+      "Active transport",
+      "Endocytosis",
+      "Exocytosis",
+      "Pinocytosis"
+    ],
+    "correct": 0,
+    "explanation": "Facilitated diffusion uses carrier proteins to move molecules down their concentration gradient without energy."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which part of the cytoskeleton is involved in chromosome separation during cell division?",
+    "options": [
+      "Microtubules",
+      "Microfilaments",
+      "Intermediate filaments",
+      "Actin filaments",
+      "Keratin fibers"
+    ],
+    "correct": 0,
+    "explanation": "Microtubules form the mitotic spindle that separates chromosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme synthesises short RNA primers during DNA replication?",
+    "options": [
+      "Primase",
+      "Helicase",
+      "Ligase",
+      "Topoisomerase",
+      "DNA polymerase"
+    ],
+    "correct": 0,
+    "explanation": "Primase lays down short RNA primers that DNA polymerase uses to start synthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which genetic condition occurs when a single base substitution changes one amino acid in a protein?",
+    "options": [
+      "Missense mutation",
+      "Nonsense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "Deletion mutation"
+    ],
+    "correct": 0,
+    "explanation": "A missense mutation replaces one amino acid with another, potentially altering protein function."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which phase of meiosis is characterised by crossing over?",
+    "options": [
+      "Prophase I",
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase II",
+      "Prophase II"
+    ],
+    "correct": 0,
+    "explanation": "Crossing over occurs during prophase I, increasing genetic variation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure shortens to pull chromatids apart during anaphase?",
+    "options": [
+      "Spindle fibers",
+      "Centrioles",
+      "Centromeres",
+      "Nucleoli",
+      "Chromatin fibers"
+    ],
+    "correct": 0,
+    "explanation": "Spindle fibers composed of microtubules shorten to separate chromatids."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which property of the plasma membrane allows selective transport?",
+    "options": [
+      "Semi-permeability",
+      "Rigidity",
+      "Elasticity",
+      "Hydrophilicity",
+      "Symmetry"
+    ],
+    "correct": 0,
+    "explanation": "The plasma membrane is semi-permeable, allowing selective passage of molecules."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule acts as the main reducing power in photosynthesis?",
+    "options": [
+      "NADPH",
+      "ATP",
+      "FADH2",
+      "Glucose",
+      "Pyruvate"
+    ],
+    "correct": 0,
+    "explanation": "NADPH provides reducing power for carbon fixation in the Calvin cycle."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is involved in autophagy, the recycling of cellular components?",
+    "options": [
+      "Lysosome",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Nucleolus"
+    ],
+    "correct": 0,
+    "explanation": "Lysosomes degrade damaged organelles and recycle cellular components."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in animal cells helps organise the microtubules of the cytoskeleton?",
+    "options": [
+      "Centrosome",
+      "Mitochondria",
+      "Nucleolus",
+      "Endoplasmic reticulum",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "The centrosome contains centrioles and organises microtubules."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule directly powers muscle contraction?",
+    "options": [
+      "ATP",
+      "Glucose",
+      "NADH",
+      "GTP",
+      "Lactic acid"
+    ],
+    "correct": 0,
+    "explanation": "ATP provides the energy for actin-myosin cross-bridge cycling in muscle contraction."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which DNA strand serves as a template during transcription?",
+    "options": [
+      "The antisense strand",
+      "The sense strand",
+      "Both strands",
+      "Neither strand",
+      "The leading strand only"
+    ],
+    "correct": 0,
+    "explanation": "The antisense strand of DNA is used as a template to produce complementary RNA."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure in eukaryotic cells is the site of aerobic respiration?",
+    "options": [
+      "Mitochondria",
+      "Chloroplasts",
+      "Cytoplasm",
+      "Nucleus",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria carry out aerobic respiration to produce ATP."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which bond forms between nucleotides in a DNA strand?",
+    "options": [
+      "Phosphodiester bond",
+      "Hydrogen bond",
+      "Peptide bond",
+      "Glycosidic bond",
+      "Ionic bond"
+    ],
+    "correct": 0,
+    "explanation": "Phosphodiester bonds link the sugar of one nucleotide to the phosphate of the next."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is known as the 'suicide bag' of the cell?",
+    "options": [
+      "Lysosome",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Nucleus",
+      "Smooth ER"
+    ],
+    "correct": 0,
+    "explanation": "Lysosomes contain hydrolytic enzymes that can digest cellular components."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of the cell cycle immediately follows mitosis?",
+    "options": [
+      "Cytokinesis",
+      "S phase",
+      "G1 phase",
+      "Prophase",
+      "Anaphase"
+    ],
+    "correct": 0,
+    "explanation": "Cytokinesis divides the cytoplasm into two daughter cells after mitosis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which nitrogenous base is unique to DNA and not found in RNA?",
+    "options": [
+      "Thymine",
+      "Uracil",
+      "Adenine",
+      "Cytosine",
+      "Guanine"
+    ],
+    "correct": 0,
+    "explanation": "Thymine is present in DNA, while RNA contains uracil instead."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure in plants allows communication between adjacent cells?",
+    "options": [
+      "Plasmodesmata",
+      "Gap junctions",
+      "Tight junctions",
+      "Desmosomes",
+      "Centrosomes"
+    ],
+    "correct": 0,
+    "explanation": "Plasmodesmata are channels through cell walls that enable transport and communication."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule stores genetic information in most living organisms?",
+    "options": [
+      "DNA",
+      "RNA",
+      "Protein",
+      "ATP",
+      "Lipid"
+    ],
+    "correct": 0,
+    "explanation": "DNA stores hereditary information and codes for proteins."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme relieves supercoiling during DNA replication?",
+    "options": [
+      "Topoisomerase",
+      "Helicase",
+      "Ligase",
+      "Primase",
+      "Polymerase"
+    ],
+    "correct": 0,
+    "explanation": "Topoisomerase prevents supercoiling ahead of the replication fork."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of mutation does not change the amino acid sequence of a protein?",
+    "options": [
+      "Silent mutation",
+      "Missense mutation",
+      "Nonsense mutation",
+      "Frameshift mutation",
+      "Deletion mutation"
+    ],
+    "correct": 0,
+    "explanation": "Silent mutations alter DNA sequence but not the encoded amino acid."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which component of the cytoskeleton provides structural support to the nuclear envelope?",
+    "options": [
+      "Intermediate filaments",
+      "Microtubules",
+      "Actin filaments",
+      "Collagen fibers",
+      "Myosin filaments"
+    ],
+    "correct": 0,
+    "explanation": "Intermediate filaments, such as lamins, support the nuclear envelope."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle produces ribosomal subunits?",
+    "options": [
+      "Nucleolus",
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Mitochondria",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "The nucleolus assembles ribosomal RNA and proteins into ribosomal subunits."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process describes programmed cell death?",
+    "options": [
+      "Apoptosis",
+      "Necrosis",
+      "Autophagy",
+      "Mitosis",
+      "Senescence"
+    ],
+    "correct": 0,
+    "explanation": "Apoptosis is an orderly process of programmed cell death."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecules are the main structural components of the cell membrane?",
+    "options": [
+      "Phospholipids and proteins",
+      "Cellulose and proteins",
+      "Steroids and nucleic acids",
+      "RNA and proteins",
+      "Glycogen and lipids"
+    ],
+    "correct": 0,
+    "explanation": "The fluid mosaic model describes membranes as a phospholipid bilayer with proteins."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of meiosis reduces the chromosome number by half?",
+    "options": [
+      "Meiosis I",
+      "Meiosis II",
+      "Prophase II",
+      "Anaphase II",
+      "Metaphase II"
+    ],
+    "correct": 0,
+    "explanation": "Meiosis I separates homologous chromosomes, halving the chromosome number."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for converting hydrogen peroxide into water?",
+    "options": [
+      "Peroxisome",
+      "Lysosome",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Rough ER"
+    ],
+    "correct": 0,
+    "explanation": "Peroxisomes contain catalase, which converts hydrogen peroxide into water and oxygen."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule directly donates electrons to the electron transport chain from the Krebs cycle?",
+    "options": [
+      "NADH",
+      "ATP",
+      "CO2",
+      "Acetyl-CoA",
+      "Pyruvate"
+    ],
+    "correct": 0,
+    "explanation": "NADH donates high-energy electrons to the electron transport chain."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle packages hydrolytic enzymes before they are delivered to lysosomes?",
+    "options": [
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Mitochondria",
+      "Nucleus",
+      "Cytoskeleton"
+    ],
+    "correct": 0,
+    "explanation": "The Golgi apparatus modifies and packages enzymes destined for lysosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cell type in humans lacks mitochondria?",
+    "options": [
+      "Red blood cells",
+      "Neurons",
+      "Liver cells",
+      "Muscle cells",
+      "Epithelial cells"
+    ],
+    "correct": 0,
+    "explanation": "Mature red blood cells lack mitochondria and rely on glycolysis for energy."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process produces lactic acid in human muscles?",
+    "options": [
+      "Anaerobic respiration",
+      "Aerobic respiration",
+      "Photosynthesis",
+      "Oxidative phosphorylation",
+      "Beta oxidation"
+    ],
+    "correct": 0,
+    "explanation": "Anaerobic respiration produces lactic acid when oxygen is limited."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle contains thylakoids stacked into grana?",
+    "options": [
+      "Chloroplast",
+      "Mitochondria",
+      "Nucleus",
+      "Lysosome",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "Chloroplasts contain thylakoids organised into grana for light reactions."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of RNA is most abundant in cells?",
+    "options": [
+      "rRNA",
+      "tRNA",
+      "mRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "Ribosomal RNA (rRNA) makes up the majority of cellular RNA."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which checkpoint in the cell cycle ensures DNA has been accurately replicated?",
+    "options": [
+      "G2 checkpoint",
+      "G1 checkpoint",
+      "M checkpoint",
+      "Cytokinesis checkpoint",
+      "Anaphase checkpoint"
+    ],
+    "correct": 0,
+    "explanation": "The G2 checkpoint verifies DNA replication before mitosis begins."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule carries high-energy electrons in photosynthesis?",
+    "options": [
+      "NADPH",
+      "ATP",
+      "FADH2",
+      "Glucose",
+      "GTP"
+    ],
+    "correct": 0,
+    "explanation": "NADPH carries electrons from the light-dependent reactions to the Calvin cycle."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for calcium storage and release in muscle cells?",
+    "options": [
+      "Sarcoplasmic reticulum",
+      "Mitochondria",
+      "Nucleolus",
+      "Golgi apparatus",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "The sarcoplasmic reticulum, a form of smooth ER, stores and releases calcium for muscle contraction."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecules form the structural framework of microtubules?",
+    "options": [
+      "Tubulin dimers",
+      "Actin filaments",
+      "Keratin proteins",
+      "Collagen fibers",
+      "Myosin heads"
+    ],
+    "correct": 0,
+    "explanation": "Microtubules are polymers of alpha- and beta-tubulin dimers."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of meiosis separates sister chromatids?",
+    "options": [
+      "Anaphase II",
+      "Anaphase I",
+      "Metaphase I",
+      "Telophase I",
+      "Prophase I"
+    ],
+    "correct": 0,
+    "explanation": "In anaphase II, sister chromatids are separated, similar to mitosis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which component of chromatin is responsible for packaging DNA around histone proteins?",
+    "options": [
+      "Nucleosome",
+      "Centromere",
+      "Telomere",
+      "Spindle fiber",
+      "Ribosome"
+    ],
+    "correct": 0,
+    "explanation": "Nucleosomes are units of DNA wrapped around histone proteins."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is associated with cis and trans faces for protein modification?",
+    "options": [
+      "Golgi apparatus",
+      "Endoplasmic reticulum",
+      "Mitochondria",
+      "Nucleus",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "The Golgi apparatus has cis and trans faces for protein sorting and modification."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of photosynthesis produces oxygen as a by-product?",
+    "options": [
+      "Light-dependent reactions",
+      "Calvin cycle",
+      "Glycolysis",
+      "Krebs cycle",
+      "Electron transport in mitochondria"
+    ],
+    "correct": 0,
+    "explanation": "Oxygen is released during photolysis of water in the light-dependent reactions."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for synthesising most of the ATP in eukaryotic cells?",
+    "options": [
+      "Mitochondria",
+      "Nucleus",
+      "Chloroplast",
+      "Golgi apparatus",
+      "Endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria are the site of oxidative phosphorylation, producing most cellular ATP."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which bond connects amino acids in a polypeptide chain?",
+    "options": [
+      "Peptide bond",
+      "Hydrogen bond",
+      "Ionic bond",
+      "Phosphodiester bond",
+      "Disulfide bond"
+    ],
+    "correct": 0,
+    "explanation": "A peptide bond is a covalent bond formed between amino acids during protein synthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which part of the cell cycle is characterised by growth and preparation for DNA replication?",
+    "options": [
+      "G1 phase",
+      "S phase",
+      "G2 phase",
+      "M phase",
+      "Cytokinesis"
+    ],
+    "correct": 0,
+    "explanation": "The G1 phase involves cell growth and preparation for DNA synthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process occurs during anaphase of mitosis?",
+    "options": [
+      "Sister chromatids separate",
+      "Chromosomes condense",
+      "Nuclear envelope reforms",
+      "DNA replicates",
+      "Spindle fibers disassemble"
+    ],
+    "correct": 0,
+    "explanation": "In anaphase, sister chromatids separate and move to opposite poles."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which nucleotide is unique to RNA?",
+    "options": [
+      "Uracil",
+      "Thymine",
+      "Cytosine",
+      "Guanine",
+      "Adenine"
+    ],
+    "correct": 0,
+    "explanation": "RNA contains uracil instead of thymine."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process describes the conversion of mRNA into a polypeptide sequence?",
+    "options": [
+      "Translation",
+      "Transcription",
+      "Replication",
+      "Reverse transcription",
+      "Splicing"
+    ],
+    "correct": 0,
+    "explanation": "Translation converts mRNA codons into a sequence of amino acids."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is involved in lipid and steroid synthesis?",
+    "options": [
+      "Smooth endoplasmic reticulum",
+      "Rough endoplasmic reticulum",
+      "Nucleolus",
+      "Golgi apparatus",
+      "Mitochondria"
+    ],
+    "correct": 0,
+    "explanation": "The smooth ER synthesises lipids and steroid hormones."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cytoskeletal component is involved in cell motility and cytokinesis?",
+    "options": [
+      "Actin filaments",
+      "Intermediate filaments",
+      "Microtubules",
+      "Keratin fibers",
+      "Collagen"
+    ],
+    "correct": 0,
+    "explanation": "Actin filaments support motility and form the contractile ring in cytokinesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is reduced in the light-dependent reactions of photosynthesis?",
+    "options": [
+      "NADP+",
+      "ATP",
+      "O2",
+      "Glucose",
+      "CO2"
+    ],
+    "correct": 0,
+    "explanation": "NADP+ is reduced to NADPH, carrying electrons to the Calvin cycle."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which protein stabilises microtubules in neurons?",
+    "options": [
+      "Tau protein",
+      "Actin",
+      "Myosin",
+      "Keratin",
+      "Collagen"
+    ],
+    "correct": 0,
+    "explanation": "Tau protein stabilises neuronal microtubules; abnormalities are linked to neurodegenerative diseases."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which phase of meiosis ensures the separation of homologous chromosomes?",
+    "options": [
+      "Anaphase I",
+      "Anaphase II",
+      "Metaphase I",
+      "Prophase II",
+      "Telophase II"
+    ],
+    "correct": 0,
+    "explanation": "Anaphase I separates homologous chromosomes, reducing chromosome number by half."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular process directly requires oxygen?",
+    "options": [
+      "Electron transport chain",
+      "Glycolysis",
+      "Fermentation",
+      "DNA replication",
+      "Translation"
+    ],
+    "correct": 0,
+    "explanation": "The electron transport chain uses oxygen as the final electron acceptor."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme catalyses the synthesis of DNA from RNA in retroviruses?",
+    "options": [
+      "Reverse transcriptase",
+      "DNA polymerase",
+      "RNA polymerase",
+      "Ligase",
+      "Primase"
+    ],
+    "correct": 0,
+    "explanation": "Reverse transcriptase synthesises DNA from an RNA template in retroviruses."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecules are produced during glycolysis?",
+    "options": [
+      "2 pyruvate, 2 ATP, 2 NADH",
+      "2 acetyl-CoA, 4 ATP, 2 NADH",
+      "2 pyruvate, 4 ATP, 4 FADH2",
+      "4 pyruvate, 2 ATP, 2 NADH",
+      "2 CO2, 2 ATP, 2 NADH"
+    ],
+    "correct": 0,
+    "explanation": "Glycolysis produces 2 pyruvate, a net gain of 2 ATP, and 2 NADH molecules."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure is formed when DNA wraps around histone proteins?",
+    "options": [
+      "Nucleosome",
+      "Centromere",
+      "Spindle fiber",
+      "Chromatid",
+      "Telomere"
+    ],
+    "correct": 0,
+    "explanation": "Nucleosomes are DNA-histone complexes that package DNA into chromatin."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process increases genetic diversity during meiosis?",
+    "options": [
+      "Crossing over and independent assortment",
+      "Binary fission",
+      "Mitosis",
+      "Cytokinesis",
+      "DNA replication"
+    ],
+    "correct": 0,
+    "explanation": "Crossing over and independent assortment generate genetic variation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in plants stores starch?",
+    "options": [
+      "Amyloplast",
+      "Chloroplast",
+      "Chromoplast",
+      "Nucleus",
+      "Mitochondria"
+    ],
+    "correct": 0,
+    "explanation": "Amyloplasts are plastids specialised in storing starch granules."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which checkpoint ensures that all chromosomes are properly attached to spindle fibers?",
+    "options": [
+      "M checkpoint",
+      "G1 checkpoint",
+      "G2 checkpoint",
+      "S checkpoint",
+      "Cytokinesis checkpoint"
+    ],
+    "correct": 0,
+    "explanation": "The M checkpoint ensures correct spindle attachment before anaphase begins."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which gas is fixed during the Calvin cycle?",
+    "options": [
+      "Carbon dioxide",
+      "Oxygen",
+      "Nitrogen",
+      "Methane",
+      "Ammonia"
+    ],
+    "correct": 0,
+    "explanation": "Carbon dioxide is fixed into organic molecules in the Calvin cycle."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure maintains chromosome stability at the ends of linear DNA molecules?",
+    "options": [
+      "Telomeres",
+      "Centromeres",
+      "Nucleosomes",
+      "Operons",
+      "Spliceosomes"
+    ],
+    "correct": 0,
+    "explanation": "Telomeres protect chromosome ends from degradation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule provides reducing equivalents to the mitochondrial electron transport chain?",
+    "options": [
+      "NADH and FADH2",
+      "ATP",
+      "CO2",
+      "GTP",
+      "Glucose"
+    ],
+    "correct": 0,
+    "explanation": "NADH and FADH2 deliver electrons to the electron transport chain."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which event occurs during prophase I of meiosis?",
+    "options": [
+      "Crossing over between homologous chromosomes",
+      "Separation of sister chromatids",
+      "Alignment of chromosomes at the equator",
+      "Reformation of the nuclear envelope",
+      "Cytokinesis"
+    ],
+    "correct": 0,
+    "explanation": "Crossing over occurs in prophase I, producing recombinant chromosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme joins Okazaki fragments by sealing nicks in the sugar-phosphate backbone?",
+    "options": [
+      "DNA ligase",
+      "Helicase",
+      "DNA polymerase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "correct": 0,
+    "explanation": "DNA ligase seals the gaps between Okazaki fragments on the lagging strand."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of mutation introduces a frameshift in the genetic code?",
+    "options": [
+      "Insertion or deletion not in multiples of three",
+      "Silent mutation",
+      "Missense mutation",
+      "Nonsense mutation",
+      "Duplication mutation in triplets"
+    ],
+    "correct": 0,
+    "explanation": "Insertions or deletions that shift the reading frame are frameshift mutations."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle contains enzymes for oxidative phosphorylation?",
+    "options": [
+      "Mitochondria",
+      "Chloroplast",
+      "Lysosome",
+      "Golgi apparatus",
+      "Endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria house the electron transport chain for oxidative phosphorylation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of RNA plays a structural and catalytic role in ribosomes?",
+    "options": [
+      "rRNA",
+      "mRNA",
+      "tRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "rRNA forms the catalytic core of ribosomes and facilitates peptide bond formation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which transport process requires ATP to move molecules against their concentration gradient?",
+    "options": [
+      "Active transport",
+      "Facilitated diffusion",
+      "Osmosis",
+      "Simple diffusion",
+      "Passive transport"
+    ],
+    "correct": 0,
+    "explanation": "Active transport uses ATP to move molecules against their concentration gradient."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is the immediate product of transcription?",
+    "options": [
+      "Pre-mRNA",
+      "mRNA",
+      "tRNA",
+      "rRNA",
+      "DNA"
+    ],
+    "correct": 0,
+    "explanation": "Transcription produces a pre-mRNA transcript, which undergoes splicing to form mature mRNA."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular organelle is responsible for sorting proteins for secretion?",
+    "options": [
+      "Golgi apparatus",
+      "Rough ER",
+      "Mitochondria",
+      "Nucleolus",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "The Golgi apparatus modifies and sorts proteins for secretion."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in plant cells captures light energy for photosynthesis?",
+    "options": [
+      "Chloroplast",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Nucleus",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "Chloroplasts contain chlorophyll pigments that capture light energy for photosynthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which feature distinguishes prokaryotic DNA from eukaryotic DNA?",
+    "options": [
+      "Prokaryotic DNA is circular, while eukaryotic DNA is linear",
+      "Prokaryotic DNA is double-stranded, while eukaryotic DNA is single-stranded",
+      "Prokaryotic DNA contains thymine, while eukaryotic DNA does not",
+      "Prokaryotic DNA is stored in a nucleus, while eukaryotic DNA is free in the cytoplasm",
+      "Prokaryotic DNA has histones, while eukaryotic DNA does not"
+    ],
+    "correct": 0,
+    "explanation": "Prokaryotic DNA is circular and not enclosed in a nucleus, unlike eukaryotic linear DNA."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of mitosis is characterised by chromosomes aligning at the equatorial plate?",
+    "options": [
+      "Metaphase",
+      "Prophase",
+      "Anaphase",
+      "Telophase",
+      "Interphase"
+    ],
+    "correct": 0,
+    "explanation": "In metaphase, chromosomes align at the equatorial plate of the cell."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process produces gametes in animals?",
+    "options": [
+      "Meiosis",
+      "Mitosis",
+      "Binary fission",
+      "Budding",
+      "Regeneration"
+    ],
+    "correct": 0,
+    "explanation": "Meiosis produces haploid gametes from diploid cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which macromolecule stores hereditary information?",
+    "options": [
+      "DNA",
+      "RNA",
+      "Protein",
+      "Lipid",
+      "Carbohydrate"
+    ],
+    "correct": 0,
+    "explanation": "DNA carries the genetic code for organisms."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for modifying and packaging proteins for secretion?",
+    "options": [
+      "Golgi apparatus",
+      "Rough ER",
+      "Nucleolus",
+      "Lysosome",
+      "Mitochondria"
+    ],
+    "correct": 0,
+    "explanation": "The Golgi apparatus modifies proteins and packages them into vesicles."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule carries amino acids to ribosomes during protein synthesis?",
+    "options": [
+      "tRNA",
+      "mRNA",
+      "rRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "Transfer RNA (tRNA) carries amino acids to ribosomes during translation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process occurs in the mitochondrial matrix?",
+    "options": [
+      "Krebs cycle",
+      "Glycolysis",
+      "Electron transport chain",
+      "Photosynthesis",
+      "Fermentation"
+    ],
+    "correct": 0,
+    "explanation": "The Krebs cycle takes place in the mitochondrial matrix."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecules form the basic structure of cell membranes?",
+    "options": [
+      "Phospholipids",
+      "Proteins",
+      "Steroids",
+      "Polysaccharides",
+      "Glycoproteins"
+    ],
+    "correct": 0,
+    "explanation": "Phospholipids form the bilayer that is the structural basis of membranes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular process results in two genetically identical daughter cells?",
+    "options": [
+      "Mitosis",
+      "Meiosis",
+      "Binary fission",
+      "Fertilisation",
+      "Crossing over"
+    ],
+    "correct": 0,
+    "explanation": "Mitosis produces two genetically identical daughter cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle contains DNA and ribosomes and is the site of photosynthesis?",
+    "options": [
+      "Chloroplast",
+      "Mitochondria",
+      "Nucleus",
+      "Lysosome",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "Chloroplasts carry out photosynthesis and contain their own DNA and ribosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which protein is a motor protein that moves along microtubules?",
+    "options": [
+      "Dynein",
+      "Actin",
+      "Keratin",
+      "Tubulin",
+      "Collagen"
+    ],
+    "correct": 0,
+    "explanation": "Dynein moves along microtubules, transporting cellular cargo."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process duplicates DNA before cell division?",
+    "options": [
+      "Replication",
+      "Transcription",
+      "Translation",
+      "Recombination",
+      "Crossing over"
+    ],
+    "correct": 0,
+    "explanation": "DNA replication produces identical copies of DNA before cell division."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which gas is released as a by-product of photosynthesis?",
+    "options": [
+      "Oxygen",
+      "Carbon dioxide",
+      "Nitrogen",
+      "Methane",
+      "Hydrogen"
+    ],
+    "correct": 0,
+    "explanation": "Oxygen is released when water molecules are split during the light reactions."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure attaches microtubules to chromosomes during cell division?",
+    "options": [
+      "Kinetochore",
+      "Centrosome",
+      "Centromere",
+      "Nucleolus",
+      "Spindle pole"
+    ],
+    "correct": 0,
+    "explanation": "The kinetochore is the protein complex at the centromere that attaches to spindle fibers."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle produces lysosomal enzymes?",
+    "options": [
+      "Rough ER",
+      "Smooth ER",
+      "Mitochondria",
+      "Chloroplast",
+      "Nucleolus"
+    ],
+    "correct": 0,
+    "explanation": "The rough ER synthesises enzymes that are later packaged into lysosomes by the Golgi."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which term describes DNA that is loosely packed and transcriptionally active?",
+    "options": [
+      "Euchromatin",
+      "Heterochromatin",
+      "Nucleosome",
+      "Centromere",
+      "Telomere"
+    ],
+    "correct": 0,
+    "explanation": "Euchromatin is loosely packed DNA that can be transcribed."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which step of cellular respiration produces the most ATP?",
+    "options": [
+      "Oxidative phosphorylation",
+      "Glycolysis",
+      "Krebs cycle",
+      "Fermentation",
+      "Pyruvate oxidation"
+    ],
+    "correct": 0,
+    "explanation": "Oxidative phosphorylation produces the majority of ATP in respiration."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme unwinds DNA ahead of the replication fork?",
+    "options": [
+      "Helicase",
+      "Ligase",
+      "Polymerase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "correct": 0,
+    "explanation": "Helicase separates the two DNA strands by breaking hydrogen bonds."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process describes the uptake of solid particles into a cell?",
+    "options": [
+      "Phagocytosis",
+      "Pinocytosis",
+      "Exocytosis",
+      "Facilitated diffusion",
+      "Osmosis"
+    ],
+    "correct": 0,
+    "explanation": "Phagocytosis is the engulfing of solid particles by the cell membrane."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of meiosis involves separation of sister chromatids?",
+    "options": [
+      "Anaphase II",
+      "Anaphase I",
+      "Prophase I",
+      "Metaphase I",
+      "Telophase I"
+    ],
+    "correct": 0,
+    "explanation": "In anaphase II, sister chromatids are pulled apart to opposite poles."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule acts as the universal energy currency of the cell?",
+    "options": [
+      "ATP",
+      "NADH",
+      "FADH2",
+      "GTP",
+      "Glucose"
+    ],
+    "correct": 0,
+    "explanation": "ATP provides energy for cellular processes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure in animal cells organises spindle fibers during mitosis?",
+    "options": [
+      "Centrosome",
+      "Nucleolus",
+      "Nuclear envelope",
+      "Ribosome",
+      "Endoplasmic reticulum"
+    ],
+    "correct": 0,
+    "explanation": "Centrosomes organise microtubules into spindle fibers."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is the final product of the Calvin cycle?",
+    "options": [
+      "G3P (glyceraldehyde-3-phosphate)",
+      "Glucose",
+      "ATP",
+      "NADPH",
+      "CO2"
+    ],
+    "correct": 0,
+    "explanation": "The Calvin cycle produces G3P, which is used to form glucose and other carbohydrates."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which protein connects cells together in desmosomes?",
+    "options": [
+      "Cadherins",
+      "Integrins",
+      "Tubulin",
+      "Collagen",
+      "Actin"
+    ],
+    "correct": 0,
+    "explanation": "Cadherins are adhesion proteins that connect cells in desmosomes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which DNA strand is used as the template for RNA synthesis?",
+    "options": [
+      "Antisense strand",
+      "Sense strand",
+      "Both strands",
+      "Leading strand only",
+      "Lagging strand only"
+    ],
+    "correct": 0,
+    "explanation": "The antisense strand serves as the template during transcription."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle produces ATP in plant cells during photosynthesis?",
+    "options": [
+      "Chloroplast",
+      "Mitochondria",
+      "Peroxisome",
+      "Golgi apparatus",
+      "Nucleus"
+    ],
+    "correct": 0,
+    "explanation": "Chloroplasts produce ATP during the light-dependent reactions of photosynthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which phase of the cell cycle involves preparation for mitosis after DNA replication?",
+    "options": [
+      "G2 phase",
+      "G1 phase",
+      "S phase",
+      "M phase",
+      "Cytokinesis"
+    ],
+    "correct": 0,
+    "explanation": "The G2 phase ensures proper cell growth and preparation for mitosis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure in plant cells carries out photosynthesis?",
+    "options": [
+      "Chloroplast",
+      "Mitochondria",
+      "Nucleus",
+      "Golgi apparatus",
+      "Peroxisome"
+    ],
+    "correct": 0,
+    "explanation": "Chloroplasts are the site of photosynthesis in plant cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is the substrate of the enzyme amylase?",
+    "options": [
+      "Starch",
+      "Protein",
+      "DNA",
+      "Lipids",
+      "RNA"
+    ],
+    "correct": 0,
+    "explanation": "Amylase catalyses the breakdown of starch into sugars."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process occurs in the cytoplasm of all living cells?",
+    "options": [
+      "Glycolysis",
+      "Krebs cycle",
+      "Electron transport chain",
+      "Transcription",
+      "Translation"
+    ],
+    "correct": 0,
+    "explanation": "Glycolysis occurs in the cytoplasm in both prokaryotic and eukaryotic cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure forms the permeability barrier of the nuclear envelope?",
+    "options": [
+      "Nuclear pores",
+      "Nucleolus",
+      "Centrioles",
+      "Ribosomes",
+      "Chromatin"
+    ],
+    "correct": 0,
+    "explanation": "Nuclear pores allow selective transport across the nuclear envelope."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is involved in oxidative phosphorylation?",
+    "options": [
+      "Mitochondria",
+      "Nucleus",
+      "Chloroplast",
+      "Golgi apparatus",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria perform oxidative phosphorylation to generate ATP."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is required to start glycolysis?",
+    "options": [
+      "Glucose",
+      "Pyruvate",
+      "ATP synthase",
+      "Acetyl-CoA",
+      "Lactate"
+    ],
+    "correct": 0,
+    "explanation": "Glycolysis begins with the breakdown of glucose."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme is used to join Okazaki fragments?",
+    "options": [
+      "DNA ligase",
+      "DNA polymerase",
+      "Helicase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "correct": 0,
+    "explanation": "DNA ligase seals gaps between Okazaki fragments on the lagging strand."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which component of the cytoskeleton provides tensile strength?",
+    "options": [
+      "Intermediate filaments",
+      "Microtubules",
+      "Actin filaments",
+      "Keratin fibers",
+      "Tubulin dimers"
+    ],
+    "correct": 0,
+    "explanation": "Intermediate filaments maintain cell shape and provide mechanical resistance."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure separates homologous chromosomes during meiosis I?",
+    "options": [
+      "Spindle fibers",
+      "Centromere",
+      "Cytoskeleton",
+      "Nucleolus",
+      "Nuclear pores"
+    ],
+    "correct": 0,
+    "explanation": "Spindle fibers pull homologous chromosomes to opposite poles in meiosis I."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which base is complementary to adenine in DNA?",
+    "options": [
+      "Thymine",
+      "Uracil",
+      "Cytosine",
+      "Guanine",
+      "Adenine"
+    ],
+    "correct": 0,
+    "explanation": "In DNA, adenine pairs with thymine via hydrogen bonds."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which feature is common to both mitochondria and chloroplasts?",
+    "options": [
+      "They contain their own DNA and ribosomes",
+      "They lack membranes",
+      "They store glycogen",
+      "They produce proteins only",
+      "They synthesise steroids"
+    ],
+    "correct": 0,
+    "explanation": "Mitochondria and chloroplasts both contain DNA and ribosomes, supporting endosymbiotic theory."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of mutation introduces a premature stop codon?",
+    "options": [
+      "Nonsense mutation",
+      "Missense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "Deletion mutation"
+    ],
+    "correct": 0,
+    "explanation": "A nonsense mutation converts an amino acid codon into a stop codon."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure in plants stores starch granules?",
+    "options": [
+      "Amyloplast",
+      "Chloroplast",
+      "Chromoplast",
+      "Vacuole",
+      "Mitochondria"
+    ],
+    "correct": 0,
+    "explanation": "Amyloplasts are plastids specialised for storing starch."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule provides the reducing power in cellular respiration?",
+    "options": [
+      "NADH",
+      "ATP",
+      "CO2",
+      "GTP",
+      "Glucose"
+    ],
+    "correct": 0,
+    "explanation": "NADH donates electrons to the electron transport chain."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of RNA carries the genetic code from DNA to ribosomes?",
+    "options": [
+      "mRNA",
+      "tRNA",
+      "rRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "Messenger RNA (mRNA) conveys the genetic information for protein synthesis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process produces haploid gametes?",
+    "options": [
+      "Meiosis",
+      "Mitosis",
+      "Binary fission",
+      "Parthenogenesis",
+      "Fertilisation"
+    ],
+    "correct": 0,
+    "explanation": "Meiosis reduces chromosome number by half, producing haploid gametes."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule forms the main structural framework of plant cell walls?",
+    "options": [
+      "Cellulose",
+      "Chitin",
+      "Collagen",
+      "Keratin",
+      "Starch"
+    ],
+    "correct": 0,
+    "explanation": "Cellulose microfibrils provide strength to plant cell walls."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of the cell cycle involves DNA replication?",
+    "options": [
+      "S phase",
+      "G1 phase",
+      "G2 phase",
+      "M phase",
+      "Cytokinesis"
+    ],
+    "correct": 0,
+    "explanation": "DNA replication occurs during the S phase of interphase."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme catalyses transcription?",
+    "options": [
+      "RNA polymerase",
+      "DNA polymerase",
+      "Helicase",
+      "Ligase",
+      "Primase"
+    ],
+    "correct": 0,
+    "explanation": "RNA polymerase synthesises RNA from a DNA template during transcription."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure shortens to separate sister chromatids during anaphase?",
+    "options": [
+      "Spindle fibers",
+      "Centromeres",
+      "Intermediate filaments",
+      "Nucleoli",
+      "Actin filaments"
+    ],
+    "correct": 0,
+    "explanation": "Spindle fibers composed of microtubules shorten to separate chromatids."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in plant cells stores water and maintains turgor pressure?",
+    "options": [
+      "Central vacuole",
+      "Mitochondria",
+      "Nucleus",
+      "Ribosome",
+      "Chloroplast"
+    ],
+    "correct": 0,
+    "explanation": "The central vacuole holds water and maintains internal pressure in plant cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is synthesised in the nucleolus?",
+    "options": [
+      "rRNA",
+      "mRNA",
+      "tRNA",
+      "DNA",
+      "snRNA"
+    ],
+    "correct": 0,
+    "explanation": "The nucleolus transcribes rRNA and assembles ribosome subunits."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which stage of photosynthesis produces NADPH?",
+    "options": [
+      "Light-dependent reactions",
+      "Calvin cycle",
+      "Glycolysis",
+      "Krebs cycle",
+      "Fermentation"
+    ],
+    "correct": 0,
+    "explanation": "The light-dependent reactions reduce NADP+ to NADPH."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of bond links nucleotides in a DNA strand?",
+    "options": [
+      "Phosphodiester bond",
+      "Hydrogen bond",
+      "Peptide bond",
+      "Ionic bond",
+      "Glycosidic bond"
+    ],
+    "correct": 0,
+    "explanation": "Phosphodiester bonds connect nucleotides in the sugar-phosphate backbone."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure ensures equal distribution of chromosomes in mitosis?",
+    "options": [
+      "Mitotic spindle",
+      "Cytoskeleton",
+      "Cell wall",
+      "Nucleolus",
+      "Plasmodesmata"
+    ],
+    "correct": 0,
+    "explanation": "The mitotic spindle separates chromosomes equally during mitosis."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecule is produced by lactic acid fermentation?",
+    "options": [
+      "Lactate",
+      "Ethanol",
+      "CO2",
+      "Pyruvate",
+      "Acetyl-CoA"
+    ],
+    "correct": 0,
+    "explanation": "Lactate is produced in muscle cells under anaerobic conditions."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process occurs in the chloroplast stroma?",
+    "options": [
+      "Calvin cycle",
+      "Light reactions",
+      "Glycolysis",
+      "Krebs cycle",
+      "Fermentation"
+    ],
+    "correct": 0,
+    "explanation": "The Calvin cycle occurs in the stroma of chloroplasts."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which cellular junction connects plant cells?",
+    "options": [
+      "Plasmodesmata",
+      "Gap junctions",
+      "Tight junctions",
+      "Desmosomes",
+      "Adherens junctions"
+    ],
+    "correct": 0,
+    "explanation": "Plasmodesmata allow cytoplasmic connections between plant cells."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process converts pyruvate into ethanol in yeast?",
+    "options": [
+      "Alcoholic fermentation",
+      "Lactic acid fermentation",
+      "Oxidative phosphorylation",
+      "Krebs cycle",
+      "Beta oxidation"
+    ],
+    "correct": 0,
+    "explanation": "Yeast performs alcoholic fermentation, converting pyruvate into ethanol and CO2."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which type of RNA carries amino acids to the ribosome?",
+    "options": [
+      "tRNA",
+      "mRNA",
+      "rRNA",
+      "snRNA",
+      "siRNA"
+    ],
+    "correct": 0,
+    "explanation": "tRNA molecules bring amino acids to the ribosome during translation."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which enzyme synthesises DNA during replication?",
+    "options": [
+      "DNA polymerase",
+      "RNA polymerase",
+      "Ligase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "correct": 0,
+    "explanation": "DNA polymerase adds nucleotides to form the new DNA strand."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in animal cells initiates the formation of spindle fibers?",
+    "options": [
+      "Centrosome",
+      "Nucleolus",
+      "Mitochondria",
+      "Endoplasmic reticulum",
+      "Golgi apparatus"
+    ],
+    "correct": 0,
+    "explanation": "The centrosome organises microtubules that form the spindle apparatus."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process describes the diffusion of water across a semi-permeable membrane?",
+    "options": [
+      "Osmosis",
+      "Facilitated diffusion",
+      "Active transport",
+      "Pinocytosis",
+      "Exocytosis"
+    ],
+    "correct": 0,
+    "explanation": "Osmosis is the passive diffusion of water through a semi-permeable membrane."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle in plant cells contains pigments other than chlorophyll?",
+    "options": [
+      "Chromoplast",
+      "Amyloplast",
+      "Mitochondria",
+      "Peroxisome",
+      "Vacuole"
+    ],
+    "correct": 0,
+    "explanation": "Chromoplasts store pigments such as carotenoids."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which molecules donate electrons in the light-dependent reactions of photosynthesis?",
+    "options": [
+      "Water molecules",
+      "Glucose",
+      "NADPH",
+      "CO2",
+      "ATP"
+    ],
+    "correct": 0,
+    "explanation": "Water molecules are split, donating electrons to photosystem II."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure shortens to pull chromosomes during cell division?",
+    "options": [
+      "Spindle fibers",
+      "Cytoskeleton",
+      "Centrosome",
+      "Nucleolus",
+      "Plasmodesmata"
+    ],
+    "correct": 0,
+    "explanation": "Spindle fibers composed of microtubules shorten to pull chromosomes apart."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which base is found in RNA but not in DNA?",
+    "options": [
+      "Uracil",
+      "Thymine",
+      "Adenine",
+      "Cytosine",
+      "Guanine"
+    ],
+    "correct": 0,
+    "explanation": "RNA contains uracil instead of thymine."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which organelle is responsible for lipid synthesis and detoxification?",
+    "options": [
+      "Smooth endoplasmic reticulum",
+      "Rough endoplasmic reticulum",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Lysosome"
+    ],
+    "correct": 0,
+    "explanation": "The smooth ER synthesises lipids and detoxifies harmful substances."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which phase of mitosis follows metaphase?",
+    "options": [
+      "Anaphase",
+      "Prophase",
+      "Telophase",
+      "Interphase",
+      "Cytokinesis"
+    ],
+    "correct": 0,
+    "explanation": "Anaphase follows metaphase, with sister chromatids separating to opposite poles."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which structure protects the ends of eukaryotic chromosomes?",
+    "options": [
+      "Telomeres",
+      "Centromeres",
+      "Nucleosomes",
+      "Spindle fibers",
+      "Histones"
+    ],
+    "correct": 0,
+    "explanation": "Telomeres protect chromosome ends from degradation and prevent fusion."
+  },
+  {
+    "source": "IA generated",
+    "question": "Which process describes the uptake of liquid into the cell by vesicles?",
+    "options": [
+      "Pinocytosis",
+      "Phagocytosis",
+      "Exocytosis",
+      "Facilitated diffusion",
+      "Osmosis"
+    ],
+    "correct": 0,
+    "explanation": "Pinocytosis is endocytosis of extracellular fluid and dissolved substances."
+  }
+]
