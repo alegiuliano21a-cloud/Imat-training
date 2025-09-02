@@ -92,8 +92,13 @@
   .correct{ color:var(--ok) } .incorrect{ color:var(--bad) } .no-answer{ color:var(--muted) } .muted.small{ font-size:.86rem }
   @media (max-width:720px){
     body{ padding:14px } .card{ padding:12px } button{ padding:10px 12px }
-    .quiz-progress-bar{ min-width:92vw; left:50%; transform:translateX(-50%); bottom:12px; padding:10px; }
-  }
+    .quiz-progress-bar{
+  right:8px; left:auto; bottom:8px; transform:none;
+  min-width:auto; width:148px; padding:8px 10px;
+}
+.quiz-progress-bar .progress{ height:6px; }
+.quiz-progress-bar .quiz-timer{ font-size:.78rem; }
+}
   body.dark {
     --bg: #0b0b0d;
     --fg: #e6e7e9;
