@@ -503,7 +503,7 @@ function startGenericQuizFor(subject, pool){
   activePool = pool;
 
   // pick questions using la nuova logica che evita duplicati e gestisce il ciclo "tutte prima di ripetere"
-  const n = Math.min(15, activePool.length);
+  const n = Math.min(activeSubject === 'Biology' ? 23 : 15, activePool.length);
   shuffledQuestions = pickQuestions(activePool, n);
 
   // registra come "usate" le domande scelte (salva i testi)
