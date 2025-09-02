@@ -349,25 +349,17 @@ function shuffleArray(arr){ const a = arr.slice(); for(let i=a.length-1;i>0;i--)
    Requisiti:
    1) Nessuna domanda doppia nello stesso quiz.
    2) Per utente+materia non riproporre domande già usate fino a che non sono state usate tutte.
-   Implementazione:
-   - Identifichiamo una "chiave" della domanda: preferiamo `q.question` (testo) come identificatore stabile.
-   - Prendiamo le domande disponibili = pool.filter not in usedSet.
-   - Se disponibili < n: prendiamo le disponibili rimaste, poi resettiamo il used-set (per quella materia e utente) e prendiamo il resto delle domande necessarie dalla totalità, evitando duplicati nello stesso quiz.
 */
 function pickQuestions(pool, n){
-  // pool: array di oggetti domanda, n: numero richiesto
-  // rimuoviamo eventuali duplicati testuali in pool (garantiamo un pool "per testo")
   const uniqueMap = new Map();
   pool.forEach(q => { uniqueMap.set((q.question || '').trim(), q); });
   const uniquePool = Array.from(uniqueMap.values());
 
   const usedSet = getUsedSetFor(currentUser, activeSubject);
-  // filter by not used
   let available = uniquePool.filter(q => !usedSet.has(q.question));
-  // if available insufficient, we will take all available, then reset used-set and take remaining from full pool excluding ones already chosen for this quiz
   const chosen = [];
   const toPick = Math.min(n, uniquePool.length);
-  // Step 1: take from available up to toPick
+
   while(chosen.length < toPick && available.length > 0){
     const idx = Math.floor(Math.random() * available.length);
     chosen.push(available.splice(idx,1)[0]);
@@ -375,16 +367,12 @@ function pickQuestions(pool, n){
   if(chosen.length === toPick){
     return chosen;
   }
-  // Step 2: if we haven't reached toPick, it means available exhausted -> reset used-set (user has now completed all)
   resetUsedQuestionsFor(currentUser, activeSubject);
-  // Recompute unique pool (same as above) and exclude any already selected in 'chosen' (to avoid duplicates within the quiz)
   const remainingCandidates = uniquePool.filter(q => !chosen.some(c => c.question === q.question));
-  // Shuffle and select remaining
   const shuffled = shuffleArray(remainingCandidates);
   for(let i=0; i<shuffled.length && chosen.length < toPick; i++){
     chosen.push(shuffled[i]);
   }
-  // If pool smaller than requested, chosen may be < toPick; that's fine.
   return chosen;
 }
 
@@ -502,19 +490,15 @@ function startGenericQuizFor(subject, pool){
   activeSubject = subject;
   activePool = pool;
 
-  // pick questions using la nuova logica che evita duplicati e gestisce il ciclo "tutte prima di ripetere"
   const n = Math.min(activeSubject === 'Biology' ? 23 : 15, activePool.length);
   shuffledQuestions = pickQuestions(activePool, n);
 
-  // registra come "usate" le domande scelte (salva i testi)
   addUsedQuestions(currentUser, activeSubject, shuffledQuestions.map(q => q.question));
 
-  // aggiorna also lastAskedPerUser session cache (per evitare ripetizioni immediate)
   if(!lastAskedPerUser[currentUser]) lastAskedPerUser[currentUser] = [];
   lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].concat(shuffledQuestions.map(q => activeSubject + '::' + q.question));
   if(lastAskedPerUser[currentUser].length > RECENT_CACHE_SIZE) lastAskedPerUser[currentUser] = lastAskedPerUser[currentUser].slice(-RECENT_CACHE_SIZE);
 
-  // build UI (mantengo la struttura originale)
   let html = `<div class="card"><div class="row" style="justify-content:space-between;align-items:center"><h2>Quiz — ${activeSubject}</h2><div class="muted small">Domande: ${shuffledQuestions.length}</div></div>`;
   shuffledQuestions.forEach((q,i) => {
     const idxs = shuffleArray(q.options.map((_,k) => k));
@@ -559,7 +543,7 @@ function submitQuiz(){
     const ok = (idx === q.correct);
     if(idx !== null){
       details.push({ q: q.question, chosen: idx, correct: ok, year: q.year });
-      incQAsked(activeSubject, q.question); // solo per le domande effettivamente risposte
+      incQAsked(activeSubject, q.question);
       if(!ok) incQWrong(activeSubject, q.question);
       if(ok){ score += 1.5; correctCount++; } else { score -= 0.4; wrong++; }
     } else {
@@ -570,7 +554,6 @@ function submitQuiz(){
   const answered = details.filter(d => d.chosen !== null).length;
   const notAnswered = totalQuestions - answered;
 
-  // Salvataggio risultato (mantengo stessa struttura, nota: total = numero di risposte date)
   const all = lsGet('imat_results', {});
   if(!all[currentUser]) all[currentUser] = [];
   all[currentUser].push({
@@ -587,7 +570,6 @@ function submitQuiz(){
   });
   lsSet('imat_results', all);
 
-  // reset wrong per domande corrette
   details.forEach(d => { if(d.correct) resetQWrong(activeSubject, d.q); });
 
   const pctC = answered ? ((correctCount/answered)*100).toFixed(1) : '0.0';
@@ -646,41 +628,113 @@ function renderResult(details, score, elapsed){
   showScreen('result');
 }
 
-/* Training logic (rimane invariata la logica originale; non applico ciclo "usa tutte" al training) */
-function pickTrainingQuestionFrom(pool, subject){
-  const poolCopy = pool.slice();
-  const weights = [], totalW = poolCopy.reduce((acc,q) => {
-    const s = getQStatsFor(subject,q.question); const w = 1 + (s.wrong || 0); weights.push(w); return acc + w;
-  }, 0);
-  let r = Math.random() * totalW, cum = 0;
-  for(let i=0;i<poolCopy.length;i++){ cum += weights[i]; if(r <= cum) return poolCopy[i]; }
-  return poolCopy[0];
+/* =========================
+   TRAINING MODE — LOGICA RICHIESTA (priorità sbagliate → non risposte, max 1 volta per giro)
+   Usa qstats: s.wrong = errori consecutivi (azzerati al corretto); s.asked = tentativi totali.
+========================= */
+let _trainingServedThisSweep = new Set();   // id testuale domanda già servita in questo giro
+let _trainingPhase = 'wrong';               // 'wrong' -> prima sbagliate; 'unanswered' -> poi non risposte
+let _trainingCurrent = null;
+
+function _buildTrainingPools(subject, pool){
+  const wrongPool = [];
+  const unansweredPool = [];
+  pool.forEach(q => {
+    const s = getQStatsFor(subject, q.question);
+    if(s.wrong && s.wrong > 0){
+      wrongPool.push(q);
+    } else if(!s.asked || s.asked === 0){
+      unansweredPool.push(q);
+    }
+  });
+  // opzionale: ordina sbagliate per severità (più sbagliate prima)
+  wrongPool.sort((a,b) => (getQStatsFor(subject,b.question).wrong||0) - (getQStatsFor(subject,a.question).wrong||0));
+  return { wrongPool, unansweredPool };
 }
+
 function startGenericTrainingFor(subject, pool){
   if(!currentUser){ showScreen('login'); return; }
   activeSubject = subject; activePool = pool;
-  showTrainingQuestion();
+  _trainingServedThisSweep.clear();
+  _trainingPhase = 'wrong';
+  _trainingCurrent = null;
+  _nextTrainingQuestion();
 }
-function showTrainingQuestion(){
-  const q = pickTrainingQuestionFrom(activePool, activeSubject);
+
+function _nextTrainingQuestion(){
+  const el = document.getElementById('training');
+  const { wrongPool, unansweredPool } = _buildTrainingPools(activeSubject, activePool);
+
+  // Fase 1: sbagliate (ognuna max una volta per giro)
+  if(_trainingPhase === 'wrong'){
+    for(const q of wrongPool){
+      const qid = q.question;
+      if(!_trainingServedThisSweep.has(qid)){
+        _trainingServedThisSweep.add(qid);
+        return _renderTrainingQuestion(q);
+      }
+    }
+    // Nessuna sbagliata "nuova" in questo giro: passa alla fase non risposte
+    _trainingPhase = 'unanswered';
+  }
+
+  // Fase 2: non risposte
+  if(_trainingPhase === 'unanswered'){
+    if(unansweredPool.length > 0){
+      return _renderTrainingQuestion(unansweredPool[0]);
+    }
+    // Non ci sono non risposte. Se restano sbagliate (magari generate nel giro precedente), avvia nuovo giro sbagliate.
+    if(wrongPool.length > 0){
+      _trainingServedThisSweep.clear();
+      _trainingPhase = 'wrong';
+      // pick again (nuovo giro)
+      for(const q of wrongPool){
+        const qid = q.question;
+        if(!_trainingServedThisSweep.has(qid)){
+          _trainingServedThisSweep.add(qid);
+          return _renderTrainingQuestion(q);
+        }
+      }
+    }
+  }
+
+  // Se arrivo qui: niente sbagliate con priorità e niente non risposte → training completato
+  let html = `<div class="card"><h2>Modalità Allenamento — ${activeSubject}</h2>`;
+  html += `<p class="muted">Non ci sono più domande in revisione (sbagliate) né domande ancora da fare.</p>`;
+  html += `<div class="row"><button class="secondary" id="homeBtn2">Home</button></div></div>`;
+  el.innerHTML = html;
+  showScreen('training');
+  document.getElementById('homeBtn2').onclick = () => showScreen('home');
+}
+
+function _renderTrainingQuestion(q){
   const el = document.getElementById('training');
   const s = getQStatsFor(activeSubject, q.question);
   let html = `<div class="card"><h2>Modalità Allenamento — ${activeSubject}</h2>`;
-  html += `<fieldset><legend>${q.question}</legend><div class="year">Anno: ${q.year || '—'} • Sbagliata: ${s.wrong || 0} • Proposta: ${s.asked || 0}</div>`;
+  html += `<div class="muted small" style="margin-bottom:6px">Priorità: prima <strong>sbagliate</strong> (max 1 per giro), poi <strong>non risposte</strong>. La domanda esce dalla revisione quando rispondi correttamente.</div>`;
+  html += `<fieldset><legend>${q.question}</legend><div class="year">Anno: ${q.year || '—'} • Sbagliata (consecutive): ${s.wrong || 0} • Tentativi: ${s.asked || 0}</div>`;
   q.options.forEach((opt,i) => html += `<label class="option"><input type="radio" name="trainAns" value="${i}"><div>${opt}</div></label>`);
   html += `</fieldset>`;
   html += `<div class="row"><button id="checkBtn">Conferma</button><button id="nextBtn" disabled>Avanti</button><button class="secondary" id="homeBtn2">Home</button></div>`;
   html += `<div id="trainFeedback" style="margin-top:10px"></div></div>`;
   el.innerHTML = html; showScreen('training');
+
   document.getElementById('homeBtn2').onclick = () => showScreen('home');
 
   document.getElementById('checkBtn').onclick = () => {
     const ans = document.querySelector('input[name="trainAns"]:checked');
     if(!ans){ toast('Seleziona una risposta.', [{label:'OK', secondary:true}]); return; }
     const idx = parseInt(ans.value,10), correct = (idx === q.correct);
-    incQAsked(activeSubject, q.question);
-    if(!correct) incQWrong(activeSubject, q.question);
 
+    // aggiorna statistiche
+    incQAsked(activeSubject, q.question);
+    if(correct){
+      resetQWrong(activeSubject, q.question); // esce dalla revisione
+    } else {
+      incQWrong(activeSubject, q.question);   // resta in revisione (aumenta "wrong" consecutivi)
+    }
+
+    // salva tentativo singolo anche nei risultati (coerente con storico originale)
     const all = lsGet('imat_results', {});
     if(!all[currentUser]) all[currentUser] = [];
     const score = correct ? 1.5 : -0.4;
@@ -689,15 +743,14 @@ function showTrainingQuestion(){
     all[currentUser].push({ score: score, wrong: wrong, date: new Date().toLocaleString(), training:true, total:1, correct: correct?1:0, details: details, subject: activeSubject });
     lsSet('imat_results', all);
 
-    if(correct) resetQWrong(activeSubject, q.question);
-
+    // feedback
     const fb = document.getElementById('trainFeedback');
-    if(correct) fb.innerHTML = `<p class="correct">✔ Corretto!</p><p class="muted small">${q.explanation || ''}</p>`;
+    if(correct) fb.innerHTML = `<p class="correct">✔ Corretto! La domanda esce dalla revisione.</p><p class="muted small">${q.explanation || ''}</p>`;
     else fb.innerHTML = `<p class="incorrect">✘ Sbagliato.</p><p>Risposta corretta: ${q.options[q.correct]}</p><p class="muted small">${q.explanation || ''}</p>`;
 
     document.getElementById('checkBtn').disabled = true;
     const next = document.getElementById('nextBtn'); next.disabled = false;
-    next.onclick = () => showTrainingQuestion();
+    next.onclick = () => _nextTrainingQuestion();
   };
 }
 
@@ -706,7 +759,6 @@ function renderHistory(){
   if(!currentUser){ showScreen('login'); return; }
   const wrap = document.getElementById('history');
 
-  // Assicuriamoci di avere i pool caricati per poter mostrare la statistica di completamento.
   function proceedRender(){
     const all = lsGet('imat_results', {});
     const res = all[currentUser] || [];
@@ -730,7 +782,6 @@ function renderHistory(){
         html += `</div>`;
       }
 
-      // Statistica completamento delle domande (usa store 'imat_used_questions' per l'utente)
       const usedStore = loadUsedQuestionsStore();
       const usedArr = (usedStore[currentUser] && usedStore[currentUser][subject]) ? usedStore[currentUser][subject] : [];
       const usedCount = usedArr.length;
@@ -745,7 +796,6 @@ function renderHistory(){
       }
       html += `</div>`;
 
-      // Mostra domande più sbagliate (mantengo la costruzione)
       const wrongCount = {}, correctSet = {};
       arr.forEach(a => (a.details||[]).forEach(d => { if(d.correct) correctSet[d.q] = true; }));
       arr.forEach(a => (a.details||[]).forEach(d => { if(!d.correct && !correctSet[d.q]) wrongCount[d.q] = (wrongCount[d.q]||0) + 1; }));
@@ -768,7 +818,6 @@ function renderHistory(){
     if(clearAllBtn) clearAllBtn.onclick = () => showClearConfirmationInHistoryAll();
   }
 
-  // se i pool non sono caricati, carichiamoli prima di mostrare le percentuali
   const needsChem = !chemistryQuestionsLoaded;
   const needsBio = !biologyQuestionsLoaded;
   if(needsChem || needsBio){
@@ -791,7 +840,6 @@ function confirmClearSubject(subject){
       const qs = loadQStats(); let changed=false;
       Object.keys(qs).forEach(k => { if(k.indexOf(subject + '::') === 0){ delete qs[k]; changed=true; } });
       if(changed) saveQStats(qs);
-      // reset used questions for that subject as well
       resetUsedQuestionsFor(currentUser, subject);
       showScreen('history');
     }},
